@@ -34,6 +34,7 @@
 #include <pru_ctrl.h>
 #include <pru_ecap.h>
 #include "PRU_1wire.h"
+#include "resource_table_empty.h"
 #include <string.h>
 
 volatile register uint32_t __R30;

@@ -30,6 +30,7 @@
 
 #include <stdint.h>
 #include <pru_cfg.h>
+#include "resource_table_empty.h"
 
 volatile register uint32_t __R30;
 volatile register uint32_t __R31;
@@ -255,4 +256,3 @@ void main(){
 	/* Halt PRU core */
 	__halt();
 }
-

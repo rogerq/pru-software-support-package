@@ -31,6 +31,7 @@
 
 #include <stdint.h>
 #include <pru_uart.h>
+#include "resource_table_empty.h"
 
 /* Mapping Constant table register to variable */
 volatile far pruUart CT_UART __attribute__((cregister("PRU_UART0", near), peripheral));

@@ -31,6 +31,7 @@
 #include <stdint.h>
 #include <pru_cfg.h>
 #include <pru_ctrl.h>
+#include "resource_table_empty.h"
 
 /* Mapping Constant table registers to variables */
 volatile far pruCfg CT_CFG __attribute__((cregister("CFG", near), peripheral));

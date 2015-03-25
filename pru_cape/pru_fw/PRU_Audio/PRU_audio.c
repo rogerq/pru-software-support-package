@@ -33,6 +33,7 @@
 #include <pru_iep.h>
 #include <pru_intc.h>
 #include "PRU_audio.h"
+#include "resource_table_empty.h"
 
 volatile register uint32_t __R30;
 volatile register uint32_t __R31;

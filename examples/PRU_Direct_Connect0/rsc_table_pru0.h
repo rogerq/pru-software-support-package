@@ -31,62 +31,22 @@
  */
 
 /*
- *  ======== rsc_table_am335x_pru.h ========
+ *  ======== rsc_table_pru.h ========
  *
- *  Define the resource table entries for all PRU cores. This will be
+ *  Define the resource table entries for PRU0. This will be
  *  incorporated into corresponding base images, and used by the remoteproc
- *  on the host-side to allocated/reserve resources.
+ *  on the host-side to allocated/reserve resources.  Note the remoteproc
+ *  driver requires that all PRU firmware be built with a resource table.
+ *
  *
  */
 
-#ifndef _RSC_TABLE_AM335X_PRU_H_
-#define _RSC_TABLE_AM335X_PRU_H_
+#ifndef _RSC_TABLE_PRU_H_
+#define _RSC_TABLE_PRU_H_
 
 #include <stddef.h>
 #include <rsc_types.h>
 #include "pru_virtio_ids.h"
-
-/* PRU Memory Map */
-#define PRU_GLOBAL_BASE		0x4A300000
-
-/* PRU Global Offsets */
-#define PRU0_DRAM		(PRU_GLOBAL_BASE)
-#define PRU1_DRAM		(PRU_GLOBAL_BASE + 0x00002000)
-
-#define PRU_SHARED_DRAM		(PRU_GLOBAL_BASE + 0x00010000)
-
-#define PRU_INTC		(PRU_GLOBAL_BASE + 0x00020000)
-
-#define PRU0_CTRL		(PRU_GLOBAL_BASE + 0x00022000)
-#define PRU1_CTRL		(PRU_GLOBAL_BASE + 0x00024000)
-
-#define PRU0_DEBUG		(PRU_GLOBAL_BASE + 0x00022400)
-#define PRU1_DEBUG		(PRU_GLOBAL_BASE + 0x00024400)
-
-#define PRU_CFG			(PRU_GLOBAL_BASE + 0x00026000)
-
-#define PRU_UART0		(PRU_GLOBAL_BASE + 0x00028000)
-
-#define PRU_IEP			(PRU_GLOBAL_BASE + 0x0002E000)
-
-#define PRU_ECAP0		(PRU_GLOBAL_BASE + 0x00030000)
-
-#define PRU0_IRAM		(PRU_GLOBAL_BASE + 0x00034000)
-#define PRU1_IRAM		(PRU_GLOBAL_BASE + 0x00038000)
-
-/* PRU Local Offsets */
-#define PRU_IRAM		(0x00000000)
-#define PRU_DRAM		(0x00000000)
-#define PRU_L_SHARED_DRAM	(0x00002000)
-
-/* Sizes */
-#define PRU0_IRAM_SIZE		(SZ_8K)
-#define PRU1_IRAM_SIZE		(SZ_8K)
-
-#define PRU0_DRAM_SIZE		(SZ_8K)
-#define PRU1_DRAM_SIZE		(SZ_8K)
-
-#define PRU_SHARED_DRAM_SIZE	(SZ_8K + SZ_4K)
 
 /*
  * Sizes of the virtqueues (expressed in number of buffers supported,
@@ -158,4 +118,4 @@ struct my_resource_table am335x_pru_remoteproc_ResourceTable = {
 	},
 };
 
-#endif /* _RSC_TABLE_AM335X_PRU_H_ */
+#endif /* _RSC_TABLE_PRU_H_ */
