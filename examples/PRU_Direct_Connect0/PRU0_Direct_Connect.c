@@ -49,7 +49,7 @@ typedef struct{
 bufferData dmemBuf;
 
 /* Mapping Constant table register to variable */
-volatile far pruIntc CT_INTC __attribute__((cregister("INTC", far), peripheral));
+volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
 
 /* PRU-to-ARM interrupt */
 #define PRU1_PRU0_INTERRUPT (18)

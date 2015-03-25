@@ -44,7 +44,7 @@ volatile register uint32_t __R31;
 volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
 volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
 volatile far pruIep CT_IEP __attribute__((cregister("PRU_IEP", far), peripheral));
-volatile far char CT_DMEM[64] __attribute__((cregister("PRU0_1", far), peripheral));
+volatile far char CT_DMEM[64] __attribute__((cregister("PRU_DMEM_0_1", far), peripheral));
 
 /******************************************************************************
 **                           INTERNAL FUNCTION DEFINITIONS

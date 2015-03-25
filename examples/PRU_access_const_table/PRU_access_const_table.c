@@ -34,7 +34,7 @@
 #include "resource_table_empty.h"
 
 /* Mapping Constant table registers to variables */
-volatile far pruCfg CT_CFG __attribute__((cregister("CFG", near), peripheral));
+volatile far pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
 volatile far uint32_t CT_DDR __attribute__((cregister("DDR", near), peripheral));
 
 /* This is a char so that I can force access to R31.b0 for the host interrupt */

@@ -33,7 +33,7 @@
 #include "resource_table_empty.h"
 
 /* Define UART register "overlay" */
-volatile far pruUart CT_UART __attribute__((cregister("UART0", near), peripheral));
+volatile far pruUart CT_UART __attribute__((cregister("PRU_UART", near), peripheral));
 
 /* The FIFO size on the PRU UART is 16 bytes; however, we are (arbitrarily)
  * only going to send 8 at a time */

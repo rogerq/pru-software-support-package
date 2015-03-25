@@ -4,7 +4,7 @@
 volatile register uint32_t __R30;
 
 /* Mapping Constant table register to variable */
-volatile pruCfg CT_CFG __attribute__((cregister("C4_CFG", near), peripheral));
+volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
 
 /*
  * main.c

@@ -44,7 +44,7 @@ typedef struct{
 } mem1DParams;
 
 /* Mapping Constant table register to variable */
-volatile pruCfg CT_CFG __attribute__((cregister("CFG", near), peripheral));
+volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
 
 mem1DParams buffer;
 

@@ -36,8 +36,8 @@ volatile register uint32_t __R30;
 volatile register uint32_t __R31;
 
 /* Mapping Constant table register to variable */
-volatile pruCfg CT_CFG __attribute__((cregister("C4_CFG", near), peripheral));
-volatile far pruIntc CT_INTC __attribute__((cregister("C0_INTC", far), peripheral));
+volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
+volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
 
 /* Defines */
 #define PRU1
