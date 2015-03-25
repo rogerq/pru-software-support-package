@@ -39,10 +39,6 @@ volatile far uint32_t CT_DDR __attribute__((cregister("DDR", near), peripheral))
 /* This is a char so that I can force access to R31.b0 for the host interrupt */
 volatile register uint8_t __R31;
 
-/* Definition of control register structures. */
-#pragma DATA_SECTION(PRU0_CTRL, ".PRU0_CTRL");
-volatile far pruCtrl PRU0_CTRL;
-
 /* PRU-to-ARM interrupt */
 #define PRU_ARM_INTERRUPT (19+16)
 

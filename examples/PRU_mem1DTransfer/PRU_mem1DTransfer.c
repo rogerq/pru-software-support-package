@@ -45,10 +45,6 @@ typedef struct{
 /* Mapping Constant table register to variable */
 volatile pruCfg CT_CFG __attribute__((cregister("CFG", near), peripheral));
 
-/* Ensure pruCtrl structure is "placed" over top of CTRL registers */
-#pragma DATA_SECTION(PRU0_CTRL, ".PRU0_CTRL");
-far pruCtrl PRU0_CTRL;
-
 mem1DParams buffer;
 
 #define COPY_LENGTH	32

@@ -45,10 +45,6 @@ volatile far uint32_t CT_DDR __attribute__((cregister("DDR", near), peripheral))
 /* PRU-to-ARM interrupt */
 #define PRU0_ARM_INTERRUPT (19+16)
 
-/* PRU0 Control Register structure */
-#pragma DATA_SECTION(PRU0_CTRL, ".PRU0_CTRL");
-volatile far pruCtrl PRU0_CTRL;
-
 #define HOST_NUM	2
 #define CHAN_NUM	2
 

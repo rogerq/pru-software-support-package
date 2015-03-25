@@ -41,10 +41,6 @@ volatile far pruIntc CT_INTC __attribute__((cregister("INTC", far), peripheral))
 volatile pruCfg CT_CFG __attribute__((cregister("CFG", near), peripheral));
 volatile far uint32_t CT_DDR __attribute__((cregister("DDR", near), peripheral));
 
-/* Ensure pruCtrl structure is "placed" over top of CTRL registers */
-#pragma DATA_SECTION(PRU0_CTRL, ".PRU0_CTRL");
-far pruCtrl PRU0_CTRL;
-
 /* PRU-to-ARM interrupt */
 #define PRU0_ARM_INTERRUPT (19+16)
 
