@@ -42,6 +42,18 @@
 	status = "disabled";  		/* Disable HDMI due to pin mux conflicts with PRU Cape */
 };
 
+&hdmi {
+	status = "disabled";
+};
+
+&mcasp0 {
+	status = "disabled";
+};
+
+&sound {
+	status = "disabled";
+};
+
 &pruss {
         pinctrl-names = "default";
 	pinctrl-0 = <&pru_cape_bone_pins>;
