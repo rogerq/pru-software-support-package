@@ -1,0 +1,61 @@
+From 90be685ff5d7831fd21469ed4aab2d47e487dadd Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Mon, 2 Feb 2015 15:42:51 -0600
+Subject: [PATCH 04/13] remoteproc/pruss: fix shutdown for manually booted PRU
+ cores
+
+The remoteproc infrastructure auto-boots the processors that have
+support for virtio transports. The remoteproc virtio layer also
+handles the shutdown for such remoteproc devices, but not for
+processors booted outside the remoteproc virtio layer.
+
+The current PRU remoteproc driver also provides support to manually
+boot a PRU processor if there are no virtio devices associated with
+the processor (standalone functionality without any communication
+with the MPU, usually used in a configuration where one of the PRU
+cores is used in a slave-mode and complements the functionality
+implemented on the other PRU core). The manual boot is done during
+the probe of the PRU rproc driver, but it isn't handling the shutdown
+of the PRU processor, so the same has been fixed.
+
+This also fixes an issue with the module reference count of the PRUSS
+remoteproc module. The rproc_boot() function holds a reference count
+to the module implementing the driver for the corresponding remoteproc
+device. The PRUSS remoteproc module implements two platform drivers -
+one for the PRUSS subsystem, and the other to deal with the individual
+PRU cores, and as such the module reference count module is incremented
+for every booted processor, and is decremented properly only when the
+corresponding processor is shutdown. Without the fix, the reference
+count is never decremented when the PRU rproc device or the parent
+PRUSS subsystem device is unbound from their corresponding drivers.
+
+NOTE:
+The rmmod of the PRUSS remoteproc module can only succeed when the
+PRU/PRUSS devices are unbound from their drivers, if there were any
+manually booted PRU cores. Ideally, the boot would have to be
+implemented in a different layer to avoid this issue.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ drivers/remoteproc/pruss_remoteproc.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/remoteproc/pruss_remoteproc.c b/drivers/remoteproc/pruss_remoteproc.c
+index c528efe..d498ee3 100644
+--- a/drivers/remoteproc/pruss_remoteproc.c
++++ b/drivers/remoteproc/pruss_remoteproc.c
+@@ -918,6 +918,11 @@ static int pru_rproc_remove(struct platform_device *pdev)
+ 
+ 	dev_info(dev, "%s: removing rproc %s\n", __func__, rproc->name);
+ 
++	if (list_empty(&pru->rproc->rvdevs)) {
++		dev_info(dev, "stopping the manually booted PRU core\n");
++		rproc_shutdown(pru->rproc);
++	}
++
+ 	mbox_free_channel(pru->mbox);
+ 
+ 	rproc_del(rproc);
+-- 
+1.7.9.5
+

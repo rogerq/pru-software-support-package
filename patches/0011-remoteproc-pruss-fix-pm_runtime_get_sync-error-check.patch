@@ -1,0 +1,32 @@
+From 2ceb90e104a1e171d8499d1666927f84441aa7dc Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Tue, 17 Feb 2015 14:44:37 -0600
+Subject: [PATCH 11/13] remoteproc/pruss: fix pm_runtime_get_sync error check
+
+The pm_runtime_get_sync() returns a negative value on error,
+so fix the error condition check in the probe. Also use the
+pm_runtime_put_noidle() appropriately in the case of a
+pm_runtime_get_sync() failure.
+
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ drivers/remoteproc/pruss_remoteproc.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/remoteproc/pruss_remoteproc.c b/drivers/remoteproc/pruss_remoteproc.c
+index 728a821..0228620 100644
+--- a/drivers/remoteproc/pruss_remoteproc.c
++++ b/drivers/remoteproc/pruss_remoteproc.c
+@@ -1098,7 +1098,8 @@ static int pruss_probe(struct platform_device *pdev)
+ 
+ 	pm_runtime_enable(dev);
+ 	err = pm_runtime_get_sync(dev);
+-	if (err) {
++	if (err < 0) {
++		pm_runtime_put_noidle(dev);
+ 		dev_err(dev, "pm_runtime_get_sync failed\n");
+ 		goto err_rpm_fail;
+ 	}
+-- 
+1.7.9.5
+

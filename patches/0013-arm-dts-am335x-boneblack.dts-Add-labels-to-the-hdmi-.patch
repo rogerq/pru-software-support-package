@@ -1,0 +1,43 @@
+From d382ab080c1054b1f45849de14ffa43171ab9c82 Mon Sep 17 00:00:00 2001
+From: Jason Reeder <jreeder@ti.com>
+Date: Mon, 30 Mar 2015 14:16:05 -0500
+Subject: [PATCH 13/13] arm: dts: am335x-boneblack.dts: Add labels to the hdmi
+ and sound nodes
+
+To allow device tree include files to disable the hdmi and sound nodes,
+labels must be added.
+
+Using the labels, these nodes can be disabled from device tree include
+files which can alleviate pin mux conflicts with some capes. Including
+the PRU cape which uses the am335x-boneblack-prucape.dtsi file.
+
+Signed-off-by: Jason Reeder <jreeder@ti.com>
+---
+ arch/arm/boot/dts/am335x-boneblack.dts |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-boneblack.dts
+index a088b1a..09bf297 100644
+--- a/arch/arm/boot/dts/am335x-boneblack.dts
++++ b/arch/arm/boot/dts/am335x-boneblack.dts
+@@ -101,7 +101,7 @@
+ };
+ 
+ / {
+-	hdmi {
++	hdmi: hdmi {
+ 		compatible = "ti,tilcdc,slave";
+ 		i2c = <&i2c0>;
+ 		pinctrl-names = "default", "off";
+@@ -128,7 +128,7 @@
+ 	       status = "okay";
+ 	};
+ 
+-	sound {
++	sound: sound {
+ 		compatible = "ti,beaglebone-black-audio";
+ 		ti,model = "TI BeagleBone Black";
+ 		ti,audio-codec = <&hdmi_audio>;
+-- 
+1.7.9.5
+
