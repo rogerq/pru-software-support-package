@@ -30,12 +30,31 @@
 
 #include <stdint.h>
 #include <pru_cfg.h>
-#include <pru_ctrl.h>
 #include "resource_table_empty.h"
 
-/* Mapping Constant table registers to variables */
+/* Mapping Constant Table (CT) registers to variables */
 volatile far pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-volatile far uint32_t CT_DDR __attribute__((cregister("DDR", near), peripheral));
+volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));
+
+#ifndef PRU_SRAM
+#define PRU_SRAM near __attribute__((cregister("PRU_SHAREDMEM", near)))
+#endif
+
+/* NOTE:  Allocating shared_freq_x to PRU Shared Memory means that other PRU cores on
+ *        the same subsystem must take care not to allocate data to that memory.
+ *	 	  Users also cannot rely on where in shared memory these variables are placed
+ *        so accessing them from another PRU core or from the ARM is an undefined behavior.
+ */
+PRU_SRAM uint32_t shared_freq_1;
+PRU_SRAM uint32_t shared_freq_2;
+PRU_SRAM uint32_t shared_freq_3;
+
+/* PRCM Registers */
+#define CM_PER_BASE	((volatile uint32_t *)(0x44E00000))
+#define SPI0_CLKCTRL  (0x4C / 4)
+#define ON (0x2)
+
+#define MCSPI0_MODULCTRL (*((volatile uint32_t*)(&CT_MCSPI0 + 0x128/4)))
 
 /* This is a char so that I can force access to R31.b0 for the host interrupt */
 volatile register uint8_t __R31;
@@ -44,18 +63,50 @@ volatile register uint8_t __R31;
 #define PRU_ARM_INTERRUPT (19+16)
 
 int main(){
-	uint32_t *ddrPtr = (uint32_t *)&CT_DDR;
 	uint32_t result;
+	volatile uint32_t *ptr_cm;
+
+	ptr_cm = CM_PER_BASE;
+
+	/*****************************************************************/
+	/* Access PRU peripherals using Constant Table & PRU header file */
+	/*****************************************************************/
 
 	/* Clear SYSCFG[STANDBY_INIT] to enable OCP master port */
 	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
 
-	/* Ensure C31 is pointed to the start of DDR (0 offset) */
-	PRU0_CTRL.CTPPR1_bit.C31_BLK_POINTER = 0;
+	/* Read IEPCLK[OCP_EN] for IEP clock source */
+	result = CT_CFG.IEPCLK_bit.OCP_EN;
 
-	/* Read value from DDR, store in the PRU_CFG pin_mx register */
-	result = *ddrPtr;
-	CT_CFG.PIN_MX = result;
+
+	/*****************************************************************/
+	/* Access SoC peripherals using Constant Table                   */
+	/*****************************************************************/
+
+	/* Access PRCM (without CT) to initialize McSPI0 clock */
+	ptr_cm[SPI0_CLKCTRL] = ON;
+
+	/* Read McSPI0_MODULCTRL (offset 0x128)*/
+	result = MCSPI0_MODULCTRL;
+
+	/* Toggle MCSPI0_MODULCTRL[MS] (offset 0x128, bit 2) */
+	MCSPI0_MODULCTRL ^= 0x4;
+
+	/* Reset MCSPI0_MODULCTRL[MS] to original value */
+	MCSPI0_MODULCTRL = result;
+
+	/*****************************************************************/
+	/* Access PRU Shared RAM using Constant Table                    */
+	/*****************************************************************/
+
+	/* Define value of shared_freq_1 */
+	shared_freq_1 = 1;
+
+	/* Read PRU Shared RAM Freq_1 memory */
+	if (shared_freq_1 == 1)
+		shared_freq_2 = shared_freq_2 + 1;
+	else
+		shared_freq_2 = shared_freq_3;
 
 	/* Halt PRU core */
 	__halt();
