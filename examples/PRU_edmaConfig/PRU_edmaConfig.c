@@ -123,6 +123,12 @@ hostBuffer buf;
 #define CTBIR_1         (*(volatile uint32_t *)(0x22024))
 
 /* EDMA Channel Registers */
+#define CM_PER_BASE	((volatile uint32_t *)(0x44E00000))
+#define TPTC0_CLKCTRL (0x24 / 4)
+#define TPCC_CLKCTRL  (0xBC / 4)
+#define ON (0x2)
+
+/* EDMA Channel Registers */
 #define EDMA0_CC_BASE	((volatile uint32_t *)(0x49000000))
 #define DMAQNUM0	(0x0240 / 4)
 #define DMAQNUM1	(0x0244 / 4)
@@ -188,12 +194,17 @@ void main(){
 	uint16_t paramOffset;
 	edmaParam params;
 	volatile uint32_t *ptr;
+	volatile uint32_t *ptr_cm;
 	volatile edmaParam *pParams;
 
 	ptr = EDMA0_CC_BASE;
+	ptr_cm = CM_PER_BASE;
 
 	/* Clear SYSCFG[STANDBY_INIT] to enable OCP master port */
 	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
+
+	ptr_cm[TPTC0_CLKCTRL] = ON;
+	ptr_cm[TPCC_CLKCTRL] = ON;
 
 	/* Load channel parameters from DRAM - loaded by host */
 	hostData.src = /*buf.src*/ 0x40300000;
