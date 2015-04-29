@@ -4,12 +4,12 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := c:/ti/ccsv6/tools/compiler/pru_2.1.0
+CG_TOOL_ROOT := C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
 
 ORDERED_OBJS += \
-$(GEN_CMDS__FLAG) \
 "./temp_monitor_slave_0.obj" \
-"../link.cmd" \
+"../AM335x_PRU.cmd" \
+$(GEN_CMDS__FLAG) \
 -l"libc.a" \
 
 -include ../makefile.init
@@ -48,11 +48,11 @@ endif
 ifneq ($(strip $(C67_DEPS)),)
 -include $(C67_DEPS)
 endif
-ifneq ($(strip $(C??_DEPS)),)
--include $(C??_DEPS)
-endif
 ifneq ($(strip $(CLA_DEPS)),)
 -include $(CLA_DEPS)
+endif
+ifneq ($(strip $(C??_DEPS)),)
+-include $(C??_DEPS)
 endif
 ifneq ($(strip $(CPP_DEPS)),)
 -include $(CPP_DEPS)
@@ -81,6 +81,9 @@ endif
 ifneq ($(strip $(C43_DEPS)),)
 -include $(C43_DEPS)
 endif
+ifneq ($(strip $(INO_DEPS)),)
+-include $(INO_DEPS)
+endif
 ifneq ($(strip $(S67_DEPS)),)
 -include $(S67_DEPS)
 endif
@@ -92,6 +95,9 @@ ifneq ($(strip $(S43_DEPS)),)
 endif
 ifneq ($(strip $(OPT_DEPS)),)
 -include $(OPT_DEPS)
+endif
+ifneq ($(strip $(PDE_DEPS)),)
+-include $(PDE_DEPS)
 endif
 ifneq ($(strip $(S64_DEPS)),)
 -include $(S64_DEPS)
@@ -127,13 +133,13 @@ all: PRU_HDQ_TempSensor0.out secondary-outputs
 PRU_HDQ_TempSensor0.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: PRU Linker'
-	"c:/ti/ccsv6/tools/compiler/pru_2.1.0/bin/clpru" -v3 -O3 -g --define=am3359 --define=pru0 --diag_warning=225 --display_error_number --diag_wrap=off --endian=little --hardware_mac=on -z -m"PRU_HDQ_TempSensor0.map" --heap_size=0x100 --stack_size=0x100 -i"c:/ti/ccsv6/tools/compiler/pru_2.1.0/lib" -i"c:/ti/ccsv6/tools/compiler/pru_2.1.0/include" --reread_libs --define=PRU_CORE=1 --warn_sections --xml_link_info="PRU_HDQ_TempSensor0_linkInfo.xml" --rom_model -o "PRU_HDQ_TempSensor0.out" $(ORDERED_OBJS)
+	"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/bin/clpru" -v3 -O3 -g --define=am3359 --define=pru0 --diag_warning=225 --display_error_number --diag_wrap=off --endian=little --hardware_mac=on -z -m"PRU_HDQ_TempSensor0.map" --heap_size=0x100 --stack_size=0x100 -i"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/lib" -i"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/include" --reread_libs --define=PRU_CORE=1 --warn_sections --xml_link_info="PRU_HDQ_TempSensor0_linkInfo.xml" --rom_model -o "PRU_HDQ_TempSensor0.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 PRU_HDQ_TempSensor0_image.obj: $(EXE_OUTPUTS)
 	@echo 'Invoking: PRU Hex Utility'
-	"c:/ti/ccsv6/tools/compiler/pru_2.1.0/bin/hexpru" --ti_txt -o "PRU_HDQ_TempSensor0_image.obj" $(EXE_OUTPUTS__QUOTED)  C:/temp/pru/pru_cape/pru_fw/PRU_HDQ_TempSensor0/PRU_HexUtil.cmd
+	"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/bin/hexpru" --ti_txt -o "PRU_HDQ_TempSensor0_image.obj" $(EXE_OUTPUTS__QUOTED)  C:/temp/pru-software-support-package_042915/labs/lab_3/solution/PRU_HDQ_TempSensor0/PRU_HexUtil.cmd
 	@echo 'Finished building: $@'
 	@echo ' '
 

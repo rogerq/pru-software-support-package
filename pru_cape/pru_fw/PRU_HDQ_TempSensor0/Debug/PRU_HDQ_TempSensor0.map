@@ -1,7 +1,7 @@
 ******************************************************************************
                      PRU Linker PC v2.1.0                      
 ******************************************************************************
->> Linked Tue Nov 11 14:28:54 2014
+>> Linked Wed Apr 29 09:01:49 2015
 
 OUTPUT FILE NAME:   <PRU_HDQ_TempSensor0.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_noexit"  address: 00000000
@@ -12,19 +12,19 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
 PAGE 0:
-  PRUIMEM               00000000   00002000  00000434  00001bcc  RWIX
+  PRU_IMEM              00000000   00002000  00000434  00001bcc  RWIX
 
 PAGE 1:
-  PRUDMEM               00000000   00002000  00000200  00001e00  RWIX
-  SHAREDMEM             00010000   00002ff4  00000000  00002ff4  RWIX
+  PRU_DMEM_0_1          00000000   00002000  00000234  00001dcc  RWIX
+  PRU_DMEM_1_0          00002000   00002000  00000000  00002000  RWIX
+  PRU_SHAREDMEM         00010000   00002ff4  00000000  00002ff4  RWIX
   GLB_BUF               00012ff4   0000000c  00000009  00000003  RWIX
   PRU_INTC              00020000   00001504  00001504  00000000  RWIX
-  PRU0_CTRL             00022000   00000030  00000000  00000030  RWIX
-  PRU1_CTRL             00024000   00000030  00000000  00000030  RWIX
   PRU_CFG               00026000   00000100  00000044  000000bc  RWIX
-  PRU_UART0             00028000   00000100  00000000  00000100  RWIX
+  PRU_UART              00028000   00000100  00000000  00000100  RWIX
   PRU_IEP               0002e000   0000031c  0000031c  00000000  RWIX
   PRU_ECAP              00030000   00000100  00000000  00000100  RWIX
+  RSVD27                00032000   00000100  00000000  00000100  RWIX
   MDIO                  00032400   00000100  00000000  00000100  RWIX
   L3OCMC                40000000   00010000  00000000  00010000  RWIX
   MCASP0_DMA            46000000   00000100  00000000  00000100  RWIX
@@ -81,6 +81,10 @@ section   page    origin      length       input sections
 
 .cinit     1    00000000    00000000     UNINITIALIZED
 
+.resource_table 
+*          1    00000200    00000034     
+                  00000200    00000034     temp_monitor_slave_0.obj (.resource_table:retain)
+
 .TEMP_SENSOR_BUF 
 *          1    00012ff4    00000009     UNINITIALIZED
                   00012ff4    00000009     temp_monitor_slave_0.obj (.TEMP_SENSOR_BUF)
@@ -131,6 +135,7 @@ SEGMENT ATTRIBUTES
     -- ---      --- -----
      0 PHA_PAGE 1   1    
      1 PHA_PAGE 2   1    
+     2 PHA_PAGE 3   1    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -161,12 +166,16 @@ abs   481a0000  __PRU_CREG_BASE_MCSPI1
 abs   00032400  __PRU_CREG_BASE_MDIO         
 abs   48060000  __PRU_CREG_BASE_MMCHS0       
 abs   00026000  __PRU_CREG_BASE_PRU_CFG      
+abs   00000000  __PRU_CREG_BASE_PRU_DMEM_0_1 
+abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
 abs   00030000  __PRU_CREG_BASE_PRU_ECAP     
 abs   0002e000  __PRU_CREG_BASE_PRU_IEP      
 abs   00020000  __PRU_CREG_BASE_PRU_INTC     
-abs   00028000  __PRU_CREG_BASE_PRU_UART0    
+abs   00010000  __PRU_CREG_BASE_PRU_SHAREDMEM
+abs   00028000  __PRU_CREG_BASE_PRU_UART     
 abs   48318000  __PRU_CREG_BASE_RSVD10       
 abs   48310000  __PRU_CREG_BASE_RSVD13       
+abs   00032000  __PRU_CREG_BASE_RSVD27       
 abs   480ca000  __PRU_CREG_BASE_SPINLOCK     
 abs   49000000  __PRU_CREG_BASE_TPCC         
 abs   48022000  __PRU_CREG_BASE_UART1        
@@ -189,12 +198,16 @@ abs   00000010  __PRU_CREG_MCSPI1
 abs   00000015  __PRU_CREG_MDIO              
 abs   00000005  __PRU_CREG_MMCHS0            
 abs   00000004  __PRU_CREG_PRU_CFG           
+abs   00000018  __PRU_CREG_PRU_DMEM_0_1      
+abs   00000019  __PRU_CREG_PRU_DMEM_1_0      
 abs   00000003  __PRU_CREG_PRU_ECAP          
 abs   0000001a  __PRU_CREG_PRU_IEP           
 abs   00000000  __PRU_CREG_PRU_INTC          
-abs   00000007  __PRU_CREG_PRU_UART0         
+abs   0000001c  __PRU_CREG_PRU_SHAREDMEM     
+abs   00000007  __PRU_CREG_PRU_UART          
 abs   0000000a  __PRU_CREG_RSVD10            
 abs   0000000d  __PRU_CREG_RSVD13            
+abs   0000001b  __PRU_CREG_RSVD27            
 abs   00000017  __PRU_CREG_SPINLOCK          
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000000b  __PRU_CREG_UART1             
@@ -211,6 +224,7 @@ abs   ffffffff  binit
 0     00000104  iep_timer_config             
 0     00000274  init                         
 0     00000014  main                         
+1     00000200  pru_remoteproc_ResourceTable 
 0     00000304  read                         
 0     000001d4  timer                        
 0     00000360  write_0                      
@@ -237,10 +251,12 @@ page  address   name
 1     00000000  CRC_BYTE_ARRAY               
 1     00000100  _stack                       
 1     00000200  __TI_STACK_END               
+1     00000200  pru_remoteproc_ResourceTable 
 1     00012ff4  TEMP_SENSOR_BUF              
 1     00020000  CT_INTC                      
 1     00026000  CT_CFG                       
 1     0002e000  CT_IEP                       
+abs   00000000  __PRU_CREG_BASE_PRU_DMEM_0_1 
 abs   00000000  __PRU_CREG_PRU_INTC          
 abs   00000001  __PRU_CREG_DMTIMER2          
 abs   00000002  __PRU_CREG_I2C1              
@@ -248,7 +264,7 @@ abs   00000003  __PRU_CREG_PRU_ECAP
 abs   00000004  __PRU_CREG_PRU_CFG           
 abs   00000005  __PRU_CREG_MMCHS0            
 abs   00000006  __PRU_CREG_MCSPI0            
-abs   00000007  __PRU_CREG_PRU_UART0         
+abs   00000007  __PRU_CREG_PRU_UART          
 abs   00000008  __PRU_CREG_MCASP0_DMA        
 abs   00000009  __PRU_CREG_GEMAC             
 abs   0000000a  __PRU_CREG_RSVD10            
@@ -265,16 +281,23 @@ abs   00000014  __PRU_CREG_EHRPWM3
 abs   00000015  __PRU_CREG_MDIO              
 abs   00000016  __PRU_CREG_MBX0              
 abs   00000017  __PRU_CREG_SPINLOCK          
+abs   00000018  __PRU_CREG_PRU_DMEM_0_1      
+abs   00000019  __PRU_CREG_PRU_DMEM_1_0      
 abs   0000001a  __PRU_CREG_PRU_IEP           
+abs   0000001b  __PRU_CREG_RSVD27            
+abs   0000001c  __PRU_CREG_PRU_SHAREDMEM     
 abs   0000001d  __PRU_CREG_TPCC              
 abs   0000001e  __PRU_CREG_L3OCMC            
 abs   0000001f  __PRU_CREG_DDR               
 abs   00000100  __TI_STACK_SIZE              
+abs   00002000  __PRU_CREG_BASE_PRU_DMEM_1_0 
+abs   00010000  __PRU_CREG_BASE_PRU_SHAREDMEM
 abs   00020000  __PRU_CREG_BASE_PRU_INTC     
 abs   00026000  __PRU_CREG_BASE_PRU_CFG      
-abs   00028000  __PRU_CREG_BASE_PRU_UART0    
+abs   00028000  __PRU_CREG_BASE_PRU_UART     
 abs   0002e000  __PRU_CREG_BASE_PRU_IEP      
 abs   00030000  __PRU_CREG_BASE_PRU_ECAP     
+abs   00032000  __PRU_CREG_BASE_RSVD27       
 abs   00032400  __PRU_CREG_BASE_MDIO         
 abs   40000000  __PRU_CREG_BASE_L3OCMC       
 abs   46000000  __PRU_CREG_BASE_MCASP0_DMA   
@@ -302,4 +325,4 @@ abs   ffffffff  __binit__
 abs   ffffffff  __c_args__                   
 abs   ffffffff  binit                        
 
-[79 symbols]
+[88 symbols]

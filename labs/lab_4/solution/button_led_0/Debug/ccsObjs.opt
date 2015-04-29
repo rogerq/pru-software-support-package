@@ -1,1 +1,1 @@
-"./button_led_0.obj" "../link.cmd" -l"libc.a" 
+"./button_led_0.obj" "../AM335x_PRU.cmd" -l"libc.a" 

@@ -12,7 +12,7 @@ pru_cape_demo.obj: ../hw_pruss.h
 pru_cape_demo.obj: ../pru_cape_demo.h
 pru_cape_demo.obj: C:/TI/AM335X_StarterWare_02_00_01_01/include/consoleUtils.h
 pru_cape_demo.obj: C:/TI/AM335X_StarterWare_02_00_01_01/include/uartStdio.h
-pru_cape_demo.obj: c:/ti/ccsv6/tools/compiler/arm_5.1.8/include/stdarg.h
+pru_cape_demo.obj: C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdarg.h
 pru_cape_demo.obj: C:/TI/AM335X_StarterWare_02_00_01_01/include/misc.h
 
 ../pru_cape_demo.c: 
@@ -27,5 +27,5 @@ C:/TI/AM335X_StarterWare_02_00_01_01/include/hw/hw_prm_per.h:
 ../pru_cape_demo.h: 
 C:/TI/AM335X_StarterWare_02_00_01_01/include/consoleUtils.h: 
 C:/TI/AM335X_StarterWare_02_00_01_01/include/uartStdio.h: 
-c:/ti/ccsv6/tools/compiler/arm_5.1.8/include/stdarg.h: 
+C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdarg.h: 
 C:/TI/AM335X_StarterWare_02_00_01_01/include/misc.h: 

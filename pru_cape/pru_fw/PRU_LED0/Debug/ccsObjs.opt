@@ -1,1 +1,1 @@
-"./PRU_LED0.obj" "../link.cmd" -l"libc.a" 
+"./PRU_LED0.obj" "../AM335x_PRU.cmd" -l"libc.a" 

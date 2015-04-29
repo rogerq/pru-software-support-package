@@ -6,7 +6,7 @@
 main.obj: ../main.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: PRU Compiler'
-	"/home/sitara/ti-cgt-pru_2.1.0/bin/clpru" -v3 --include_path="/home/sitara/ti-cgt-pru_2.1.0/include" --include_path="/home/sitara/ti-sdk-am335x-evm-07.00.00.00/example-applications/pru/include" -g --define=am3359 --define=pru0 --diag_warning=225 --display_error_number --diag_wrap=off --endian=little --preproc_with_compile --preproc_dependency="main.pp" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/bin/clpru" -v3 --include_path="C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/include" --include_path="../../../../../include" -g --define=am3359 --define=pru0 --diag_warning=225 --display_error_number --diag_wrap=off --endian=little --preproc_with_compile --preproc_dependency="main.pp" $(GEN_OPTS__FLAG) "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

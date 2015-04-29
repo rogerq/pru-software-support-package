@@ -4,7 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
-../link.cmd 
+../AM335x_PRU.cmd 
 
 C_SRCS += \
 ../temp_monitor_slave_0.c 

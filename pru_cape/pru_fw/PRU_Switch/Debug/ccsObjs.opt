@@ -1,1 +1,1 @@
-"./PRU_Switch.obj" "../link.cmd" -l"libc.a" 
+"./PRU_Switch.obj" "../AM335x_PRU.cmd" -l"libc.a" 

@@ -1,1 +1,1 @@
-"./PRU_audio.obj" "../link.cmd" -l"libc.a" 
+"./PRU_audio.obj" "../AM335x_PRU.cmd" -l"libc.a" 
