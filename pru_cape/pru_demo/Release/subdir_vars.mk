@@ -7,13 +7,13 @@ CMD_SRCS += \
 ../pru_cape_demo.cmd 
 
 OBJ_SRCS += \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_Audio/Debug/PRU_Audio_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_HDQ_TempSensor0/Debug/PRU_HDQ_TempSensor0_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_HDQ_TempSensor1/Debug/PRU_HDQ_TempSensor1_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_Hardware_UART/Debug/PRU_Hardware_UART_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_LED0/Debug/PRU_LED0_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_LED1/Debug/PRU_LED1_image.obj \
-C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_Switch/Debug/PRU_Switch_image.obj 
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_Audio/Debug/PRU_Audio_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_HDQ_TempSensor0/Debug/PRU_HDQ_TempSensor0_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_HDQ_TempSensor1/Debug/PRU_HDQ_TempSensor1_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_Hardware_UART/Debug/PRU_Hardware_UART_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_LED0/Debug/PRU_LED0_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_LED1/Debug/PRU_LED1_image.obj \
+C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_Switch/Debug/PRU_Switch_image.obj 
 
 C_SRCS += \
 ../pru.c \

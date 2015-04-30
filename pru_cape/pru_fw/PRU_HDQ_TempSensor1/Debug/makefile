@@ -139,7 +139,7 @@ PRU_HDQ_TempSensor1.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 
 PRU_HDQ_TempSensor1_image.obj: $(EXE_OUTPUTS)
 	@echo 'Invoking: PRU Hex Utility'
-	"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/bin/hexpru" --ti_txt -o "PRU_HDQ_TempSensor1_image.obj" $(EXE_OUTPUTS__QUOTED)  C:/temp/pru-software-support-package_042915/pru_cape/pru_fw/PRU_HDQ_TempSensor1/PRU_HexUtil.cmd
+	"C:/temp_ccs/ccsv6/tools/compiler/ti-cgt-pru_2.1.0/bin/hexpru" --ti_txt -o "PRU_HDQ_TempSensor1_image.obj" $(EXE_OUTPUTS__QUOTED)  C:/temp/pru-software-support-package/pru_cape/pru_fw/PRU_HDQ_TempSensor1/PRU_HexUtil.cmd
 	@echo 'Finished building: $@'
 	@echo ' '
 

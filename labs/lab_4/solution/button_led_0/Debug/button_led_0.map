@@ -1,7 +1,7 @@
 ******************************************************************************
                      PRU Linker PC v2.1.0                      
 ******************************************************************************
->> Linked Wed Apr 29 08:50:26 2015
+>> Linked Thu Apr 30 13:37:21 2015
 
 OUTPUT FILE NAME:   <button_led_0.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_noexit"  address: 00000000
@@ -15,7 +15,7 @@ PAGE 0:
   PRU_IMEM              00000000   00002000  000000d8  00001f28  RWIX
 
 PAGE 1:
-  PRU_DMEM_0_1          00000000   00002000  0000017e  00001e82  RWIX
+  PRU_DMEM_0_1          00000000   00002000  00000136  00001eca  RWIX
   PRU_DMEM_1_0          00002000   00002000  00000000  00002000  RWIX
   PRU_SHAREDMEM         00010000   00003000  00000000  00003000  RWIX
   PRU_INTC              00020000   00001504  00001504  00000000  RWIX
@@ -68,14 +68,14 @@ section   page    origin      length       input sections
                   00000000    00000004     rtspruv3_le.lib : boot.obj (.stack)
                   00000004    000000fc     --HOLE--
 
-.data      1    0000017c    00000002     
-                  0000017c    00000002     button_led_0.obj (.data:pru_intc_map)
+.data      1    00000134    00000002     
+                  00000134    00000002     button_led_0.obj (.data:pru_intc_map)
 
 .cinit     1    00000000    00000000     UNINITIALIZED
 
 .resource_table 
-*          1    00000100    0000007c     
-                  00000100    0000007c     button_led_0.obj (.resource_table:retain)
+*          1    00000100    00000034     
+                  00000100    00000034     button_led_0.obj (.resource_table:retain)
 
 .creg.PRU_INTC.noload.near 
 *          1    00020000    00000000     NOLOAD SECTION
@@ -194,7 +194,7 @@ abs   ffffffff  __c_args__
 abs   ffffffff  binit                              
 0     00000014  configIntc                         
 0     00000090  main                               
-1     0000017c  pru_intc_map                       
+1     00000134  pru_intc_map                       
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -209,7 +209,7 @@ page  address   name
 1     00000000  _stack                             
 1     00000100  __TI_STACK_END                     
 1     00000100  am335x_pru_remoteproc_ResourceTable
-1     0000017c  pru_intc_map                       
+1     00000134  pru_intc_map                       
 1     00020000  CT_INTC                            
 1     00026000  CT_CFG                             
 abs   00000000  __PRU_CREG_BASE_PRU_DMEM_0_1       
