@@ -84,6 +84,7 @@ struct my_resource_table pru_remoteproc_ResourceTable = {
 	1,	/* we're the first version that implements this */
 	0,	/* number of entries in the table */
 	0, 0,	/* reserved, must be zero */
+	0,	/* offset[0] */
 };
 
 #endif /* _RSC_TABLE_PRU_H_ */

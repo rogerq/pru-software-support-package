@@ -31,13 +31,18 @@
  */
 
 /*
- *  ======== rsc_table_pru.h ========
+ *  ======== resource_table_empty.h ========
  *
- *  Define the resource table entries for PRU1. This will be
+ *  Define the resource table entries for all PRU cores. This will be
  *  incorporated into corresponding base images, and used by the remoteproc
  *  on the host-side to allocated/reserve resources.  Note the remoteproc
  *  driver requires that all PRU firmware be built with a resource table.
  *
+ *  This file contains an empty resource table.  It can be used either as:
+ *
+ *        1) A template, or
+ *        2) As-is if a PRU application does not need to configure PRU_INTC
+ *                  or interact with the rpmsg driver
  *
  */
 
@@ -62,9 +67,7 @@
 #define HOST_UNUSED		255
 
 /* Mapping sysevts to a channel. Each pair contains a sysevt, channel */
-struct ch_map pru_intc_map[] = { {17, 1}, {18, 0}, {19, 2}, {20, 3}, {21, 0},
-				 {22, 1}, {24, 4}, {25, 5}, {26, 6}, {27, 7},
-			       };
+struct ch_map pru_intc_map[] = {};
 
 struct my_resource_table {
 	struct resource_table base;
@@ -75,30 +78,14 @@ struct my_resource_table {
 	struct fw_rsc_custom pru_ints;
 };
 
-#pragma DATA_SECTION(am335x_pru_remoteproc_ResourceTable, ".resource_table")
-#pragma RETAIN(am335x_pru_remoteproc_ResourceTable)
-struct my_resource_table am335x_pru_remoteproc_ResourceTable = {
+#pragma DATA_SECTION(pru_remoteproc_ResourceTable, ".resource_table")
+#pragma RETAIN(pru_remoteproc_ResourceTable)
+struct my_resource_table pru_remoteproc_ResourceTable = {
 	1,	/* we're the first version that implements this */
-	1,	/* number of entries in the table */
+	0,	/* number of entries in the table */
 	0, 0,	/* reserved, must be zero */
-	/* offsets to entries */
-	{
-		offsetof(struct my_resource_table, pru_ints),
-	},
-
-	{
-		TYPE_CUSTOM, TYPE_PRU_INTS,
-		sizeof(struct fw_rsc_custom_ints),
-		{ /* PRU_INTS version */
-		  0x0000,
-		  /* Channel-to-host mapping, 255 for unused */
-		  0, 1, 2, 3, 0, 6, 1, 7, HOST_UNUSED, HOST_UNUSED,
-		  /* Number of evts being mapped to channels */
-		  (sizeof(pru_intc_map) / sizeof(struct ch_map)),
-		  /* Pointer to the structure containing mapped events */
-		  pru_intc_map,
-		},
-	},
+	0,	/* offset[0] */
 };
 
 #endif /* _RSC_TABLE_PRU_H_ */
+
