@@ -1,80 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?fileVersion 4.0.0?>
-
-<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule configRelations="2" moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="com.ti.ccstudio.buildDefinitions.PRU.Debug.1447292159">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.PRU.Debug.1447292159" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
-					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="com.ti.ccstudio.errorparser.CoffErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.LinkErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.AsmErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.PRU.Debug.1447292159" name="Debug" parent="com.ti.ccstudio.buildDefinitions.PRU.Debug" postbuildStep="" prebuildStep="">
 					<folderInfo id="com.ti.ccstudio.buildDefinitions.PRU.Debug.1447292159." name="/" resourcePath="">
-						<toolChain id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.DebugToolchain.1524241460" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.linkerDebug.1943238735">
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.688284232" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+						<toolChain id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.DebugToolchain.1034664327" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.linkerDebug.702862833">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.114250645" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
 								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=TMS192C2026.AM3359.BeagleBone_Black"/>
 								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
 								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
 								<listOptionValue builtIn="false" value="CCS_MBS_VERSION=5.5.0"/>
-								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE=AM335x_PRU.cmd"/>
 								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
 								<listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
 							</option>
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.613856842" name="Compiler version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="2.0.0.B2" valueType="string"/>
-							<targetPlatform id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.targetPlatformDebug.726277933" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.targetPlatformDebug"/>
-							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderDebug.375506349" keepEnvironmentInBuildfile="false" name="GNU Make" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderDebug"/>
-							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.compilerDebug.796639525" name="PRU Compiler" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.compilerDebug">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE.781091041" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE" valueType="definedSymbols">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.451149560" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="2.1.1" valueType="string"/>
+							<targetPlatform id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.targetPlatformDebug.1315692240" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.targetPlatformDebug"/>
+							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.builderDebug.1186953493" name="GNU Make.Debug" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.builderDebug"/>
+							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.compilerDebug.1422987594" name="PRU Compiler" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.compilerDebug">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DEFINE.1763445842" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="am3359"/>
 									<listOptionValue builtIn="false" value="pru0"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.1061133573" name="Silicon version (--silicon_version, -v)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.3" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEBUGGING_MODEL.1207764428" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING.616496062" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING" valueType="stringList">
-									<listOptionValue builtIn="false" value="225"/>
-								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER.744428307" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.736501295" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH.754704753" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH" valueType="includePath">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.SILICON_VERSION.81939858" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.SILICON_VERSION.3" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.HARDWARE_MAC.1120022848" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.HARDWARE_MAC" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.HARDWARE_MAC.on" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.OPT_LEVEL.1457650724" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.OPT_LEVEL.3" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.INCLUDE_PATH.899256339" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../../../include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.2033623725" name="Specify the endianness of both code and data [See 'General' page to edit] (--endian)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.little" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.HARDWARE_MAC.1224471995" name="Enables use of the hardware MAC available on some PRU cores (--hardware_mac)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.HARDWARE_MAC" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.HARDWARE_MAC.on" valueType="enumerated"/>
-                                                                <option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.OPT_LEVEL.609231169" name="Optimization level (--opt_level, -O)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.OPT_LEVEL.3" valueType="enumerated"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__C_SRCS.361937202" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__C_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__CPP_SRCS.2025553634" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__CPP_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM_SRCS.1314827032" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM2_SRCS.1229844655" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM2_SRCS"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DEBUGGING_MODEL.717867170" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DIAG_WARNING.613395226" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DIAG_WARNING" valueType="stringList">
+									<listOptionValue builtIn="false" value="225"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DISPLAY_ERROR_NUMBER.1381420888" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DIAG_WRAP.147415651" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.ENDIAN.1458724224" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.ENDIAN" value="com.ti.ccstudio.buildDefinitions.PRU_2.1.compilerID.ENDIAN.little" valueType="enumerated"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__C_SRCS.112930587" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__C_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__CPP_SRCS.958255094" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__CPP_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__ASM_SRCS.1197719090" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__ASM_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__ASM2_SRCS.597344644" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.compiler.inputType__ASM2_SRCS"/>
 							</tool>
-							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.linkerDebug.1943238735" name="PRU Linker" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.linkerDebug">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE.242548418" name="Set C system stack size (--stack_size, -stack)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE" value="0x100" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE.1011377554" name="Heap size for C/C++ dynamic memory allocation (--heap_size, -heap)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE" value="0x100" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE.569804173" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE.1305714514" name="Input and output sections listed into &lt;file&gt; (--map_file, -m)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO.630383039" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH.1587120755" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH" valueType="libPaths">
+							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.linkerDebug.702862833" name="PRU Linker" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.linkerDebug">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.DEFINE.124858061" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.DEFINE" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="PRU_CORE=1"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.STACK_SIZE.1316503198" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.STACK_SIZE" value="0x100" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.HEAP_SIZE.1988989191" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.HEAP_SIZE" value="0x100" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.OUTPUT_FILE.1232521226" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.MAP_FILE.1769345953" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.LIBRARY.1140393545" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.LIBRARY" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.SEARCH_PATH.1264020851" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY.168705724" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY" valueType="libs">
-									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
-								</option>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD_SRCS.1576962393" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD2_SRCS.1863629108" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD2_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__GEN_CMDS.1313190615" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__GEN_CMDS"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.XML_LINK_INFO.883450566" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__CMD_SRCS.1036630136" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__CMD_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__CMD2_SRCS.1973276426" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__CMD2_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__GEN_CMDS.1219033988" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exeLinker.inputType__GEN_CMDS"/>
 							</tool>
-							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.995686470" name="PRU Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE.1260968203" name="Specify output file names (--outfile, -o)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE" value="&quot;${BuildArtifactFileBaseName}.hex&quot;" valueType="string"/>
+							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex.739102421" name="PRU Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex.OUTPUT_FILE.1210673080" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex.OUTPUT_FILE" value="&quot;${BuildArtifactFileBaseName}.hex&quot;" valueType="string"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="AM335x.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -83,10 +87,10 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.PRU.Release.1305871433" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<externalSettings/>
 				<extensions>
-					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="com.ti.ccstudio.errorparser.CoffErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.LinkErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.AsmErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -102,40 +106,40 @@
 								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
 								<listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
 							</option>
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.796728975" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="2.0.0.B2" valueType="string"/>
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.796728975" name="Compiler version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="2.0.0.B2" valueType="string"/>
 							<targetPlatform id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.targetPlatformRelease.1419821150" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.targetPlatformRelease"/>
-							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderRelease.418218913" name="GNU Make.Release" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderRelease"/>
+							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderRelease.418218913" keepEnvironmentInBuildfile="false" name="GNU Make" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.builderRelease"/>
 							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.compilerRelease.1407994502" name="PRU Compiler" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.compilerRelease">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE.2016501492" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE" valueType="definedSymbols">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE.2016501492" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="am3359"/>
 									<listOptionValue builtIn="false" value="pru0"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.1176532952" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.3" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING.2133831471" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING" valueType="stringList">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.1176532952" name="Silicon version (--silicon_version, -v)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.SILICON_VERSION.3" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING.2133831471" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WARNING" valueType="stringList">
 									<listOptionValue builtIn="false" value="225"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER.1211801820" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.1586961829" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH.757425194" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH" valueType="includePath">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER.1211801820" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.1586961829" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH.757425194" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.278319322" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.little" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.278319322" name="Specify the endianness of both code and data [See 'General' page to edit] (--endian)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN" value="com.ti.ccstudio.buildDefinitions.PRU_2.0.compilerID.ENDIAN.little" valueType="enumerated"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__C_SRCS.895539491" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__C_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__CPP_SRCS.429083179" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__CPP_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM_SRCS.851247665" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM2_SRCS.1514972493" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.compiler.inputType__ASM2_SRCS"/>
 							</tool>
 							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.linkerRelease.452544523" name="PRU Linker" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exe.linkerRelease">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE.843307997" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE" value="0x100" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE.1120090199" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE" value="0x100" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE.35167814" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE.25940009" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO.1590178654" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH.87109302" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH" valueType="libPaths">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE.843307997" name="Set C system stack size (--stack_size, -stack)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.STACK_SIZE" value="0x100" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE.1120090199" name="Heap size for C/C++ dynamic memory allocation (--heap_size, -heap)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.HEAP_SIZE" value="0x100" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE.35167814" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE.25940009" name="Input and output sections listed into &lt;file&gt; (--map_file, -m)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO.1590178654" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH.87109302" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY.1220173234" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY" valueType="libs">
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY.1220173234" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 								</option>
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD_SRCS.1543523206" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__CMD_SRCS"/>
@@ -143,10 +147,13 @@
 								<inputType id="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__GEN_CMDS.1451713819" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.exeLinker.inputType__GEN_CMDS"/>
 							</tool>
 							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.1381450579" name="PRU Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex">
-								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE.589934771" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE" value="&quot;${BuildArtifactFileBaseName}.hex&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE.589934771" name="Specify output file names (--outfile, -o)" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.0.hex.OUTPUT_FILE" value="&quot;${BuildArtifactFileBaseName}.hex&quot;" valueType="string"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="AM335x_PRU.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
