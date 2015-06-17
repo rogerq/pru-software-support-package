@@ -1,3 +1,5 @@
+#ifndef _PRU_INTC_H_
+#define _PRU_INTC_H_
 
 /* PRU INTC register set */
 typedef struct{
@@ -867,3 +869,4 @@ typedef struct{
 
 } pruIntc;
 
+#endif /* _PRU_INTC_H_ */

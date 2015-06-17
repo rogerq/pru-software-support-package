@@ -1,3 +1,5 @@
+#ifndef _PRU_IEP_H_
+#define _PRU_IEP_H_
 
 /* PRU IEP register set */
 typedef struct{
@@ -216,3 +218,4 @@ typedef struct{
 
 } pruIep;
 
+#endif /* _PRU_IEP_H_ */

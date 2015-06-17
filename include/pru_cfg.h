@@ -1,3 +1,5 @@
+#ifndef _PRU_CFG_H_
+#define _PRU_CFG_H_
 
 /* PRU_CFG register set */
 typedef struct{
@@ -203,3 +205,5 @@ typedef struct{
 		} PIN_MX_bit;
 	} ;	//0x40
 } pruCfg;
+
+#endif /* _PRU_CFG_H_ */

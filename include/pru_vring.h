@@ -1,6 +1,5 @@
-
-#ifndef PRU_VRING_H
-#define PRU_VRING_H
+#ifndef _PRU_VRING_H
+#define _PRU_VRING_H
 
 #include "pru_virtio_ring.h"
 #include "rsc_types.h"
@@ -115,4 +114,4 @@ int pru_vring_pop(struct pru_vring *pvr, struct pru_vring_elem *pvre);
 void pru_vring_push(struct pru_vring *pvr, const struct pru_vring_elem *pvre,
 		uint32_t len);
 
-#endif
+#endif /* _PRU_VRING_H */

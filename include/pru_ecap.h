@@ -1,3 +1,5 @@
+#ifndef _PRU_ECAP_H_
+#define _PRU_ECAP_H_
 
 /* PRU_ECAP register set */
 typedef struct{
@@ -89,3 +91,5 @@ typedef struct{
 		} REVID_bit;
 	} ;	// 0x5C
 } pruEcap;
+
+#endif /* _PRU_ECAP_H_ */

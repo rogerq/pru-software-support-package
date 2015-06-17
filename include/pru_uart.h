@@ -1,3 +1,5 @@
+#ifndef _PRU_UART_H_
+#define _PRU_UART_H_
 
 /* UART Register set */
 typedef struct {
@@ -244,5 +246,4 @@ typedef struct {
 
 } pruUart;
 
-
-
+#endif /* _PRU_UART_H_ */

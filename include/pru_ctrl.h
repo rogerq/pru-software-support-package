@@ -1,4 +1,5 @@
-
+#ifndef _PRU_CTRL_H_
+#define _PRU_CTRL_H_
 
 /* PRU_CTRL register set */
 typedef struct{
@@ -118,3 +119,5 @@ typedef struct{
 #define PRU0_CTRL (*((volatile pruCtrl*)0x22000))
 #define PRU1_CTRL (*((volatile pruCtrl*)0x24000))
 
+
+#endif /* _PRU_CTRL_H_ */
