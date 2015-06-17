@@ -30,7 +30,7 @@
 
 #include <stdint.h>
 #include <pru_uart.h>
-#include "resource_table_empty.h"
+#include <resource_table_empty.h>
 
 /* Define UART register "overlay" */
 volatile far pruUart CT_UART __attribute__((cregister("PRU_UART", near), peripheral));

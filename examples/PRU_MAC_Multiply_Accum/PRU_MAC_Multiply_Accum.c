@@ -33,7 +33,7 @@
 // ***************************************
 
 #include <stdint.h>
-#include "resource_table_empty.h"
+#include <resource_table_empty.h>
 
 /* R31 is used to generate the "I'm done" back to the ARM */
 volatile register uint8_t __R31;
