@@ -1,1 +1,0 @@
-"./PRU_Hardware_UART.obj" "../link.cmd" -l"libc.a" 
