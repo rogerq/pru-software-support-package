@@ -24,4 +24,11 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>AM335x_PRU.cmd</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/common/AM335x_PRU.cmd</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
