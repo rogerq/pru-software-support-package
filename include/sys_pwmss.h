@@ -919,8 +919,8 @@ typedef struct{
 
 } sysPwmss;
 
+__far volatile sysPwmss CT_PWMSS0 __attribute__((cregister("PWMSS0", far), peripheral));
 __far volatile sysPwmss CT_PWMSS1 __attribute__((cregister("PWMSS1", far), peripheral));
 __far volatile sysPwmss CT_PWMSS2 __attribute__((cregister("PWMSS2", far), peripheral));
-__far volatile sysPwmss CT_PWMSS3 __attribute__((cregister("PWMSS3", far), peripheral));
 
 #endif /* _SYS_PWMSS_H_ */
