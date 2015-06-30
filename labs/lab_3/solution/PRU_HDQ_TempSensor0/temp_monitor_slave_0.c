@@ -118,6 +118,8 @@ void main(){
 	unsigned int status, crc_calc, i, j = 0;
 	char bit_val, byte_val = 0;
 
+	__delay_cycles(200000000);
+
 	/* Initialize TEMP_SENSOR_BUF to 0 */
 	memset(TEMP_SENSOR_BUF, 0, 9);
 
