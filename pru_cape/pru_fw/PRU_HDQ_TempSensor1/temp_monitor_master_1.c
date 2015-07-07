@@ -65,7 +65,7 @@ void pwm_config(unsigned int time_interval);
 #define GPIO_BLUE	(1 << 3)
 #define GPIO_RED	(1 << 5)
 
-#define time 1
+#define time 3
 
 #pragma DATA_SECTION(TEMP_SENSOR_BUF, ".TEMP_SENSOR_BUF")
 volatile far ds18b20_regs TEMP_SENSOR_BUF;
