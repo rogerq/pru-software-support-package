@@ -40,7 +40,7 @@ void main() {
 	 */
 	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, "rpmsg-pru", "Channel 31", 31) != PRU_RPMSG_SUCCESS);
 	while(1){
-		if(CT_MBX.MESSAGE[transport.virtqueue1.from_arm_mbx] == 1){
+		if(CT_MBX.MESSAGE[MB_FROM_ARM_HOST] == 1){
 			/* Receive the message */
 			if(pru_rpmsg_receive(&transport, &src, &dst, payload, &len) == PRU_RPMSG_SUCCESS){
 				/* Echo the message back to the same address from which we just received */
