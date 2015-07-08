@@ -1,0 +1,34 @@
+From 141639380310b0cd8deea65976e95d95ad3fb02b Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Thu, 9 Apr 2015 16:35:12 -0500
+Subject: [PATCH 14/18] remoteproc/pruss: fix incorrect failure reporting of
+ pru_rproc_kick
+
+The mbox_send_message() API returns a zero or a positive token id on
+success, and a negative value on failure. The pru_rproc_kick() function
+is incorrectly checking for a non-zero return value to report a failure,
+even though the mailbox message has been transmitted successfully, so
+fix the error condition check properly.
+
+Signed-off-by: Jason Reeder <jreeder@ti.com>
+Signed-off-by: Suman Anna <s-anna@ti.com>
+---
+ drivers/remoteproc/pruss_remoteproc.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/remoteproc/pruss_remoteproc.c b/drivers/remoteproc/pruss_remoteproc.c
+index b6fdb51..78d5806 100644
+--- a/drivers/remoteproc/pruss_remoteproc.c
++++ b/drivers/remoteproc/pruss_remoteproc.c
+@@ -603,7 +603,7 @@ static void pru_rproc_kick(struct rproc *rproc, int vq_id)
+ 
+ 	/* send the index of the triggered virtqueue in the mailbox payload */
+ 	ret = mbox_send_message(pru->mbox, (void *)vq_id);
+-	if (ret)
++	if (ret < 0)
+ 		dev_err(dev, "mbox_send_message failed: %d\n", ret);
+ }
+ 
+-- 
+1.7.9.5
+
