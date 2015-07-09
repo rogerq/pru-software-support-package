@@ -45,11 +45,6 @@ uint16_t Endian_Swap(uint16_t data);
 void iep_timer_config(void);
 void intc_config(void);
 
-/* Mapping Constant table register to variable */
-volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-volatile far pruIep CT_IEP __attribute__((cregister("PRU_IEP", near), peripheral));
-
 #define PRU_IEP_EVT   7
 #define CMP0_VAL        0xFFF
 

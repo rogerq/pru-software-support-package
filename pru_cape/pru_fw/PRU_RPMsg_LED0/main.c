@@ -7,8 +7,6 @@
 #include <sys_mailbox.h>
 #include "resource_table_0.h"
 
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-
 volatile register uint32_t __R30;
 
 /* The mailboxes used for RPMsg are defined in the Linux device tree
@@ -22,6 +20,14 @@ volatile register uint32_t __R30;
 #define GREEN				0x2
 #define ORANGE				0x4
 #define RED					0x8
+
+ /*
+ * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
+ */
+#define CHAN_NAME			"rpmsg-pru"
+#define CHAN_DESC			"Channel 30"
+#define CHAN_PORT			30
 
 uint8_t payload[RPMSG_BUF_SIZE];
 
@@ -43,11 +49,8 @@ void main() {
 	/* Initialize pru_virtqueue corresponding to vring1 (ARM Host to PRU direction) */
 	pru_virtqueue_init(&transport.virtqueue1, &resourceTable.rpmsg_vring1, MB_TO_ARM_HOST, MB_FROM_ARM_HOST);
 
-	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure.
-	 * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
-	 * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
-	 */
-	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, "rpmsg-pru", "Channel 30", 30) != PRU_RPMSG_SUCCESS);
+	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure. */
+	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, CHAN_NAME, CHAN_DESC, CHAN_PORT) != PRU_RPMSG_SUCCESS);
 	while(1){
 		if(CT_MBX.MESSAGE[MB_FROM_ARM_HOST] == 1){
 			/* Receive the message */

@@ -33,7 +33,6 @@
 #include <resource_table_empty.h>
 
 /* Mapping Constant Table (CT) registers to variables */
-volatile far pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
 volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));
 
 #ifndef PRU_SRAM

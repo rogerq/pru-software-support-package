@@ -106,9 +106,6 @@ typedef struct{
 	edmaParamCcnt	ccnt;
 } edmaParam;
 
-/* Mapping Constant table register to variable */
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-
 /* This is a compiler hack so that the PRU knows where the parameters are stored
  * This is effectively a pointer to DRAM
  */

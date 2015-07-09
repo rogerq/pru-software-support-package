@@ -43,9 +43,6 @@ typedef struct{
 	uint32_t cnt;
 } mem1DParams;
 
-/* Mapping Constant table register to variable */
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-
 mem1DParams buffer;
 
 #define COPY_LENGTH	32

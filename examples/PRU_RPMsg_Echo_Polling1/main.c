@@ -7,14 +7,20 @@
 #include <sys_mailbox.h>
 #include "resource_table_1.h"
 
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-
 /* The mailboxes used for RPMsg are defined in the Linux device tree
  * PRU0 uses mailboxes 2 (From ARM) and 3 (To ARM)
  * PRU1 uses mailboxes 4 (From ARM) and 5 (To ARM)
  */
 #define MB_TO_ARM_HOST		5
 #define MB_FROM_ARM_HOST	4
+
+/*
+ * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
+ */
+#define CHAN_NAME			"rpmsg-pru"
+#define CHAN_DESC			"Channel 31"
+#define CHAN_PORT			31
 
 uint8_t payload[RPMSG_BUF_SIZE];
 
@@ -38,7 +44,7 @@ void main() {
 	 * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
 	 * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
 	 */
-	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, "rpmsg-pru", "Channel 31", 31) != PRU_RPMSG_SUCCESS);
+	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, CHAN_NAME, CHAN_DESC, CHAN_PORT) != PRU_RPMSG_SUCCESS);
 	while(1){
 		if(CT_MBX.MESSAGE[MB_FROM_ARM_HOST] == 1){
 			/* Receive the message */

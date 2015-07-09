@@ -36,9 +36,6 @@
 volatile register uint32_t __R30;
 volatile register uint32_t __R31;
 
-/* Mapping Constant table register to variable */
-volatile pruCfg	CT_CFG __attribute__((cregister("PRU_CFG",near) , peripheral));
-
 #define SW1		(1 << 5)		/* SW1 offset */
 #define SW2		(1 << 7)		/* SW2 offset */
 #define SW1_2	(SW1 | SW2)	/* SW1 & SW2 offset */

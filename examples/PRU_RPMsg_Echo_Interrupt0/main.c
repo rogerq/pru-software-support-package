@@ -8,9 +8,6 @@
 #include <sys_mailbox.h>
 #include "resource_table_0.h"
 
-volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
-volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
-
 volatile register uint32_t __R31;
 
 /* PRU0 is mailbox module user 1 */
@@ -18,12 +15,23 @@ volatile register uint32_t __R31;
 /* Mbox0 - mail_u1_irq (mailbox interrupt for PRU0) is Int Number 60 */
 #define MB_INT_NUMBER		60
 
+/* Host-0 Interrupt sets bit 30 in register R31 */
+#define HOST_INT			0x40000000
+
 /* The mailboxes used for RPMsg are defined in the Linux device tree
  * PRU0 uses mailboxes 2 (From ARM) and 3 (To ARM)
  * PRU1 uses mailboxes 4 (From ARM) and 5 (To ARM)
  */
 #define MB_TO_ARM_HOST		3
 #define MB_FROM_ARM_HOST	2
+
+/*
+ * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
+ */
+#define CHAN_NAME			"rpmsg-pru"
+#define CHAN_DESC			"Channel 30"
+#define CHAN_PORT			30
 
 uint8_t payload[RPMSG_BUF_SIZE];
 
@@ -39,7 +47,7 @@ void main() {
 
 	/* clear the status of event MB_INT_NUMBER (the mailbox event) and enable the mailbox event */
 	CT_INTC.SICR_bit.STS_CLR_IDX = MB_INT_NUMBER;
-	CT_MBX.IRQ[MB_USER].ENABLE_SET_bit.NEWMSGSTATUSMB2 = 1;
+	CT_MBX.IRQ[MB_USER].ENABLE_SET |= 1 << (MB_FROM_ARM_HOST * 2);
 
 	/* Initialize pru_virtqueue corresponding to vring0 (PRU to ARM Host direction) */
 	pru_virtqueue_init(&transport.virtqueue0, &resourceTable.rpmsg_vring0, MB_TO_ARM_HOST, MB_FROM_ARM_HOST);
@@ -47,16 +55,13 @@ void main() {
 	/* Initialize pru_virtqueue corresponding to vring1 (ARM Host to PRU direction) */
 	pru_virtqueue_init(&transport.virtqueue1, &resourceTable.rpmsg_vring1, MB_TO_ARM_HOST, MB_FROM_ARM_HOST);
 
-	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure.
-	 * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
-	 * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
-	 */
-	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, "rpmsg-pru", "Channel 30", 30) != PRU_RPMSG_SUCCESS);
+	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure. */
+	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, CHAN_NAME, CHAN_DESC, CHAN_PORT) != PRU_RPMSG_SUCCESS);
 	while(1){
-		/* Check bit 31 of register R31 to see if the mailbox interrupt has occurred */
-		if(__R31 & 0x80000000){
+		/* Check bit 30 of register R31 to see if the mailbox interrupt has occurred */
+		if(__R31 & HOST_INT){
 			/* Clear the mailbox interrupt */
-			CT_MBX.IRQ[MB_USER].STATUS_CLR_bit.NEWMSGSTATUSMB2 = 1;
+			CT_MBX.IRQ[MB_USER].STATUS_CLR |= 1 << (MB_FROM_ARM_HOST * 2);
 			/* Clear the event status, event MB_INT_NUMBER corresponds to the mailbox interrupt */
 			CT_INTC.SICR_bit.STS_CLR_IDX = MB_INT_NUMBER;
 			/* Use a while loop to read all of the current messages in the mailbox */
