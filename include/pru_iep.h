@@ -218,4 +218,6 @@ typedef struct{
 
 } pruIep;
 
+volatile far pruIep CT_IEP __attribute__((cregister("PRU_IEP", near), peripheral));
+
 #endif /* _PRU_IEP_H_ */

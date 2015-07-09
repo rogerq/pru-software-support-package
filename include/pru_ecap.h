@@ -177,4 +177,6 @@ typedef struct{
 	} ;	// 0x5C
 } pruEcap;
 
+volatile far pruEcap CT_ECAP __attribute__((cregister("PRU_ECAP", near), peripheral));
+
 #endif /* _PRU_ECAP_H_ */

@@ -246,4 +246,6 @@ typedef struct {
 
 } pruUart;
 
+volatile far pruUart CT_UART __attribute__((cregister("PRU_UART", near), peripheral));
+
 #endif /* _PRU_UART_H_ */

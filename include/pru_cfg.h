@@ -206,4 +206,6 @@ typedef struct{
 	} ;	//0x40
 } pruCfg;
 
+volatile pruCfg CT_CFG __attribute__((cregister("PRU_CFG", near), peripheral));
+
 #endif /* _PRU_CFG_H_ */
