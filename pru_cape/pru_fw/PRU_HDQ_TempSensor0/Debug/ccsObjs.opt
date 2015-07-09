@@ -1,1 +1,0 @@
-"./temp_monitor_slave_0.obj" "../AM335x_PRU.cmd" -l"libc.a" 

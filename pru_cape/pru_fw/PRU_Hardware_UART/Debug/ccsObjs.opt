@@ -1,1 +1,0 @@
-"./PRU_Hardware_UART.obj" "../AM335x_PRU.cmd" -l"libc.a" 
