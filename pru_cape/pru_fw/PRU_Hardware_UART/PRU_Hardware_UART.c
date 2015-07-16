@@ -46,29 +46,6 @@ uint8_t lpbkFlag;
 #define FIFO_SIZE	16
 #define MAX_CHARS	8
 
-/* Buffer type */
-typedef struct {
-	uint8_t data[FIFO_SIZE];
-} uartBuffer;
-
-/* This hostBuffer structure allows the PRU to know the host is filling
- * the data memory starting at address 0 */
-#pragma LOCATION(hostBuffer, 0)
-struct {
-	uint8_t msg;
-	uartBuffer data[FIFO_SIZE];
-} hostBuffer;
-
-/* This rxBuf structure is used by the receive data */
-#pragma LOCATION(rxBuf, 0x100)
-uartBuffer rxBuf;
-
-/* This txBuf structure is defined to store send data */
-#pragma LOCATION(txBuf, 0x200)
-uartBuffer txBuf;
-
-
-
 //******************************************************************************
 //    Print Message Out
 //      This function take in a string literal of any size and then fill the
