@@ -77,10 +77,6 @@ void PrintMessageOut(volatile char* Message)
 	/* Wait until the TX FIFO and the TX SR are completely empty */
 	while(!CT_UART.LSR_bit.TEMT);
 
-	/* Clear the TX FIFO */
-	CT_UART.FCR_bit.TXCLR = 0x1;
-	CT_UART.FCR_bit.TXCLR = 0x0;
-	
 }
 
 
