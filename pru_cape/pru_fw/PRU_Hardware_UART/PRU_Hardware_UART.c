@@ -52,7 +52,7 @@ uint8_t lpbkFlag;
 //      TX FIFO when it's empty and waits until there is info in the RX FIFO
 //      before returning.
 //******************************************************************************
-void PrintMessageOut(volatile char* Message , uint8_t MsgSize)
+void PrintMessageOut(volatile char* Message)
 {
 	uint8_t cnt,index = 0;
 
@@ -63,13 +63,13 @@ void PrintMessageOut(volatile char* Message , uint8_t MsgSize)
 		/* Wait until the TX FIFO and the TX SR are completely empty */
 		while(!CT_UART.LSR_bit.TEMT);
 
-		while(index < MsgSize && cnt < MAX_CHARS)
+		while(Message[index] != NULL && cnt < MAX_CHARS)
 		{
 			CT_UART.THR= Message[index];
 			index++;
 			cnt++;
 		}
-		if(index == MsgSize)
+		if(Message[index] == NULL)
 			break;
 
 	}
@@ -100,11 +100,8 @@ void main(){
 	uint32_t i;
 	volatile uint32_t not_done = 1;
 
-	char rxBuffer[5];
-
-	char GreetingMessage[] = "Hello you are in the PRU UART demo test please enter 5 characters\r\n";
-	
-	char ReplyMessage[] = "you typed:\r\n";
+	char rxBuffer[6];
+	rxBuffer[5] = NULL; // null terminate the string
 
 	/*** INITIALIZATION ***/
 
@@ -150,7 +147,7 @@ void main(){
 	/*** END INITIALIZATION ***/
 
 	/* Print out greeting message */
-	PrintMessageOut(GreetingMessage,sizeof(GreetingMessage));
+	PrintMessageOut("Hello you are in the PRU UART demo test please enter 5 characters\r\n");
 
 	/* Read in 5 characters from user, then echo them back out */
 	for(i = 0; i < 5 ; i++)
@@ -158,11 +155,11 @@ void main(){
 		rxBuffer[i] = ReadMessageIn();
 	}
 
-	PrintMessageOut(ReplyMessage,sizeof(ReplyMessage));
+	PrintMessageOut("you typed:\r\n");
 
-	PrintMessageOut(rxBuffer,sizeof(rxBuffer));
+	PrintMessageOut(rxBuffer);
 
-	PrintMessageOut("\r\n", 2);
+	PrintMessageOut("\r\n");
 
 	/*** DONE SENDING DATA ***/
 	/* Disable UART before halting */
