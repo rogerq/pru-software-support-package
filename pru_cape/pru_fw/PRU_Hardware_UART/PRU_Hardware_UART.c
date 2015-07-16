@@ -102,11 +102,9 @@ void main(){
 
 	char rxBuffer[5];
 
-	char GreetingMessage[] = "Hello you are in the PRU UART demo test please enter 5 characters  ";
+	char GreetingMessage[] = "Hello you are in the PRU UART demo test please enter 5 characters\r\n";
 	
-	char ReplyMessage[] = "you typed: ";
-
-	char NewLine[] = {0x0A,0x0D,0x00};
+	char ReplyMessage[] = "you typed:\r\n";
 
 	/*** INITIALIZATION ***/
 
@@ -154,9 +152,6 @@ void main(){
 	/* Print out greeting message */
 	PrintMessageOut(GreetingMessage,sizeof(GreetingMessage));
 
-	/* Print out new line */
-	PrintMessageOut(NewLine,2);
-
 	/* Read in 5 characters from user, then echo them back out */
 	for(i = 0; i < 5 ; i++)
 	{
@@ -165,13 +160,9 @@ void main(){
 
 	PrintMessageOut(ReplyMessage,sizeof(ReplyMessage));
 
-	/* Print out new line */
-	PrintMessageOut(NewLine,2);
-
 	PrintMessageOut(rxBuffer,sizeof(rxBuffer));
 
-	/* Print out new line */
-	PrintMessageOut(NewLine,2);
+	PrintMessageOut("\r\n", 2);
 
 	/*** DONE SENDING DATA ***/
 	/* Disable UART before halting */
