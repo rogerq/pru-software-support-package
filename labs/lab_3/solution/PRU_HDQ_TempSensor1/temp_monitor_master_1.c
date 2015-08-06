@@ -86,7 +86,7 @@ void main(){
 	CT_INTC.SECR0 = (1 << PRU_SLAVE_MASTER_EVT);
 	
 	/* Kick off PWM timer */	
-	CT_ECAP.ECCTL2_bit.TSCTRSTOP = 1; // Run counter (TSCTRSTOP = 1)
+	CT_ECAP.ECCTL2 |= 0x10; // Run counter (TSCTRSTOP = 1)
 
 	while(1){
 
@@ -104,11 +104,11 @@ void main(){
 			PRU_MASTER_SLAVE_EVT_TRIGGER;
 
 			/* This line was added to enable setting a breakpoint in the the PRU slave event service routine */
-			CT_ECAP.ECCTL2_bit.TSCTRSTOP = 0; // Stop counter (TSCTRSTOP = 0)
+			CT_ECAP.ECCTL2 &= 0xFFEF; // Stop counter (TSCTRSTOP = 0)
 
 			/* Clear system event */
-			CT_ECAP.ECCLR_bit.PRDEQ = 1;
-			CT_ECAP.ECCLR_bit.INT = 1;
+			CT_ECAP.ECCLR |= 0x40;	// (PRDEQ = 1)
+			CT_ECAP.ECCLR |= 0x1;	// (INT = 1)
 			CT_INTC.SECR0 = (1 << PRU_ECAP_EVT);
 
 		}
@@ -147,7 +147,7 @@ void main(){
 
 			/* This line was added to enable setting a breakpoint in the the PRU slave event service routine */
 			CT_ECAP.CAP1_bit.CAP1 = time * 200000000;
-			CT_ECAP.ECCTL2_bit.TSCTRSTOP = 1; // Run counter (TSCTRSTOP = 1)
+			CT_ECAP.ECCTL2 |= 0x10; // Run counter (TSCTRSTOP = 1)
 	
 		}
 	}
@@ -189,7 +189,7 @@ void pwm_config(unsigned int time_interval){
 
 	/* Initialize PRU ECAP for APWM mode */
 	CT_ECAP.CAP1_bit.CAP1 = time_interval * 200000000;	// APRD active register
-	CT_ECAP.ECCTL2_bit.CAP_APWM = 1;					// APWM mode
-	CT_ECAP.ECEINT_bit.PRDEQ = 1;						// Enable PRDEQ interrupt source (PRDEQ = 1)
+	CT_ECAP.ECCTL2 |= 0x200;							// APWM mode
+	CT_ECAP.ECEINT |= 0x40;								// Enable PRDEQ interrupt source (PRDEQ = 1)
 
 }
