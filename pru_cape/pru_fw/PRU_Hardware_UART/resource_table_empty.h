@@ -51,31 +51,11 @@
 
 #include <stddef.h>
 #include <rsc_types.h>
-#include "pru_virtio_ids.h"
-
-/*
- * Sizes of the virtqueues (expressed in number of buffers supported,
- * and must be power of 2)
- */
-#define PRU_RPMSG_VQ0_SIZE	2
-#define PRU_RPMSG_VQ1_SIZE	2
-
-/* flip up bits whose indices represent features we support */
-#define RPMSG_PRU_C0_FEATURES	1
-
-/* Definition for unused interrupts */
-#define HOST_UNUSED		255
-
-/* Mapping sysevts to a channel. Each pair contains a sysevt, channel */
-struct ch_map pru_intc_map[] = {};
 
 struct my_resource_table {
 	struct resource_table base;
 
 	uint32_t offset[1]; /* Should match 'num' in actual definition */
-
-	/* intc definition */
-	struct fw_rsc_custom pru_ints;
 };
 
 #pragma DATA_SECTION(pru_remoteproc_ResourceTable, ".resource_table")
