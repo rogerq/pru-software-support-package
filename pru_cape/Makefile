@@ -1,4 +1,4 @@
-SUBDIRS=examples pru_cape src labs
+SUBDIRS=pru_fw pru_demo 
 
 all: $(SUBDIRS)
 

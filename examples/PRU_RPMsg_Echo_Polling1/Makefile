@@ -1,9 +1,23 @@
-# PRU_CGT environment variable must point to the TI PRU compiler directory
-# e.g. export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+# PRU_CGT environment variable must point to the TI PRU compiler directory. E.g.:
+#(Linux) export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+#(Windows) set PRU_CGT=C:/TI/ccs_v6_0_1/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+ifndef PRU_CGT
+define ERROR_BODY
+
+************************************************************
+PRU_CGT environment variable is not set. Examples given:
+(Linux) export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+(Windows) set PRU_CGT=C:/TI/ccs_v6_0_1/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+************************************************************
+
+endef
+$(error $(ERROR_BODY))
+endif
+
 MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR := $(notdir $(patsubst %/,%,$(dir $(MKFILE_PATH))))
 PROJ_NAME=$(CURRENT_DIR)
-LINKER_COMMAND_FILE=../common/AM335x_PRU.cmd
+LINKER_COMMAND_FILE=./AM335x_PRU.cmd
 LIBS=--library=../../lib/rpmsg_lib.lib
 INCLUDE=--include_path=../../include
 STACK_SIZE=0x100

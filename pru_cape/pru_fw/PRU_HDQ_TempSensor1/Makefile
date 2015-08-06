@@ -1,9 +1,24 @@
-# PRU_CGT environment variable must point to the TI PRU compiler directory
-# e.g. export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+# PRU_CGT environment variable must point to the TI PRU compiler directory. E.g.:
+#(Linux) export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+#(Windows) set PRU_CGT=C:/TI/ccs_v6_0_1/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+ifndef PRU_CGT
+define ERROR_BODY
+
+************************************************************
+PRU_CGT environment variable is not set. Examples given:
+(Linux) export PRU_CGT=/home/jason/ti/ccs_v6_1_0/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+(Windows) set PRU_CGT=C:/TI/ccs_v6_0_1/ccsv6/tools/compiler/ti-cgt-pru_2.1.0
+************************************************************
+
+endef
+$(error $(ERROR_BODY))
+endif
+
 MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR := $(notdir $(patsubst %/,%,$(dir $(MKFILE_PATH))))
 PROJ_NAME=$(CURRENT_DIR)
 LINKER_COMMAND_FILE=./AM335x_PRU.cmd
+HEX_COMMAND_FILE=./PRU_HexUtil.cmd
 LIBS=--library=../../../lib/rpmsg_lib.lib
 INCLUDE=--include_path=../../../include
 STACK_SIZE=0x100
@@ -15,13 +30,15 @@ CFLAGS=-v3 -O2 --display_error_number --endian=little --hardware_mac=on --obj_di
 #Linker flags (Defined in 'PRU Optimizing C/C++ Compiler User's Guide)
 LFLAGS=--reread_libs --warn_sections --stack_size=$(STACK_SIZE) --heap_size=$(HEAP_SIZE)
 
+#Using .object instead of .obj in order to not conflict with the CCS build process
+HEX_FILE=$(GEN_DIR)/$(PROJ_NAME)_image.object
 TARGET=$(GEN_DIR)/$(PROJ_NAME).out
 MAP=$(GEN_DIR)/$(PROJ_NAME).map
 SOURCES=$(wildcard *.c)
 #Using .object instead of .obj in order to not conflict with the CCS build process
 OBJECTS=$(patsubst %,$(GEN_DIR)/%,$(SOURCES:.c=.object))
 
-all: printStart $(TARGET) printEnd
+all: printStart $(HEX_FILE) printEnd
 
 printStart:
 	@echo ''
@@ -34,6 +51,15 @@ printEnd:
 	@echo '************************************************************'
 	@echo ''
 
+# Invokes the hex utility
+$(HEX_FILE): $(TARGET)
+	@echo ''
+	@echo 'Invoking PRU Hex Utility'
+	$(PRU_CGT)/bin/hexpru -o $@ $< $(HEX_COMMAND_FILE)
+	@echo 'Finished building: $@'
+	@echo ''
+	@echo 'Output files can be found in the "$(GEN_DIR)" directory'
+
 # Invokes the linker (-z flag) to make the .out file
 $(TARGET): $(OBJECTS) $(LINKER_COMMAND_FILE)
 	@echo ''
@@ -41,8 +67,6 @@ $(TARGET): $(OBJECTS) $(LINKER_COMMAND_FILE)
 	@echo 'Invoking: PRU Linker'
 	$(PRU_CGT)/bin/clpru $(CFLAGS) -z -i$(PRU_CGT)/lib -i$(PRU_CGT)/include $(LFLAGS) -o $(TARGET) $(OBJECTS) -m$(MAP) $(LINKER_COMMAND_FILE) --library=libc.a $(LIBS)
 	@echo 'Finished building target: $@'
-	@echo ''
-	@echo 'Output files can be found in the "$(GEN_DIR)" directory'
 
 # Invokes the compiler on all c files in the directory to create the object files
 $(GEN_DIR)/%.object: %.c
