@@ -166,6 +166,6 @@ typedef struct{
 
 } sysMailbox;
 
-__far volatile sysMailbox CT_MBX __attribute__((cregister("MBX0", far), peripheral));
+volatile __far sysMailbox CT_MBX __attribute__((cregister("MBX0", far), peripheral));
 
 #endif /* _SYS_MAILBOX_H_ */

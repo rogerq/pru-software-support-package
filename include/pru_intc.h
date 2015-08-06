@@ -869,6 +869,6 @@ typedef struct{
 
 } pruIntc;
 
-volatile far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
+volatile __far pruIntc CT_INTC __attribute__((cregister("PRU_INTC", far), peripheral));
 
 #endif /* _PRU_INTC_H_ */
