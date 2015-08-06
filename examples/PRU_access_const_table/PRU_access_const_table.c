@@ -30,7 +30,7 @@
 
 #include <stdint.h>
 #include <pru_cfg.h>
-#include <resource_table_empty.h>
+#include "resource_table_empty.h"
 
 /* Mapping Constant Table (CT) registers to variables */
 volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));

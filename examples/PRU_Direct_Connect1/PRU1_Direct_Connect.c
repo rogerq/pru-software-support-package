@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE. */
 
 #include <stdint.h>
-#include <resource_table_empty.h>
+#include "resource_table_empty.h"
 
 #define PRU1
 
