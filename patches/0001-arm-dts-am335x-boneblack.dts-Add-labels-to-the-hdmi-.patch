@@ -1,7 +1,7 @@
-From d382ab080c1054b1f45849de14ffa43171ab9c82 Mon Sep 17 00:00:00 2001
+From 45410b6bba5b92e2aff36c3c6de13b88a7386c4e Mon Sep 17 00:00:00 2001
 From: Jason Reeder <jreeder@ti.com>
 Date: Mon, 30 Mar 2015 14:16:05 -0500
-Subject: [PATCH 13/13] arm: dts: am335x-boneblack.dts: Add labels to the hdmi
+Subject: [PATCH 1/2] arm: dts: am335x-boneblack.dts: Add labels to the hdmi
  and sound nodes
 
 To allow device tree include files to disable the hdmi and sound nodes,
