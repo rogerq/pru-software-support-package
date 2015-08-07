@@ -30,13 +30,14 @@
 
 #include <stdint.h>
 #include <pru_cfg.h>
+#include <pru_ctrl.h>
 #include "resource_table_empty.h"
 
 /* Mapping Constant Table (CT) registers to variables */
 volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));
 
 #ifndef PRU_SRAM
-#define PRU_SRAM near __attribute__((cregister("PRU_SHAREDMEM", near)))
+#define PRU_SRAM __far __attribute__((cregister("PRU_SHAREDMEM", near)))
 #endif
 
 /* NOTE:  Allocating shared_freq_x to PRU Shared Memory means that other PRU cores on
@@ -44,9 +45,9 @@ volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), periph
  *	 	  Users also cannot rely on where in shared memory these variables are placed
  *        so accessing them from another PRU core or from the ARM is an undefined behavior.
  */
-PRU_SRAM uint32_t shared_freq_1;
-PRU_SRAM uint32_t shared_freq_2;
-PRU_SRAM uint32_t shared_freq_3;
+PRU_SRAM volatile uint32_t shared_freq_1;
+PRU_SRAM volatile uint32_t shared_freq_2;
+PRU_SRAM volatile uint32_t shared_freq_3;
 
 /* PRCM Registers */
 #define CM_PER_BASE	((volatile uint32_t *)(0x44E00000))
@@ -97,6 +98,9 @@ int main(){
 	/*****************************************************************/
 	/* Access PRU Shared RAM using Constant Table                    */
 	/*****************************************************************/
+
+	/* C28 defaults to 0x00000000, we need to set bits 23:8 to 0x0100 in order to have it point to 0x00010000	 */
+	PRU0_CTRL.CTPPR0_bit.C28_BLK_POINTER = 0x0100;
 
 	/* Define value of shared_freq_1 */
 	shared_freq_1 = 1;
