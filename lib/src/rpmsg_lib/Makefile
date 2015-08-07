@@ -17,7 +17,7 @@ endif
 MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR := $(notdir $(patsubst %/,%,$(dir $(MKFILE_PATH))))
 PROJ_NAME=$(CURRENT_DIR)
-INCLUDE=--include_path=../../include
+INCLUDE=--include_path=../../../include
 GEN_DIR=gen
 
 #Common compiler flags (Defined in 'PRU Optimizing C/C++ Compiler User's Guide)
