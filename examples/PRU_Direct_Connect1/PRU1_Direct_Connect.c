@@ -59,6 +59,7 @@ void main(){
 	__R31 = PRU1_PRU0_INTERRUPT+16;
 
 	/* XFR registers R5-R10 from PRU0 to PRU1 */
+	/* 14 is the device_id that signifies a PRU to PRU transfer */
 	__xin(14, 5, 0, buf);
 
 	/* Store register values back into DRAM */

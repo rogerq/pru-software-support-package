@@ -59,6 +59,14 @@ void main(){
 	CT_INTC.SECR0 = 0xFFFFFFFF;
 	CT_INTC.SECR1 = 0xFFFFFFFF;
 
+	/* Load the buffer with default values to transfer */
+	dmemBuf.reg5 = 0xDEADBEEF;
+	dmemBuf.reg6 = 0xAAAAAAAA;
+	dmemBuf.reg7 = 0x12345678;
+	dmemBuf.reg8 = 0xBBBBBBBB;
+	dmemBuf.reg9 = 0x87654321;
+	dmemBuf.reg10 = 0xCCCCCCCC;
+
 	/* Load data from DRAM */
 	buf = dmemBuf;
 
@@ -68,6 +76,7 @@ void main(){
 	}
 
 	/* XFR registers R5-R10 from PRU0 to PRU1 */
+	/* 14 is the device_id that signifies a PRU to PRU transfer */
 	__xout(14, 5, 0, buf);
 
 	/* Clear the status of the interrupt */
