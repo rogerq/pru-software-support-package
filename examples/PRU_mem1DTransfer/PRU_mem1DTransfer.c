@@ -45,7 +45,7 @@ typedef struct{
 
 mem1DParams buffer;
 
-#define COPY_LENGTH	32
+/* SIZE of the transfer in bytes */
 #define SIZE		64
 
 void main(){
@@ -70,13 +70,13 @@ void main(){
 	/* Load the MEM1D parameters */
 	params = buffer;
 
-	/* Copy the source and destination addresses into pointers.
-	 * This allows a copy of the entirety of the buffer */
-	srcPtr = ((uint8_t*)(params.src));
-	dstPtr = ((uint8_t*)(params.dst));
-
 	/* Continue copying until the count is 0 */
 	while (params.cnt != 0){
+		/* Copy the source and destination addresses into pointers.
+		 * This allows a copy of the entirety of the buffer */
+		srcPtr = ((uint8_t*)(params.src));
+		dstPtr = ((uint8_t*)(params.dst));
+
 		/* Load data from source pointer in DRAM into data buffer */
 		data = *srcPtr;
 
@@ -84,11 +84,11 @@ void main(){
 		*dstPtr = data;
 
 		/* Decrease the count */
-		params.cnt -= COPY_LENGTH;
+		params.cnt--;
 
 		/* Update source and destination pointers */
-		params.src += COPY_LENGTH;
-		params.dst += COPY_LENGTH;
+		params.src++;
+		params.dst++;
 
 		/* Store current state back into DRAM */
 		buffer = params;
