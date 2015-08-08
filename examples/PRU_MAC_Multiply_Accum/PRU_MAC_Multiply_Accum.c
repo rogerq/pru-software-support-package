@@ -47,6 +47,8 @@ typedef struct {
 
 #define NUMMACS 256
 
+operands buf[NUMMACS];
+
 /* Need to create a while loop inside main to wait for interrupt from host.
  * The interrupt will signify that a buffer of data has been passed and is
  * ready for MAC processing. This will be passed by rpmsg driver.
@@ -56,9 +58,8 @@ void main(){
 	uint16_t numMacs = NUMMACS; // Arbitrary number
 	uint64_t result = 0;
 	volatile uint64_t storeValue = 0;
-	operands buf[NUMMACS];
 
-	for (i = 0; i < 256; i++){
+	for (i = 0; i < numMacs; i++){
 		buf[i].op1 = i;
 		buf[i].op2 = i+1;
 	}
