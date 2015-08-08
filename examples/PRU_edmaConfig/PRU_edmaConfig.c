@@ -204,8 +204,8 @@ void main(){
 	ptr_cm[TPCC_CLKCTRL] = ON;
 
 	/* Load channel parameters from DRAM - loaded by host */
-	hostData.src = /*buf.src*/ 0x40300000;
-	hostData.dst = /*buf.dst*/ 0x40300100;
+	hostData.src = /*buf.src*/ 0x4A310000;	//PRU Shared memory
+	hostData.dst = /*buf.dst*/ 0x4A310100;	//PRU Shared memory
 	hostData.chan = /*buf.chan*/ 10;
 
 	channelMask = (1 << hostData.chan);
