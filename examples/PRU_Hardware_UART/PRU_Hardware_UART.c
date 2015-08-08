@@ -71,7 +71,7 @@ void main(){
 	 * FIFOs by writing to FCR. FIFOEN bit in FCR must be set first before
 	 * other bits are configured */
 	/* Enable FIFOs for now at 1-byte, and flush them */
-	CT_UART.FCR = (0x4) | (0x2) | (0x1);
+	CT_UART.FCR = (0x8) | (0x4) | (0x2) | (0x1);
 	//CT_UART.FCR = (0x80) | (0x4) | (0x2) | (0x01); // 8-byte RX FIFO trigger
 
 	/* Choose desired protocol settings by writing to LCR */
