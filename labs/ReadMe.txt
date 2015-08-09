@@ -24,6 +24,8 @@ WHAT LABS ARE INCLUDED?
        LAB 2:  Read Push Button Switch on PRU0 GPI & Toggle LED with PRU1 GPO
        LAB 3:  Design a Temperature Monitor Application with the PRU
        LAB 4:  Introduction to Linux Driver
+       LAB 5:  Introduction to RPMsg for PRU<->ARM message passing
+       LAB 6:  Using RPMsg to toggle LEDs from Linux user space
 
 
 ADDITIONAL RESOURCES

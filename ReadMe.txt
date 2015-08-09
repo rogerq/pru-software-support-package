@@ -1,4 +1,4 @@
-Programmable Real-time Unit (PRU) Software Support Package release 1.1.x
+Programmable Real-time Unit (PRU) Software Support Package release 3.0
 
 
 DESCRIPTION
@@ -28,7 +28,7 @@ WHAT's INCLUDED?
         examples	Basic PRU examples	
 	include		PRU firmware header files
 	labs		Source code for step-by-step labs
-	lib             PRU library files
+	lib             PRU library files and library source files
 	patches	 	Linux kernel patches to enable PRU support
 	pru_cape	Demo software for the BeagleBone PRU Cape
 
