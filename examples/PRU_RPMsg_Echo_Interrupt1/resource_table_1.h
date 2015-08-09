@@ -49,8 +49,8 @@
  * Sizes of the virtqueues (expressed in number of buffers supported,
  * and must be power of 2)
  */
-#define PRU_RPMSG_VQ0_SIZE	2
-#define PRU_RPMSG_VQ1_SIZE	2
+#define PRU_RPMSG_VQ0_SIZE	16
+#define PRU_RPMSG_VQ1_SIZE	16
 
 /*
  * The feature bitmap for virtio rpmsg
