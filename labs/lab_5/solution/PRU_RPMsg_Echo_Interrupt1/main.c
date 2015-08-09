@@ -26,10 +26,15 @@ volatile register uint32_t __R31;
 #define MB_FROM_ARM_HOST	4
 
 /*
- * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * Using the name 'rpmsg-client-sample' will probe the RPMsg sample driver
+ * found at linux-x.y.z/samples/rpmsg/rpmsg_client_sample.c
+ *
+ * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
  * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
  */
 #define CHAN_NAME			"rpmsg-client-sample"
+//#define CHAN_NAME			"rpmsg-pru"
+
 #define CHAN_DESC			"Channel 31"
 #define CHAN_PORT			31
 

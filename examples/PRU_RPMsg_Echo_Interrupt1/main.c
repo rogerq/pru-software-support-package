@@ -26,7 +26,7 @@ volatile register uint32_t __R31;
 #define MB_FROM_ARM_HOST	4
 
 /*
- * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
  * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
  */
 #define CHAN_NAME			"rpmsg-pru"

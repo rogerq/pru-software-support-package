@@ -22,7 +22,7 @@ volatile register uint32_t __R30;
 #define RED					0x8
 
  /*
- * The name 'rpmsg-pru' corresponds to the rpmsg_pru driver found
+ * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
  * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
  */
 #define CHAN_NAME			"rpmsg-pru"
