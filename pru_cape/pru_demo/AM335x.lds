@@ -1,6 +1,6 @@
 /****************************************************************************/
 /*  AM335x.lds                                                              */
-/*  Copyright (c) 2014  Texas Instruments Incorporated                      */
+/*  Copyright (c) 2015  Texas Instruments Incorporated                      */
 /*  Author: Rafael de Souza                                                 */
 /*                                                                          */
 /*    Description: This file is a sample linker command file that can be    */

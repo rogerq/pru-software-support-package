@@ -4,7 +4,7 @@
  * This file contains the device abstrction layer APIs for
  * Programmabled Real-time Unit (PRU).
  *
- * Copyright (C) 2014 Texas Instruments Incorporated - http://www.ti.com/
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
  *
  *
  *  Redistribution and use in source and binary forms, with or without

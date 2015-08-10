@@ -4,7 +4,7 @@
 @
 @******************************************************************************
 @
-@ Copyright (C) 2013 Texas Instruments Incorporated - http://www.ti.com/
+@ Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
 @  (Rafael de Souza - 2014) Added VFP and NEON initialization routines
 @
 @
