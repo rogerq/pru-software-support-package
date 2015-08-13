@@ -76,6 +76,9 @@
 							<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex.679569777" name="PRU Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.ti.ccstudio.buildDefinitions.PRU.Debug.645362798.1107321618" name="main.c" rcbsApplicability="disable" resourcePath="main.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.compilerDebug.1084173334.747058078">
+						<tool id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.compilerDebug.1084173334.747058078" name="PRU Compiler" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.compilerDebug.1084173334"/>
+					</fileInfo>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
