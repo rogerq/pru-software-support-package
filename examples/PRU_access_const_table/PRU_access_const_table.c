@@ -37,7 +37,7 @@
 #include "resource_table_empty.h"
 
 /* Mapping Constant Table (CT) registers to variables */
-volatile far uint32_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));
+volatile far uint8_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), peripheral));
 
 #ifndef PRU_SRAM
 #define PRU_SRAM __far __attribute__((cregister("PRU_SHAREDMEM", near)))
@@ -54,10 +54,10 @@ PRU_SRAM volatile uint32_t shared_freq_3;
 
 /* PRCM Registers */
 #define CM_PER_BASE	((volatile uint32_t *)(0x44E00000))
-#define SPI0_CLKCTRL  (0x4C / 4)
+#define SPI0_CLKCTRL  (0x4C)
 #define ON (0x2)
 
-#define MCSPI0_MODULCTRL (*((volatile uint32_t*)(&CT_MCSPI0 + 0x128/4)))
+#define MCSPI0_MODULCTRL (*((volatile uint32_t*)(&CT_MCSPI0 + 0x128)))
 
 /* This is a char so that I can force access to R31.b0 for the host interrupt */
 volatile register uint8_t __R31;
@@ -67,7 +67,7 @@ volatile register uint8_t __R31;
 
 int main(){
 	uint32_t result;
-	volatile uint32_t *ptr_cm;
+	volatile uint8_t *ptr_cm;
 
 	ptr_cm = CM_PER_BASE;
 
