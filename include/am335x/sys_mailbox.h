@@ -33,6 +33,7 @@
 
 #ifndef _SYS_MAILBOX_H_
 #define _SYS_MAILBOX_H_
+ 
 /* SYS_MAILBOX register set */
 typedef struct{
 

@@ -33,6 +33,7 @@
 
 #ifndef _SYS_PWMSS_H_
 #define _SYS_PWMSS_H_
+ 
 /* SYS_PWMSS register set */
 typedef struct{
 
@@ -44,13 +45,7 @@ typedef struct{
 		volatile uint32_t IDVER;
 
 		volatile struct {
-			unsigned Y_MINOR	: 6;		//5:0
-			unsigned CUSTOM		: 2;		//7:6
-			unsigned X_MAJOR	: 3;		//10:8
-			unsigned R_RTL		: 5;		//15:11
-			unsigned FUNC		: 12;		//27:16
-			unsigned rsvd28		: 2;		//29:28
-			unsigned SCHEME		: 2;		//31:30
+			unsigned REVISION		: 32;		//31:0
 		} IDVER_bit;
 	} ;	// 0x0
 
@@ -60,10 +55,9 @@ typedef struct{
 
 		volatile struct {
 			unsigned SOFTRESET		: 1;		//0
-			unsigned FREEEMU		: 1;		//1
+			unsigned rsvd1			: 1;		//1
 			unsigned IDLEMODE		: 2;		//3:2
-			unsigned STANDBYMODE	: 2;		//5:4
-			unsigned rsvd6			: 26;		//31:6
+			unsigned rsvd4			: 28;		//31:4
 		} SYSCONFIG_bit;
 	} ;	// 0x4
 
@@ -106,22 +100,22 @@ typedef struct{
 	/*************************/
 	/* eCAP Module Registers */
 	/*************************/
-	/* SYS_PWMSS_ECAP_TSCTR register bit field */
+	/* SYS_PWMSS_ECAP_TSCNT register bit field */
 	union {
-		volatile uint32_t ECAP_TSCTR;
+		volatile uint32_t ECAP_TSCNT;
 
 		volatile struct {
-			unsigned TSCTR	: 32;		//31:0
-		} ECAP_TSCTR_bit;
+			unsigned TSCNT	: 32;		//31:0
+		} ECAP_TSCNT_bit;
 	} ;	// 0x100
 
-	/* SYS_PWMSS_ECAP_CTRPHS register bit field */
+	/* SYS_PWMSS_ECAP_CNTPHS register bit field */
 	union {
-		volatile uint32_t ECAP_CTRPHS;
+		volatile uint32_t ECAP_CNTPHS;
 
 		volatile struct {
-			unsigned CTRPHS	: 32;		//31:0
-		} ECAP_CTRPHS_bit;
+			unsigned CNTPHS	: 32;		//31:0
+		} ECAP_CNTPHS_bit;
 	} ;	// 0x104
 
 	/* SYS_PWMSS_ECAP_CAP1 register bit field */
@@ -182,13 +176,13 @@ typedef struct{
 
 	uint32_t rsvd134[10];		// 0x134 - 0x158
 
-	/* SYS_PWMSS_ECAP_REVID register bit field */
+	/* SYS_PWMSS_ECAP_PID register bit field */
 	union {
-		volatile uint32_t ECAP_REVID;
+		volatile uint32_t ECAP_PID;
 
 		volatile struct {
-			unsigned REV		: 32;		//31:0
-		} ECAP_REVID_bit;
+			unsigned REVISION		: 32;		//31:0
+		} ECAP_PID_bit;
 	} ;	// 0x15C
 
 	uint32_t rsvd160[8];		// 0x160 - 0x17C
@@ -330,7 +324,7 @@ typedef struct{
 		volatile uint32_t EQEP_REVID;
 
 		volatile struct {
-			unsigned REVID	: 32;		//31:0
+			unsigned REVISION	: 32;		//31:0
 		} EQEP_REVID_bit;
 	} ;	// 0x1DC
 
@@ -434,12 +428,12 @@ typedef struct{
 	uint32_t rsvd240[32];		// 0x240 - 0x2BC
 
 	/* SYS_PWMSS_EPWM_HRCNGF register bit field */
-	volatile uint16_t EPWM_HRCNGF;	// 0x2C0
+	volatile uint16_t EPWM_HRCTL;	// 0x2C0
 
 } sysPwmss;
 
-volatile __far sysPwmss CT_PWMSS0 __attribute__((cregister("PWMSS0", far), peripheral));
-volatile __far sysPwmss CT_PWMSS1 __attribute__((cregister("PWMSS1", far), peripheral));
-volatile __far sysPwmss CT_PWMSS2 __attribute__((cregister("PWMSS2", far), peripheral));
+#define PWMSS1 (*((volatile sysPwmss*)0x4843E000))
+#define PWMSS2 (*((volatile sysPwmss*)0x48440000))
+#define PWMSS3 (*((volatile sysPwmss*)0x48442000))
 
 #endif /* _SYS_PWMSS_H_ */
