@@ -432,8 +432,8 @@ typedef struct{
 
 } sysPwmss;
 
-#define PWMSS1 (*((volatile sysPwmss*)0x4843E000))
-#define PWMSS2 (*((volatile sysPwmss*)0x48440000))
-#define PWMSS3 (*((volatile sysPwmss*)0x48442000))
+#define PWMSS0 (*((volatile sysPwmss*)0x4843E000))
+#define PWMSS1 (*((volatile sysPwmss*)0x48440000))
+#define PWMSS2 (*((volatile sysPwmss*)0x48442000))
 
 #endif /* _SYS_PWMSS_H_ */
