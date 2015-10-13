@@ -1,6 +1,4 @@
-SUBDIRS=PRU_access_const_table PRU_ARMtoPRU_Interrupt PRU_Direct_Connect0 PRU_Direct_Connect1 PRU_edmaConfig PRU_gpioToggle PRU_Hardware_UART \
-PRU_IEP PRU_MAC_Multiply_Accum PRU_PRUtoARM_Interrupt PRU_RPMsg_Echo_Interrupt0 PRU_RPMsg_Echo_Interrupt1 PRU_RPMsg_Echo_Polling0 \
-PRU_RPMsg_Echo_Polling1
+SUBDIRS=am335x am437x am571x am572x
 
 all: $(SUBDIRS)
 
