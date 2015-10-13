@@ -60,10 +60,8 @@
 #ifndef _PRU_VIRTQUEUE_H_
 #define _PRU_VIRTQUEUE_H_
 
-#include <stdint.h>
 #include <rsc_types.h>
 #include <pru_virtio_ring.h>
-#include <sys_mailbox.h>
 
 /* Return value indicating no kick was sent */
 #define PRU_VIRTQUEUE_NO_KICK				1
@@ -85,10 +83,10 @@
  * 						into a mailbox. This is how the ARM host and the PRU
  * 						determine whether a kick is for a receive operation or
  * 						a sentbuffer being consumed.
- * 					toArmMbx: The mailbox number that is used for communication
- * 							  in the PRU->ARM direction.
- * 					fromArmMbx: The mailbox number that is used for the
- * 								communication in the ARM->PRU direction.
+ * 					toArmMbx: Pointer to the mailbox that is used for
+ * 							  communication in the PRU->ARM direction.
+ * 					fromArmMbx: Pointer to the mailbox that is used for
+ * 							  communication in the ARM->PRU direction.
  * 					last_avail_idx: A local running counter that is used by the
  * 									PRU to determine whether or not a new
  * 									available buffer has been added to the
@@ -98,11 +96,11 @@
  * 						   PRU. See pru_virtio_ring.h.
  */
 struct pru_virtqueue {
-	uint32_t		id;
-	uint32_t		to_arm_mbx;
-	uint32_t		from_arm_mbx;
-	uint32_t 		last_avail_idx;
-	struct vring 	vring;
+	uint32_t			id;
+	volatile uint32_t	*to_arm_mbx;
+	volatile uint32_t	*from_arm_mbx;
+	uint32_t 			last_avail_idx;
+	struct vring 		vring;
 };
 
 /**
@@ -132,8 +130,8 @@ struct pru_virtqueue {
 void pru_virtqueue_init (
 	struct pru_virtqueue 		*vq,
 	struct fw_rsc_vdev_vring 	*vring,
-	uint32_t 					to_arm_mbx,
-	uint32_t 					from_arm_mbx
+	volatile uint32_t 			*to_arm_mbx,
+	volatile uint32_t 			*from_arm_mbx
 );
 
 /**

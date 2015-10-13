@@ -44,8 +44,8 @@
 void pru_virtqueue_init (
 	struct pru_virtqueue 		*vq,
 	struct fw_rsc_vdev_vring 	*vring,
-	uint32_t 					to_arm_mbx,
-	uint32_t 					from_arm_mbx
+	volatile uint32_t 			*to_arm_mbx,
+	volatile uint32_t 			*from_arm_mbx
 )
 {
 	vq->id = vring->notifyid;
@@ -121,7 +121,7 @@ int16_t pru_virtqueue_kick (
 		return PRU_VIRTQUEUE_NO_KICK;
 
 	/* Kick mailbox with the notify id of the vring in use */
-	CT_MBX.MESSAGE[vq->to_arm_mbx] = vq->id;
+	*((volatile unsigned int *) (vq->to_arm_mbx)) = vq->id;
 
 	return PRU_VIRTQUEUE_SUCCESS;
 }
