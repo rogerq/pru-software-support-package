@@ -88,10 +88,10 @@ void main() {
 	CT_MBX.IRQ[MB_USER].ENABLE_SET |= 1 << (MB_FROM_ARM_HOST * 2);
 
 	/* Initialize pru_virtqueue corresponding to vring0 (PRU to ARM Host direction) */
-	pru_virtqueue_init(&transport.virtqueue0, &resourceTable.rpmsg_vring0, MB_TO_ARM_HOST, MB_FROM_ARM_HOST);
+	pru_virtqueue_init(&transport.virtqueue0, &resourceTable.rpmsg_vring0, &CT_MBX.MESSAGE[MB_TO_ARM_HOST], &CT_MBX.MESSAGE[MB_FROM_ARM_HOST]);
 
 	/* Initialize pru_virtqueue corresponding to vring1 (ARM Host to PRU direction) */
-	pru_virtqueue_init(&transport.virtqueue1, &resourceTable.rpmsg_vring1, MB_TO_ARM_HOST, MB_FROM_ARM_HOST);
+	pru_virtqueue_init(&transport.virtqueue1, &resourceTable.rpmsg_vring1, &CT_MBX.MESSAGE[MB_TO_ARM_HOST], &CT_MBX.MESSAGE[MB_FROM_ARM_HOST]);
 
 	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure. */
 	while(pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, CHAN_NAME, CHAN_DESC, CHAN_PORT) != PRU_RPMSG_SUCCESS);

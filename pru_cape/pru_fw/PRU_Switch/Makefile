@@ -20,7 +20,7 @@ PROJ_NAME=$(CURRENT_DIR)
 LINKER_COMMAND_FILE=./AM335x_PRU.cmd
 HEX_COMMAND_FILE=./PRU_HexUtil.cmd
 LIBS=--library=../../../lib/rpmsg_lib.lib
-INCLUDE=--include_path=../../../include
+INCLUDE=--include_path=../../../include  --include_path=../../../include/am335x
 STACK_SIZE=0x100
 HEAP_SIZE=0x100
 GEN_DIR=gen
