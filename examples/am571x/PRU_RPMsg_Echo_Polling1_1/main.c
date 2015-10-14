@@ -44,16 +44,16 @@
  * PRU0 uses mailboxes 0 (From ARM) and 1 (To ARM)
  * PRU1 uses mailboxes 2 (From ARM) and 3 (To ARM)
  */
-#define MB_TO_ARM_HOST		3
-#define MB_FROM_ARM_HOST	2
+#define MB_TO_ARM_HOST					3
+#define MB_FROM_ARM_HOST				2
 
 /*
  * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
  * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
  */
-#define CHAN_NAME			"rpmsg-pru"
-#define CHAN_DESC			"Channel 31"
-#define CHAN_PORT			31
+#define CHAN_NAME						"rpmsg-pru"
+#define CHAN_DESC						"Channel 31"
+#define CHAN_PORT						31
 
 /*
  * Need to program the crossbar to bring the correct events into the
@@ -61,6 +61,12 @@
  */
 #define CTRL_CORE_PRUSS1_IRQ_58_59		*(volatile unsigned int *) 0x4A0028FC
 #define MAILBOX3_IRQ_USER2				243
+
+/* 
+ * Used to make sure the Linux drivers are ready for RPMsg communication
+ * Found at linux-x.y.z/include/uapi/linux/virtio_config.h
+ */
+#define VIRTIO_CONFIG_S_DRIVER_OK		4
 
 uint8_t payload[RPMSG_BUF_SIZE];
 
@@ -71,6 +77,7 @@ void main() {
 	struct pru_rpmsg_transport transport;
 	uint16_t src, dst, len;
 	uint32_t regValue;
+	volatile uint8_t *status;
 
 	/* allow OCP master port access by the PRU so the PRU can read external memories */
 	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
@@ -79,6 +86,10 @@ void main() {
 	regValue = CTRL_CORE_PRUSS1_IRQ_58_59;
 	regValue &= 0xFE00FFFF;
 	CTRL_CORE_PRUSS1_IRQ_58_59 = regValue | (MAILBOX3_IRQ_USER2 << 16);
+
+	/* Make sure the Linux drivers are ready for RPMsg communication */
+	status = &resourceTable.rpmsg_vdev.status;
+	while (!(*status & VIRTIO_CONFIG_S_DRIVER_OK));
 
 	/* Initialize pru_virtqueue corresponding to vring0 (PRU to ARM Host direction) */
 	pru_virtqueue_init(&transport.virtqueue0, &resourceTable.rpmsg_vring0, &MBX3.MESSAGE[MB_TO_ARM_HOST], &MBX3.MESSAGE[MB_FROM_ARM_HOST]);
