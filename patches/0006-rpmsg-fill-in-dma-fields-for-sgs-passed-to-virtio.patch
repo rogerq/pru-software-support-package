@@ -1,6 +1,6 @@
-From 48500ca2db3e15fba69a39d4a112eddf0fe146d9 Mon Sep 17 00:00:00 2001
-From: "Anna, Suman" <s-anna@ti.com>
-Date: Tue, 13 Oct 2015 02:00:19 +0000
+From ee55dbc4e502ccfea2e9ad0d9697897dae496a7f Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Fri, 9 Oct 2015 16:03:30 -0500
 Subject: [PATCH 6/6] rpmsg: fill in dma fields for sgs passed to virtio
 
 The virtio_rpmsg bus allocates the vring buffers using the

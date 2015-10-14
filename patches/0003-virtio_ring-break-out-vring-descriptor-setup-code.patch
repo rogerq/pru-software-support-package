@@ -1,6 +1,6 @@
-From 74c9c33e5a41ac4ec2a0e23f033664c89224a537 Mon Sep 17 00:00:00 2001
+From 7576600926ace339bdbd0b88dcbd37ab8b5a1ea0 Mon Sep 17 00:00:00 2001
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Date: Tue, 13 Oct 2015 02:00:16 +0000
+Date: Fri, 9 Oct 2015 16:00:25 -0500
 Subject: [PATCH 3/6] virtio_ring: break out vring descriptor setup code
 
 Break out the vring descriptor setup into a separate inline

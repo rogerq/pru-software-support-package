@@ -1,6 +1,6 @@
-From b2ad68b29a6399285b45ce2b2b41336cbf18de30 Mon Sep 17 00:00:00 2001
+From 4586bbb4a1694f804703ad8fd411eb52c07f33c6 Mon Sep 17 00:00:00 2001
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Date: Tue, 13 Oct 2015 02:00:17 +0000
+Date: Fri, 9 Oct 2015 16:00:55 -0500
 Subject: [PATCH 4/6] virtio_ring: revise descriptor addition logic for
  virtio_rpmsg
 
@@ -16,7 +16,7 @@ thread, http://marc.info/?l=linux-arm-kernel&m=142738673019657&w=2.
 This patch adds a 'rpmsg' flag to the internal virtqueue_add function
 and leverages this flag to revise the descriptor preparation when
 adding the buffers. The revised logic uses the sg_dma_address() and
-sg_dma_length() helpers instead of relying on sg_phys() and sg->length
+sg_dma_len() helpers instead of relying on sg_phys() and sg->length
 fields, so that the remote side sees the physical addresses of the
 vring buffers properly. The virtio rpmsg core is expected to prepare
 the scatterlist structures with the dma fields filled in properly, and

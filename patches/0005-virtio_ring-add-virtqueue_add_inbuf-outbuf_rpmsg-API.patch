@@ -1,12 +1,12 @@
-From f83d0a62ac68119392c80b97cd0afb1c53149155 Mon Sep 17 00:00:00 2001
-From: "Anna, Suman" <s-anna@ti.com>
-Date: Tue, 13 Oct 2015 02:00:18 +0000
+From 7ce261549e8a87ce24410684c25fb5f81d3639a5 Mon Sep 17 00:00:00 2001
+From: Suman Anna <s-anna@ti.com>
+Date: Fri, 9 Oct 2015 16:01:28 -0500
 Subject: [PATCH 5/6] virtio_ring: add virtqueue_add_inbuf/outbuf_rpmsg API
 
 Expose new variants of virtqueue_add_inbuf() & virtqueue_add_outbuf()
 API specifically to deal with virtio_rpmsg. The virtio core in general
 expects all the vring buffers to be allocated from linear addresses,
-but the virtio_rpmsg can have descriptors in non-linear space due to
+but the virtio_rpmsg can have the buffers in non-linear space due to
 its usage of the dma_alloc_coherent() API.
 
 Based on a RFC patch from Edgar E. Iglesias <edgar.iglesias@xilinx.com>,

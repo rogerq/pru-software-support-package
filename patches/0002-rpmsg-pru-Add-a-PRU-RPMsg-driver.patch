@@ -1,7 +1,7 @@
-From 092ece22e52d2908ee64006954bc3eb3f877b719 Mon Sep 17 00:00:00 2001
+From 79735a2fe71b94dd7b2a37557a0a85db03d5663e Mon Sep 17 00:00:00 2001
 From: Jason Reeder <jreeder@ti.com>
 Date: Wed, 3 Jun 2015 16:18:54 -0500
-Subject: [PATCH 2/2] rpmsg: pru: Add a PRU RPMsg driver
+Subject: [PATCH 2/6] rpmsg: pru: Add a PRU RPMsg driver
 
 An RPMsg driver that exposes interfaces to user space, to
 allow applications to communicate with the PRU processors
@@ -10,10 +10,10 @@ the PRUSS remoteproc support.
 
 Signed-off-by: Jason Reeder <jreeder@ti.com>
 ---
- drivers/rpmsg/Kconfig     |   14 ++
- drivers/rpmsg/Makefile    |    2 +
- drivers/rpmsg/rpmsg_pru.c |  359 +++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 375 insertions(+)
+ drivers/rpmsg/Kconfig     |  14 ++
+ drivers/rpmsg/Makefile    |   2 +
+ drivers/rpmsg/rpmsg_pru.c | 355 ++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 371 insertions(+)
  create mode 100644 drivers/rpmsg/rpmsg_pru.c
 
 diff --git a/drivers/rpmsg/Kconfig b/drivers/rpmsg/Kconfig
@@ -51,10 +51,10 @@ index 74c6703..ee475bb 100644
 +obj-$(CONFIG_RPMSG_PRU)	+= rpmsg_pru.o
 diff --git a/drivers/rpmsg/rpmsg_pru.c b/drivers/rpmsg/rpmsg_pru.c
 new file mode 100644
-index 0000000..bdc06dc
+index 0000000..7e6cae1
 --- /dev/null
 +++ b/drivers/rpmsg/rpmsg_pru.c
-@@ -0,0 +1,359 @@
+@@ -0,0 +1,355 @@
 +/*
 + * PRU Remote Processor Messaging Driver
 + *
@@ -260,8 +260,6 @@ index 0000000..bdc06dc
 +		(prudev->rpmsg_pru_msg_idx_wr + 1) % MAX_FIFO_MSG;
 +
 +	wake_up_interruptible(&prudev->rpmsg_pru_wait_list);
-+
-+	return;
 +}
 +
 +static int rpmsg_pru_probe(struct rpmsg_channel *rpdev)
@@ -271,10 +269,8 @@ index 0000000..bdc06dc
 +	int minor_got;
 +
 +	prudev = devm_kzalloc(&rpdev->dev, sizeof(*prudev), GFP_KERNEL);
-+	if (!prudev) {
-+		dev_err(&rpdev->dev, "Unable to allocate kernel memory for the rpmsg_pru device\n");
++	if (!prudev)
 +		return -ENOMEM;
-+	}
 +
 +	mutex_lock(&rpmsg_pru_lock);
 +	minor_got = idr_alloc(&minors, prudev, 0, PRU_MAX_DEVICES, GFP_KERNEL);
@@ -297,7 +293,7 @@ index 0000000..bdc06dc
 +	}
 +
 +	prudev->dev = device_create(rpmsg_pru_class, &rpdev->dev, prudev->devt,
-+		NULL, "rpmsg_pru" "%d", rpdev->dst);
++		NULL, "rpmsg_pru%d", rpdev->dst);
 +	if (IS_ERR(prudev->dev)) {
 +		dev_err(&rpdev->dev, "Unable to create the rpmsg_pru device\n");
 +		ret = PTR_ERR(prudev->dev);
@@ -415,5 +411,5 @@ index 0000000..bdc06dc
 +MODULE_DESCRIPTION("PRU Remote Processor Messaging Driver");
 +MODULE_LICENSE("GPL v2");
 -- 
-1.7.9.5
+1.9.1
 
