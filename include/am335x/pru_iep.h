@@ -45,8 +45,8 @@ typedef struct{
 			unsigned CNT_EN : 1;		// 0
 			unsigned rsvd1 : 3;		// 3:1
 			unsigned DEFAULT_INC : 4;	// 7:4
-			unsigned CMP_INC : 4;		// 11:8
-			unsigned rsvd12 : 20;		// 31:12
+			unsigned CMP_INC : 12;		// 19:8
+			unsigned rsvd12 : 12;		// 31:20
 		} TMR_GLB_CFG_bit;
 	} ;	// 0x0
 
@@ -104,7 +104,7 @@ typedef struct{
 
 		volatile struct{
 			unsigned CMP_HIT : 8;		// 7:0
-			unsigned rsvd12 : 24;		// 31:8
+			unsigned rsvd8 : 24;		// 31:8
 		} TMR_CMP_STS_bit;
 	} ;	// 0x44
 

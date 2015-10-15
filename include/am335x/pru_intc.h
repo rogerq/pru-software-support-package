@@ -146,8 +146,8 @@ typedef struct{
 		volatile uint32_t HIEISR;
 
 		volatile struct{
-			unsigned HINT_EN_SET_IDX : 10;	// 9:0
-			unsigned rsvd10 : 22;		// 31:10
+			unsigned HINT_EN_SET_IDX : 4;	// 3:0
+			unsigned rsvd4 : 28;		// 31:4
 		} HIEISR_bit;
 	} ;	// 0x34
 
@@ -157,8 +157,8 @@ typedef struct{
 		volatile uint32_t HIDISR;
 
 		volatile struct{
-			unsigned HINT_EN_CLR_IDX : 10;	// 9:0
-			unsigned rsvd10 : 22;		// 31:10
+			unsigned HINT_EN_CLR_IDX : 4;	// 3:0
+			unsigned rsvd4 : 28;		// 31:4
 		} HIDISR_bit;
 	} ;	// 0x38
 

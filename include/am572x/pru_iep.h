@@ -37,9 +37,9 @@
 /* PRU IEP register set */
 typedef struct{
 
-	/* PRU_IEP_TMR_GLB_CFG register bit field */
+	/* PRU_IEP_GLB_CFG register bit field */
 	union {
-		volatile uint32_t TMR_GLB_CFG;
+		volatile uint32_t GLB_CFG;
 
 		volatile struct{
 			unsigned CNT_EN : 1;		// 0
@@ -47,144 +47,144 @@ typedef struct{
 			unsigned DEFAULT_INC : 4;	// 7:4
 			unsigned CMP_INC : 12;		// 19:8
 			unsigned rsvd12 : 12;		// 31:20
-		} TMR_GLB_CFG_bit;
+		} GLB_CFG_bit;
 	} ;	// 0x0
 
 
-	/* PRU_IEP_TMR_GLB_STS register bit field */
+	/* PRU_IEP_GLB_STS register bit field */
 	union {
-		volatile uint32_t TMR_GLB_STS;
+		volatile uint32_t GLB_STS;
 
 		volatile struct{
 			unsigned CNT_OVF : 1;		// 0
 			unsigned rsvd1 : 31;		// 31:1
-		} TMR_GLB_STS_bit;
+		} GLB_STS_bit;
 	} ;	// 0x4
 
 
-	/* PRU_IEP_TMR_COMPEN register bit field */
+	/* PRU_IEP_COMPEN register bit field */
 	union {
-		volatile uint32_t TMR_COMPEN;
+		volatile uint32_t COMPEN;
 
 		volatile struct{
 			unsigned COMPEN_CNT : 23;	// 22:0
 			unsigned rsvd24 : 9;		// 31:23
-		} TMR_COMPEN_bit;
+		} COMPEN_bit;
 	} ;	// 0x8
 
 
-	/* PRU_IEP_TMR_CNT register bit field */
+	/* PRU_IEP_CNT register bit field */
 	union {
-		volatile uint32_t TMR_CNT;
+		volatile uint32_t CNT;
 
 		volatile struct{
 			unsigned COUNT : 32;		// 31:0
-		} TMR_CNT_bit;
+		} CNT_bit;
 	} ;	// 0xC
 
 
 	uint32_t rsvd10[12];		// 0x10 - 0x3C
 
 
-	/* PRU_IEP_TMR_CMP_CFG register bit field */
+	/* PRU_IEP_CMP_CFG register bit field */
 	union {
-		volatile uint32_t TMR_CMP_CFG;
+		volatile uint32_t CMP_CFG;
 
 		volatile struct{
 			unsigned CMP0_RST_CNT_EN : 1;	// 0
 			unsigned CMP_EN : 8;		// 8:1
 			unsigned rsvd9 : 23;		// 31:9
-		} TMR_CMP_CFG_bit;
+		} CMP_CFG_bit;
 	} ;	// 0x40
 
 
-	/* PRU_IEP_TMR_CMP_STS register bit field */
+	/* PRU_IEP_CMP_STS register bit field */
 	union {
-		volatile uint32_t TMR_CMP_STS;
+		volatile uint32_t CMP_STS;
 
 		volatile struct{
 			unsigned CMP_HIT : 8;		// 7:0
 			unsigned rsvd12 : 24;		// 31:8
-		} TMR_CMP_STS_bit;
+		} CMP_STS_bit;
 	} ;	// 0x44
 
-	/* PRU_IEP_TMR_CMP0 register bit field */
+	/* PRU_IEP_CMP0 register bit field */
 	union {
-		volatile uint32_t TMR_CMP0;
+		volatile uint32_t CMP0;
 
 		volatile struct{
 			unsigned CMP0 : 32;		// 31:0
-		} TMR_CMP0_bit;
+		} CMP0_bit;
 	} ;	// 0x48
 
 
-	/* PRU_IEP_TMR_CMP1 register bit field */
+	/* PRU_IEP_CMP1 register bit field */
 	union {
-		volatile uint32_t TMR_CMP1;
+		volatile uint32_t CMP1;
 
 		volatile struct{
 			unsigned CMP1 : 32;		// 31:0
-		} TMR_CMP1_bit;
+		} CMP1_bit;
 	} ;	// 0x4C
 
 
-	/* PRU_IEP_TMR_CMP2 register bit field */
+	/* PRU_IEP_CMP2 register bit field */
 	union {
-		volatile uint32_t TMR_CMP2;
+		volatile uint32_t CMP2;
 
 		volatile struct{
 			unsigned CMP2 : 32;		// 31:0
-		} TMR_CMP2_bit;
+		} CMP2_bit;
 	} ;	// 0x50
 
 
-	/* PRU_IEP_TMR_CMP3 register bit field */
+	/* PRU_IEP_CMP3 register bit field */
 	union {
-		volatile uint32_t TMR_CMP3;
+		volatile uint32_t CMP3;
 
 		volatile struct{
 			unsigned CMP3 : 32;		// 31:0
-		} TMR_CMP3_bit;
+		} CMP3_bit;
 	} ;	// 0x54
 
 
-	/* PRU_IEP_TMR_CMP4 register bit field */
+	/* PRU_IEP_CMP4 register bit field */
 	union {
-		volatile uint32_t TMR_CMP4;
+		volatile uint32_t CMP4;
 
 		volatile struct{
 			unsigned CMP4 : 32;		// 31:0
-		} TMR_CMP4_bit;
+		} CMP4_bit;
 	} ;	// 0x58
 
 
-	/* PRU_IEP_TMR_CMP5 register bit field */
+	/* PRU_IEP_CMP5 register bit field */
 	union {
-		volatile uint32_t TMR_CMP5;
+		volatile uint32_t CMP5;
 
 		volatile struct{
 			unsigned CMP5 : 32;		// 31:0
-		} TMR_CMP5_bit;
+		} CMP5_bit;
 	} ;	// 0x5C
 
 
-	/* PRU_IEP_TMR_CMP6 register bit field */
+	/* PRU_IEP_CMP6 register bit field */
 	union {
-		volatile uint32_t TMR_CMP6;
+		volatile uint32_t CMP6;
 
 		volatile struct{
 			unsigned CMP6 : 32;		// 31:0
-		} TMR_CMP6_bit;
+		} CMP6_bit;
 	} ;	// 0x60
 
 
-	/* PRU_IEP_TMR_CMP7 register bit field */
+	/* PRU_IEP_CMP7 register bit field */
 	union {
-		volatile uint32_t TMR_CMP7;
+		volatile uint32_t CMP7;
 
 		volatile struct{
 			unsigned CMP7 : 32;		// 31:0
-		} TMR_CMP7_bit;
+		} CMP7_bit;
 	} ;	// 0x64
 
         uint32_t rsvd68[166];            // 0x68 - 0x2FF
@@ -202,7 +202,7 @@ typedef struct{
                         unsigned OUT_MODE 		: 2;	// 7:6
                         unsigned RESERVED8 		: 24;	// 31:8
                 } DIGIO_CTRL_bit;
-        } ;     // 0x300
+        } ; // 0x300
 
         uint32_t rsvd304[1];            // 0x304
 
@@ -213,7 +213,7 @@ typedef struct{
                 volatile struct{
                         unsigned DATA_IN : 32;           // 31:0
                 } DIGIO_DATA_IN_bit;
-        } ;     // 0x308
+        } ; // 0x308
 
         /* PRU_IEP_DIGIO_DATA_IN_RAW register bit field */
         union {
@@ -222,7 +222,7 @@ typedef struct{
                 volatile struct{
                         unsigned DATA_IN_RAW : 32;       // 31:0
                 } DIGIO_DATA_IN_RAW_bit;
-        } ;     // 0x30C
+        } ; // 0x30C
 
         /* PRU_IEP_DIGIO_DATA_OUT register bit field */
         union {
@@ -231,7 +231,7 @@ typedef struct{
                 volatile struct{
                         unsigned DATA_OUT : 32;           // 31:0
                 } DIGIO_DATA_OUT_bit;
-        } ;     // 0x310
+        } ; // 0x310
 
         /* PRU_IEP_DIGIO_DATA_OUT_EN register bit field */
         union {
@@ -240,7 +240,7 @@ typedef struct{
                 volatile struct{
                         unsigned DATA_OUT_EN : 32;        // 31:0
                 } DIGIO_DATA_OUT_EN_bit;
-        } ;     // 0x314
+        } ; // 0x314
 
         /* PRU_IEP_DIGIO_EXP register bit field */
         union {
@@ -250,14 +250,14 @@ typedef struct{
                         unsigned SW_DATA_OUT_UPDATE : 1;	// 0
                         unsigned OUTVALID_OVR_EN 	: 1;	// 1
                         unsigned SW_OUTVALID 		: 1;	// 2
-                        unsigned RESERVED2 			: 1;	// 3
+                        unsigned rsvd3				: 1;	// 3
                         unsigned OUTVALID_DLY 		: 4;	// 7:4
                         unsigned SOF_DLY 			: 4;	// 11:8
                         unsigned SOF_SEL 			: 1;	// 12
                         unsigned EOF_SEL 			: 1;	// 13
-                        unsigned RESERVED14 		: 18;	// 31:14
+                        unsigned rsvd14 			: 18;	// 31:14
                 } DIGIO_EXP_bit;
-        } ;     // 0x318
+        } ; // 0x318
 
 } pruIep;
 

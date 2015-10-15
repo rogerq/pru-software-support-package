@@ -42,7 +42,7 @@ typedef struct{
 		volatile uint32_t REVID;
 
 		volatile struct {
-			unsigned REVID : 32;
+			unsigned REVISION : 32;
 		} REVID_bit;
 	} ;	// 0x0
 

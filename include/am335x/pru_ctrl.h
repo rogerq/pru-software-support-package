@@ -37,7 +37,7 @@
 /* PRU_CTRL register set */
 typedef struct{
 
-	/* PRU_CTRL_CONTROL register bit field */
+	/* PRU_CTRL_CTRL register bit field */
 	union {
 		volatile uint32_t CTRL;
 
@@ -51,18 +51,18 @@ typedef struct{
 			unsigned rsvd9 : 6;
 			unsigned RUNSTATE : 1;
 			unsigned PCTR_RST_VAL : 16;
-		} CONTROL_bit;
+		} CTRL_bit;
 	} ;	// 0x0
 
 
-	/* PRU_CTRL_STATUS register bit field */
+	/* PRU_CTRL_STS register bit field */
 	union {
 		volatile uint32_t STS;
 
 		volatile struct{
 			unsigned PCTR : 16;
 			unsigned rsvd16 : 16;
-		} STATUS_bit;
+		} STS_bit;
 	} ;	// 0x4
 
 

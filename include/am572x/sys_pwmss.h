@@ -33,7 +33,7 @@
 
 #ifndef _SYS_PWMSS_H_
 #define _SYS_PWMSS_H_
- 
+
 /* SYS_PWMSS register set */
 typedef struct{
 

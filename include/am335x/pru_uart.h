@@ -248,7 +248,8 @@ typedef struct {
 		volatile uint32_t REVID2;
 
 		volatile struct{
-			unsigned REVID2 : 32;		// 31:0
+			unsigned REVID2 : 8;		// 7:0
+			unsigned rsvd8 	: 24;		// 31:8
 		} REVID2_bit;
 	} ;	// 0x2C
 
