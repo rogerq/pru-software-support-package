@@ -30,10 +30,10 @@ WHAT LABS ARE INCLUDED?
 
 ADDITIONAL RESOURCES
 
-   For more information about the PRU, visit: 
+  For more information about the PRU, visit: 
 
 	PRU-ICSS Wiki            – http://processors.wiki.ti.com/index.php/PRU-ICSS
 	PRU Training Slides      – http://www.ti.com/sitarabootcamp
 	PRU Evaluation Hardware  – http://www.ti.com/tool/PRUCAPE
-        Support                  – http://e2e.ti.com
+  Support                  – http://e2e.ti.com
    

@@ -25,12 +25,12 @@ WHAT's INCLUDED?
 
 	DIRECTORY	CONTENTS
 	---------	--------
-        examples	Basic PRU examples	
-	include		PRU firmware header files
-	labs		Source code for step-by-step labs
-	lib             PRU library files and library source files
-	patches	 	Linux kernel patches to enable PRU support
-	pru_cape	Demo software for the BeagleBone PRU Cape
+  examples	 Basic PRU examples	
+	include    PRU firmware header files
+	labs		   Source code for step-by-step labs
+	lib        PRU library files and library source files
+	patches    Linux kernel patches to enable PRU support
+	pru_cape   Demo software for the BeagleBone PRU Cape
 
 
 
@@ -41,5 +41,5 @@ ADDITIONAL RESOURCES
 	PRU-ICSS Wiki            – http://processors.wiki.ti.com/index.php/PRU-ICSS
 	PRU Training Slides      – http://www.ti.com/sitarabootcamp
 	PRU Evaluation Hardware  – http://www.ti.com/tool/PRUCAPE
-        Support                  – http://e2e.ti.com
+  Support                  – http://e2e.ti.com
    
