@@ -12,7 +12,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.PRU.Debug.846489248" name="Debug" parent="com.ti.ccstudio.buildDefinitions.PRU.Debug" postbuildStep="cp ../Debug/PRU_HDQ_TempSensor1.out /home/jason/ti/ti-sdk-am335x-evm-08.00.00.00/targetNFS/lib/firmware/rproc-pru1-fw" prebuildStep="">
+				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.PRU.Debug.846489248" name="Debug" parent="com.ti.ccstudio.buildDefinitions.PRU.Debug" postbuildStep="" prebuildStep="">
 					<folderInfo id="com.ti.ccstudio.buildDefinitions.PRU.Debug.846489248." name="/" resourcePath="">
 						<toolChain id="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.DebugToolchain.653677385" name="TI Build Tools" secondaryOutputs="com.ti.ccstudio.buildDefinitions.PRU_2.1.hex.outputType__BIN" superClass="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.PRU_2.1.exe.linkerDebug.1266343266">
 							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1947028897" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
