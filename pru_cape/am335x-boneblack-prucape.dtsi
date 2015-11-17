@@ -56,7 +56,7 @@
 	sound {
 		status = "disabled";
 	};
-}/
+};
 
 &pruss {
         pinctrl-names = "default";
