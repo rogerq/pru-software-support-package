@@ -6,7 +6,9 @@
 
 ROMS {
                 PAGE 0:
-                .text: o = 0x0, l = 0x1000
+                .text: o = 0x0, l = 0x2000
                 PAGE 1:
-                .data: o = 0x0, l = 0x1000
+                .data: o = 0x0, l = 0x2000
+                PAGE 2:
+                .shared: o = 0x10000, l = 0x3000
 }
