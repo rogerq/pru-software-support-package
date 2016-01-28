@@ -31,12 +31,20 @@ WHAT EXAMPLES ARE INCLUDED?
 	PRU_MAC_Multiply_Accum
 	PRU_mem1DTransfer
 	PRU_PRUtoARM_Interrupt
-	PRU_RPMsg_Echo_Interrupt0
-	PRU_RPMsg_Echo_Interrupt1
-	PRU_RPMsg_Echo_Polling0
-	PRU_RPMsg_Echo_Polling1
+	PRU_RPMsg_Echo_Interrupt0_0
+	PRU_RPMsg_Echo_Interrupt0_1
+	PRU_RPMsg_Echo_Interrupt1_0
+	PRU_RPMsg_Echo_Interrupt1_1
+	PRU_RPMsg_Echo_Polling0_0
+	PRU_RPMsg_Echo_Polling0_1
+	PRU_RPMsg_Echo_Polling1_0
+	PRU_RPMsg_Echo_Polling1_1
 
+PATCHES
 
+	The patches directory contains a single patch that can be applied to the
+	Linux source in order to load the PRU firmwares into PRUSS0 instead of
+	PRUSS1 on the AM437x device.
 
 ADDITIONAL RESOURCES
 
