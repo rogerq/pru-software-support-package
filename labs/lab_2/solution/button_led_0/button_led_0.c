@@ -99,8 +99,5 @@ void main(){
 			PRU0_PRU1_TRIGGER;
 		}
 	}
-
-	/* Halt the PRU core - shouldn't get here */
-	__halt();
 }
 

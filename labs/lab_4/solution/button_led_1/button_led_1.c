@@ -64,8 +64,5 @@ void main(){
 			__delay_cycles(5);
 		}
 	}
-
-	/* Halt the PRU core - shouldn't get here */
-	__halt();
 }
 

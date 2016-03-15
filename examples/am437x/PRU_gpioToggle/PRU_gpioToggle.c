@@ -52,8 +52,5 @@ void main(){
 		__R30 ^= gpio;
 		__delay_cycles(100000000);
 	}
-
-	/* Halt the PRU core */
-	__halt();
 }
 

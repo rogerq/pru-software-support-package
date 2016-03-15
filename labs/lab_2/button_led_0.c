@@ -95,8 +95,5 @@ void main(){
 			/* TODO: Trigger interrupt - see #defines */
 		}
 	}
-
-	/* Halt the PRU core - shouldn't get here */
-	__halt();
 }
 

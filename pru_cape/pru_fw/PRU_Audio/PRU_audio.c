@@ -106,10 +106,10 @@ void main()
 
 			__delay_cycles(2);
 
-        	/* Clear the status of the interrupt */
-        	CT_INTC.SECR0 = (1 << PRU_IEP_EVT);
+			/* Clear the status of the interrupt */
+			CT_INTC.SECR0 = (1 << PRU_IEP_EVT);
 
-        	/* Format sine wave data for DAC */
+			/* Format sine wave data for DAC */
 			dataA = DAC_Cmd(DAC_A_ADDRESS, WRITE_NO_UPDATE, SineRaw[i]);
 
 			/* Swap data endian from LSB first to MSB first per DAC format*/
@@ -128,7 +128,7 @@ void main()
 			__delay_cycles(2);
 			__R30 &= ~0x4;
 
-        	/* Format sine wave data for DAC */
+			/* Format sine wave data for DAC */
 			dataB = DAC_Cmd(DAC_B_ADDRESS, WRITE_UPDATE, SineRaw[i]);
 
 			/* Swap data endian from LSB first to MSB first per DAC format */
@@ -147,18 +147,6 @@ void main()
 
 		}
 	}
-
-	/* Clear Shadow Register 0 */
-	SH0_Load(0);
-
-	/* Clear Shadow Register 1 */
-	SH1_Load(0);
-
-	/* Stop shifting data */
-	__R30 &= ~(SHIFT_ENABLE_FLAG << SHIFT_ENABLE_SHIFT);
-
-	while(1);
-
 }
 
 

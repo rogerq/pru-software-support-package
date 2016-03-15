@@ -53,7 +53,7 @@ PRU_SRAM volatile uint32_t shared_freq_2;
 PRU_SRAM volatile uint32_t shared_freq_3;
 
 /* PRCM Registers */
-#define CM_PER_BASE	((volatile uint32_t *)(0x44E00000))
+#define CM_PER_BASE	((volatile uint8_t *)(0x44E00000))
 #define SPI0_CLKCTRL  (0x4C)
 #define ON (0x2)
 

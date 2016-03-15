@@ -59,8 +59,5 @@ void main(){
 			CT_INTC.SICR = /*TODO: Clear event 16*/;
 		}
 	}
-
-	/* Halt the PRU core - shouldn't get here */
-	__halt();
 }
 

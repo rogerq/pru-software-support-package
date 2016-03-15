@@ -79,7 +79,4 @@ void main()
 			__R30 = ~(LED_Group1 | LED_Group2);
 
 	}
-	
-	/* Halt the PRU core - shouldn't get here */
-	__halt();
 }
