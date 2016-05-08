@@ -22,4 +22,5 @@ ADDITIONAL RESOURCES
 	PRU Training Slides      – http://www.ti.com/sitarabootcamp
 	PRU Evaluation Hardware  – http://www.ti.com/tool/PRUCAPE
         Support                  – http://e2e.ti.com
-   
+
+\ No newline at end of file

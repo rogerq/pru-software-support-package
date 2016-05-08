@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -45,7 +45,7 @@ volatile far uint8_t CT_MCSPI0 __attribute__((cregister("MCSPI0", near), periphe
 
 /* NOTE:  Allocating shared_freq_x to PRU Shared Memory means that other PRU cores on
  *        the same subsystem must take care not to allocate data to that memory.
- *	 	  Users also cannot rely on where in shared memory these variables are placed
+ *		  Users also cannot rely on where in shared memory these variables are placed
  *        so accessing them from another PRU core or from the ARM is an undefined behavior.
  */
 PRU_SRAM volatile uint32_t shared_freq_1;
@@ -65,7 +65,8 @@ volatile register uint8_t __R31;
 /* PRU-to-ARM interrupt */
 #define PRU_ARM_INTERRUPT (19+16)
 
-int main(){
+int main(void)
+{
 	uint32_t result;
 	volatile uint8_t *ptr_cm;
 

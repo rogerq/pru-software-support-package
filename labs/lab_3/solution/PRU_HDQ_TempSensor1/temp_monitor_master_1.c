@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -49,7 +49,7 @@ volatile register uint32_t __R31;
 void intc_config(void);
 void pwm_config(unsigned int time_interval);
 
-	
+
 /* PRU peripheral system event */
 #define PRU_IEP_EVT      7
 #define PRU_ECAP_EVT    15
@@ -68,13 +68,14 @@ void pwm_config(unsigned int time_interval);
 #pragma DATA_SECTION(TEMP_SENSOR_BUF, ".TEMP_SENSOR_BUF")
 volatile far ds18b20_regs TEMP_SENSOR_BUF;
 
-void main(){
+void main(void)
+{
 	unsigned int int_val;
 	unsigned int prev_temp, curr_temp = 0;
 
 	/* Configure INTC */
 	intc_config();
-	
+
 	/* Configure timer or PWM */
 	pwm_config(time);
 
@@ -82,26 +83,26 @@ void main(){
 	__R30 = 0x00000000;
 
 	/* Detect interrupt from Slave PRU that configuration complete */
-	while((__R31 & 0x80000000) == 0){
+	while ((__R31 & 0x80000000) == 0) {
 	}
 
 	/* Clear system event */
 	CT_INTC.SECR0 = (1 << PRU_SLAVE_MASTER_EVT);
-	
-	/* Kick off PWM timer */	
+
+	/* Kick off PWM timer */
 	CT_ECAP.ECCTL2 |= 0x10; // Run counter (TSCTRSTOP = 1)
 
-	while(1){
+	while (1) {
 
 		/* Detect interrupt */
-		while((__R31 & 0x80000000) == 0){
-	        }
+		while ((__R31 & 0x80000000) == 0) {
+		}
 
 		/* Identify highest priority event */
 		int_val = CT_INTC.HIPIR1;
 
 		/* PRU eCAP event */
-		if(int_val == PRU_ECAP_EVT){
+		if (int_val == PRU_ECAP_EVT) {
 
 			/* Interrupt PRU slave to issue read temp */
 			PRU_MASTER_SLAVE_EVT_TRIGGER;
@@ -117,29 +118,29 @@ void main(){
 		}
 
 		/* PRU slave event */
-		if(int_val == PRU_SLAVE_MASTER_EVT){
+		if (int_val == PRU_SLAVE_MASTER_EVT) {
 
 			/* Clear system event */
 			CT_INTC.SECR0 = (1 << PRU_SLAVE_MASTER_EVT);
 
 			/* Read temperature value in Shared RAM */
-			curr_temp = (((unsigned int)TEMP_SENSOR_BUF.MSB << 8) | (unsigned int)TEMP_SENSOR_BUF.LSB); 
+			curr_temp = (((unsigned int)TEMP_SENSOR_BUF.MSB << 8) | (unsigned int)TEMP_SENSOR_BUF.LSB);
 
 			/* Compare current temp with previous temp */
 			/* Temperature rising */
-			if(curr_temp > prev_temp){
+			if (curr_temp > prev_temp) {
 				/* Set red LED */
 				__R30 &= ~(GPIO_BLUE);
 				__R30 ^= GPIO_RED;
 			}
 			/* Temperature falling */
-			if(curr_temp < prev_temp){
+			if (curr_temp < prev_temp) {
 				/* Set blue LED */
 				__R30 &= ~(GPIO_RED);
 				__R30 ^= GPIO_BLUE;
 			}
 			/* Temperature constant */
-			if(curr_temp == prev_temp){
+			if (curr_temp == prev_temp) {
 				/* Turn off all LEDs */
 				__R30 &= ~(GPIO_RED);
 				__R30 &= ~(GPIO_BLUE);
@@ -151,12 +152,13 @@ void main(){
 			/* This line was added to enable setting a breakpoint in the the PRU slave event service routine */
 			CT_ECAP.CAP1_bit.CAP1 = time * 200000000;
 			CT_ECAP.ECCTL2 |= 0x10; // Run counter (TSCTRSTOP = 1)
-	
+
 		}
 	}
 }
 
-void intc_config(void){
+void intc_config(void)
+{
 
 	/* Clear Channel & Host Map Registers */
 	CT_INTC.CMR1 = 0x00000000;
@@ -179,7 +181,7 @@ void intc_config(void){
 
 	/* Enable system events */
 	CT_INTC.ESR0 = 0x00308080;
-	
+
 	/* Enable host interrupts */
 	CT_INTC.HIER = 0x3;
 
@@ -188,7 +190,8 @@ void intc_config(void){
 
 }
 
-void pwm_config(unsigned int time_interval){
+void pwm_config(unsigned int time_interval)
+{
 
 	/* Initialize PRU ECAP for APWM mode */
 	CT_ECAP.CAP1_bit.CAP1 = time_interval * 200000000;	// APRD active register

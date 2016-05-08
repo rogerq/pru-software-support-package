@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -56,10 +56,10 @@ void PRUICSSInit(void)
 	HWREG(SOC_PRM_PER_REGS + CM_PER_L4LS_CLKSTCTRL) &= 0xFFFFFFFD;   // *((unsigned int*) 0x44E00C00 ) &= 0xFFFFFFFD;
 
 	/* Clear out the date memory of both PRU cores */
-	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU0_DRAM_OFFSET),8*1024,0);    //Data 8KB RAM0
-	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU1_DRAM_OFFSET),8*1024,0 );	 //Data 8KB RAM1
-	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU0_IRAM_OFFSET),8*1024,0 );
-	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU1_IRAM_OFFSET),8*1024,0 );
+	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU0_DRAM_OFFSET), 8*1024, 0);	//Data 8KB RAM0
+	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU1_DRAM_OFFSET), 8*1024, 0);	//Data 8KB RAM1
+	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU0_IRAM_OFFSET), 8*1024, 0);
+	PRUMemFill((SOC_PRUICSS1_REGS + SOC_PRUICSS_PRU1_IRAM_OFFSET), 8*1024, 0);
 
 }
 
@@ -68,7 +68,7 @@ void PRUICSSInit(void)
 //      This function takes and a pointer length and value to be placed and
 //      iterates through the memory placing the pattern.
 //******************************************************************************
-void PRUMemFill(unsigned int StartAddress, unsigned int Length , unsigned int  Pattern)
+void PRUMemFill(unsigned int StartAddress, unsigned int Length, unsigned int  Pattern)
 {
 
 	memset((unsigned char*)StartAddress, Pattern, (Length/4));
@@ -79,31 +79,31 @@ void PRUMemFill(unsigned int StartAddress, unsigned int Length , unsigned int  P
 //    PRU Memory Load
 //      This function loads the info at the pointer into the starting address.
 //******************************************************************************
-void PRUMemLoad(unsigned int PRUICSSInstance, unsigned int MemoryType, unsigned int offset, unsigned int Length ,const unsigned int *Pointer)
+void PRUMemLoad(unsigned int PRUICSSInstance, unsigned int MemoryType, unsigned int offset, unsigned int Length, const unsigned int *Pointer)
 {
- 	unsigned int BaseAddress, StartAddress;
+	unsigned int BaseAddress, StartAddress;
 
- 	if(PRUICSSInstance == 1)
- 		BaseAddress = SOC_PRUICSS1_REGS;
+	if (PRUICSSInstance == 1)
+		BaseAddress = SOC_PRUICSS1_REGS;
 
- 	if(MemoryType == PRU0_DRAM)
- 		StartAddress = BaseAddress + SOC_PRUICSS_PRU0_DRAM_OFFSET;
- 	if(MemoryType == PRU1_DRAM)
- 		StartAddress = BaseAddress + SOC_PRUICSS_PRU1_DRAM_OFFSET;
- 	if(MemoryType == PRU0_IRAM)
- 		StartAddress = BaseAddress + SOC_PRUICSS_PRU0_IRAM_OFFSET;
- 	if(MemoryType == PRU1_IRAM)
- 		StartAddress = BaseAddress + SOC_PRUICSS_PRU1_IRAM_OFFSET;
- 	if(MemoryType == PRU_SHARED_RAM)
- 		StartAddress = BaseAddress + SOC_PRUICSS_SHARED_RAM_OFFSET;
+	if (MemoryType == PRU0_DRAM)
+		StartAddress = BaseAddress + SOC_PRUICSS_PRU0_DRAM_OFFSET;
+	if (MemoryType == PRU1_DRAM)
+		StartAddress = BaseAddress + SOC_PRUICSS_PRU1_DRAM_OFFSET;
+	if (MemoryType == PRU0_IRAM)
+		StartAddress = BaseAddress + SOC_PRUICSS_PRU0_IRAM_OFFSET;
+	if (MemoryType == PRU1_IRAM)
+		StartAddress = BaseAddress + SOC_PRUICSS_PRU1_IRAM_OFFSET;
+	if (MemoryType == PRU_SHARED_RAM)
+		StartAddress = BaseAddress + SOC_PRUICSS_SHARED_RAM_OFFSET;
 
- 	unsigned char *srcaddr;
- 	unsigned char *destaddr;
+	unsigned char *srcaddr;
+	unsigned char *destaddr;
 
- 	srcaddr = (unsigned char*)Pointer;
- 	destaddr =(unsigned char*)StartAddress;
+	srcaddr = (unsigned char*)Pointer;
+	destaddr = (unsigned char*)StartAddress;
 
- 	memcpy(destaddr, srcaddr, Length);
+	memcpy(destaddr, srcaddr, Length);
 
 }
 
@@ -111,7 +111,8 @@ void PRUMemLoad(unsigned int PRUICSSInstance, unsigned int MemoryType, unsigned 
 //    PRU ICSS Reset
 //      This function resets the PRU cores.
 //******************************************************************************
-void PRUICSSReset(void){
+void PRUICSSReset(void)
+{
 
 	HWREG(SOC_PRM_PER_REGS + CM_PER_L4LS_CLKSTCTRL) |= 0x2;    /* Reset PRU */
 	HWREG(SOC_PRM_PER_REGS + CM_PER_L4LS_CLKSTCTRL) &= 0xFFFFFFFD;
@@ -123,16 +124,17 @@ void PRUICSSReset(void){
 //      This function enables the given PRU core to start fetching and
 //      executing instructions from its respective IRAM.
 //******************************************************************************
-void PRUEnable(unsigned int PRUICSSInstance, unsigned int PRUCore){
+void PRUEnable(unsigned int PRUICSSInstance, unsigned int PRUCore)
+{
 
 	unsigned int BaseAddress;
 
- 	if(PRUICSSInstance == 1)
- 		BaseAddress = SOC_PRUICSS1_REGS;
+	if (PRUICSSInstance == 1)
+		BaseAddress = SOC_PRUICSS1_REGS;
 
-	if(PRUCore == 0)
+	if (PRUCore == 0)
 		HWREG(BaseAddress + SOC_PRUICSS_PRU0_CTRL_OFFSET + PRU_CTRL_CONTROL) = 0xB;
-	if(PRUCore == 1)
+	if (PRUCore == 1)
 		HWREG(BaseAddress + SOC_PRUICSS_PRU1_CTRL_OFFSET + PRU_CTRL_CONTROL) = 0xB;
 
 }
@@ -141,15 +143,16 @@ void PRUEnable(unsigned int PRUICSSInstance, unsigned int PRUCore){
 //    PRU Halt
 //      This function halts the given PRU core.
 //******************************************************************************
-void PRUHalt(unsigned int PRUICSSInstance, unsigned int PRUCore){
+void PRUHalt(unsigned int PRUICSSInstance, unsigned int PRUCore)
+{
 
 	unsigned int BaseAddress;
 
- 	if(PRUICSSInstance == 1)
- 		BaseAddress = SOC_PRUICSS1_REGS;
+	if (PRUICSSInstance == 1)
+		BaseAddress = SOC_PRUICSS1_REGS;
 
-	if(PRUCore == 0)
+	if (PRUCore == 0)
 		HWREG(BaseAddress + SOC_PRUICSS_PRU0_CTRL_OFFSET + PRU_CTRL_CONTROL) = 0x0;
-	if(PRUCore == 1)
+	if (PRUCore == 1)
 		HWREG(BaseAddress + SOC_PRUICSS_PRU1_CTRL_OFFSET + PRU_CTRL_CONTROL) = 0x0;
 }

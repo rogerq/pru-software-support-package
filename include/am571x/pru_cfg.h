@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -236,10 +236,10 @@ typedef struct {
 			volatile uint32_t CLKSEL;
 
 			volatile struct {
-				unsigned CLK_SEL 			: 2;		//1:0
-				unsigned CLK_INV 			: 1;		//2
+				unsigned CLK_SEL			: 2;		//1:0
+				unsigned CLK_INV			: 1;		//2
 				unsigned rsvd3				: 1;		//3
-				unsigned ACC2_SEL 			: 1;		//4
+				unsigned ACC2_SEL			: 1;		//4
 				unsigned rsvd5				: 27;		//31:5
 			} CLKSEL_bit;
 		};
@@ -247,7 +247,7 @@ typedef struct {
 			volatile uint32_t SS;
 
 			volatile struct {
-				unsigned SAMPLE_SIZE 		: 8;		//7:0
+				unsigned SAMPLE_SIZE		: 8;		//7:0
 				unsigned rsvd8				: 16;		//31:8
 			} SS_bit;
 		};
@@ -258,10 +258,10 @@ typedef struct {
 			volatile uint32_t CLKSEL;
 
 			volatile struct {
-				unsigned CLK_SEL 			: 2;		//1:0
-				unsigned CLK_INV 			: 1;		//2
+				unsigned CLK_SEL			: 2;		//1:0
+				unsigned CLK_INV			: 1;		//2
 				unsigned rsvd3				: 1;		//3
-				unsigned ACC2_SEL 			: 1;		//4
+				unsigned ACC2_SEL			: 1;		//4
 				unsigned rsvd5				: 27;		//31:5
 			} CLKSEL_bit;
 		};
@@ -269,7 +269,7 @@ typedef struct {
 			volatile uint32_t SS;
 
 			volatile struct {
-				unsigned SAMPLE_SIZE 		: 8;		//7:0
+				unsigned SAMPLE_SIZE		: 8;		//7:0
 				unsigned rsvd8				: 16;		//31:8
 			} SS_bit;
 		};
@@ -282,12 +282,12 @@ typedef struct {
 		volatile uint32_t ED_PRU0_RXCFG;
 
 		volatile struct {
-			uint32_t RX_SAMPLE_SIZE 		: 3; 	// 2:0
-			uint32_t rsvd3 					: 1; 	//3
-			uint32_t RX_CLK_SEL		 		: 1;	//4
-			uint32_t rsvd5 					: 10; 	//14:5
+			uint32_t RX_SAMPLE_SIZE		: 3;	// 2:0
+			uint32_t rsvd3					: 1;	//3
+			uint32_t RX_CLK_SEL				: 1;	//4
+			uint32_t rsvd5					: 10;	//14:5
 			uint32_t RX_DIV_FACTOR_FRAC		: 1;	//15
-			uint32_t RX_DIV_FACTOR		 	: 16;	//31:16
+			uint32_t RX_DIV_FACTOR			: 16;	//31:16
 		} ED_PRU0_RXCFG_bit;
 	}; // 0xe0
 
@@ -296,17 +296,17 @@ typedef struct {
 		volatile uint32_t ED_PRU0_TXCFG;
 
 		volatile struct {
-			uint32_t rsvd0 					: 4; 	// 3:0
-			uint32_t TX_CLK_SEL 			: 1; 	// 4
-			uint32_t TX_BUSY0 				: 1; 	// 5
-			uint32_t TX_BUSY1 				: 1; 	// 6
-			uint32_t TX_BUSY2 				: 1; 	// 7
-			uint32_t PRU0_ENDAT0_CLK		: 1; 	// 8
-			uint32_t PRU0_ENDAT1_CLK		: 1; 	// 9
-			uint32_t PRU0_ENDAT2_CLK		: 1; 	// 10
-			uint32_t rsvd11 				: 4; 	// 14:11
-			uint32_t TX_DIV_FACTOR_FRAC		: 1; 	// 15
-			uint32_t TX_DIV_FACTOR			: 16; 	// 31:16
+			uint32_t rsvd0					: 4;	// 3:0
+			uint32_t TX_CLK_SEL			: 1;	// 4
+			uint32_t TX_BUSY0				: 1;	// 5
+			uint32_t TX_BUSY1				: 1;	// 6
+			uint32_t TX_BUSY2				: 1;	// 7
+			uint32_t PRU0_ENDAT0_CLK		: 1;	// 8
+			uint32_t PRU0_ENDAT1_CLK		: 1;	// 9
+			uint32_t PRU0_ENDAT2_CLK		: 1;	// 10
+			uint32_t rsvd11				: 4;	// 14:11
+			uint32_t TX_DIV_FACTOR_FRAC		: 1;	// 15
+			uint32_t TX_DIV_FACTOR			: 16;	// 31:16
 		} ED_PRU0_TXCFG_bit;
 	}; // 0xe4
 
@@ -315,13 +315,13 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG0_0;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27:16
-			uint32_t PRU0_ED0_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU0_ED0_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27:16
+			uint32_t PRU0_ED0_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU0_ED0_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU0_CFG0_0_bit;
 	}; // 0xe8
 
@@ -330,8 +330,8 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG1_0;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU0_CFG1_0_bit;
 	}; // 0xec
 
@@ -340,13 +340,13 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG0_1;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27-16
-			uint32_t PRU0_ED1_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU0_ED1_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27-16
+			uint32_t PRU0_ED1_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU0_ED1_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU0_CFG0_1_bit;
 	}; // 0xf0
 
@@ -355,8 +355,8 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG1_1;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU0_CFG1_1_bit;
 	}; // 0xf4
 
@@ -365,13 +365,13 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG0_2;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27-16
-			uint32_t PRU0_ED2_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU0_ED2_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27-16
+			uint32_t PRU0_ED2_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU0_ED2_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU0_CFG0_2_bit;
 	}; // 0xf8
 
@@ -380,8 +380,8 @@ typedef struct {
 		volatile uint32_t ED_PRU0_CFG1_2;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU0_CFG1_2_bit;
 	}; // 0xfc
 
@@ -390,12 +390,12 @@ typedef struct {
 		volatile uint32_t ED_PRU1_RXCFG;
 
 		volatile struct {
-			uint32_t RX_SAMPLE_SIZE 		: 3; 	// 2:0
-			uint32_t rsvd3 					: 1;	// 3
-			uint32_t RX_CLK_SEL		 		: 1;	// 4
+			uint32_t RX_SAMPLE_SIZE		: 3;	// 2:0
+			uint32_t rsvd3					: 1;	// 3
+			uint32_t RX_CLK_SEL				: 1;	// 4
 			uint32_t rsvd5					: 10;	// 14:5
 			uint32_t RX_DIV_FACTOR_FRAC		: 1;	// 15
-			uint32_t RX_DIV_FACTOR		 	: 16;	// 31:16
+			uint32_t RX_DIV_FACTOR			: 16;	// 31:16
 		} ED_PRU1_RXCFG_bit;
 	}; // 0x100
 
@@ -404,17 +404,17 @@ typedef struct {
 		volatile uint32_t ED_PRU1_TXCFG;
 
 		volatile struct {
-			uint32_t rsvd0 					: 4;	// 3:0
-			uint32_t TX_CLK_SEL 			: 1; 	// 4
-			uint32_t TX_BUSY0 				: 1; 	// 5
-			uint32_t TX_BUSY1 				: 1; 	// 6
-			uint32_t TX_BUSY2 				: 1; 	// 7
-			uint32_t PRU1_ENDAT0_CLK		: 1; 	// 8
-			uint32_t PRU1_ENDAT1_CLK		: 1; 	// 9
-			uint32_t PRU1_ENDAT2_CLK		: 1; 	// 10
+			uint32_t rsvd0					: 4;	// 3:0
+			uint32_t TX_CLK_SEL			: 1;	// 4
+			uint32_t TX_BUSY0				: 1;	// 5
+			uint32_t TX_BUSY1				: 1;	// 6
+			uint32_t TX_BUSY2				: 1;	// 7
+			uint32_t PRU1_ENDAT0_CLK		: 1;	// 8
+			uint32_t PRU1_ENDAT1_CLK		: 1;	// 9
+			uint32_t PRU1_ENDAT2_CLK		: 1;	// 10
 			uint32_t rsvd11					: 4;	// 14:11
-			uint32_t TX_DIV_FACTOR_FRAC		: 1; 	// 15
-			uint32_t TX_DIV_FACTOR			: 16; 	// 31:16
+			uint32_t TX_DIV_FACTOR_FRAC		: 1;	// 15
+			uint32_t TX_DIV_FACTOR			: 16;	// 31:16
 		} ED_PRU1_TXCFG_bit;
 	}; // 0x104
 
@@ -423,13 +423,13 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG0_0;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27-16
-			uint32_t PRU1_ED0_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU1_ED0_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27-16
+			uint32_t PRU1_ED0_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU1_ED0_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU1_CFG0_0_bit;
 	}; // 0x108
 
@@ -438,8 +438,8 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG1_0;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU1_CFG1_0_bit;
 	}; // 0x10c
 
@@ -448,13 +448,13 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG0_1;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27-16
-			uint32_t PRU1_ED1_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU1_ED1_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27-16
+			uint32_t PRU1_ED1_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU1_ED1_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU1_CFG0_1_bit;
 	}; // 0x110
 
@@ -463,8 +463,8 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG1_1;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU1_CFG1_1_bit;
 	}; // 0x114
 
@@ -473,13 +473,13 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG0_2;
 
 		volatile struct {
-			uint32_t TX_WIRE_DLY 			: 11; 	// 10:0
-			uint32_t TX_FRAME_SIZE 			: 5; 	// 15:11
-			uint32_t RX_FRAME_SIZE 			: 12; 	// 27-16
-			uint32_t PRU1_ED2_RX_SNOOP		: 1; 	// 28
-			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1; 	// 29
-			uint32_t PRU1_ED2_CLK			: 1; 	// 30
-			uint32_t TX_FIFO_SWAP_BITS		: 1; 	// 31
+			uint32_t TX_WIRE_DLY			: 11;	// 10:0
+			uint32_t TX_FRAME_SIZE			: 5;	// 15:11
+			uint32_t RX_FRAME_SIZE			: 12;	// 27-16
+			uint32_t PRU1_ED2_RX_SNOOP		: 1;	// 28
+			uint32_t ED_CLK_OUT_OVERRIDE_EN	: 1;	// 29
+			uint32_t PRU1_ED2_CLK			: 1;	// 30
+			uint32_t TX_FIFO_SWAP_BITS		: 1;	// 31
 		} ED_PRU1_CFG0_2_bit;
 	}; // 0x118
 
@@ -488,8 +488,8 @@ typedef struct {
 		volatile uint32_t ED_PRU1_CFG1_2;
 
 		volatile struct {
-			uint32_t TST_DELAY_COUNTER 		: 16; 	// 15:0
-			uint32_t RX_EN_COUNTER 			: 16; 	// 31:16
+			uint32_t TST_DELAY_COUNTER		: 16;	// 15:0
+			uint32_t RX_EN_COUNTER			: 16;	// 31:16
 		} ED_PRU1_CFG1_2_bit;
 	}; // 0x11c
 

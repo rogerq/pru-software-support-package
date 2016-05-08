@@ -40,7 +40,7 @@
 
 @****************************** Global Symbols*******************************
         .global Entry
-        .global __stack                  
+        .global __stack
         .global __bss_start__
         .global __bss_end__
         .global start_boot
@@ -48,16 +48,16 @@
 @************************ Internal Definitions ******************************
 @
 @ to set the mode bits in CPSR for different modes
-@        
-        .set  MODE_USR, 0x10            
+@
+        .set  MODE_USR, 0x10
         .set  MODE_FIQ, 0x11
         .set  MODE_IRQ, 0x12
         .set  MODE_SVC, 0x13
         .set  MODE_ABT, 0x17
         .set  MODE_UND, 0x1B
-        .set  MODE_SYS, 0x1F            
+        .set  MODE_SYS, 0x1F
 
-        .equ  I_F_BIT, 0xC0               
+        .equ  I_F_BIT, 0xC0
 
 @**************************** Code Section ***********************************
         .text
@@ -72,8 +72,8 @@
 @******************************************************************************
 @
 @ The reset handler sets up the stack pointers for all the modes. The FIQ and
-@ IRQ shall be disabled during this. Then clears the BSS section, enters the  
-@ main function. 
+@ IRQ shall be disabled during this. Then clears the BSS section, enters the
+@ main function.
 
 Entry:
 @
@@ -99,7 +99,7 @@ Entry:
         FMXR  FPEXC,r0                   @ Set FPEXC bit 30 to enable VFP
 		MCR   p15, #0, r3, c7, c5, #4    @ flush prefetch buffer because of FMXR above
 .endif
-		
+
 .if USERMODE == 1
 @
 @ Change to user mode. It allows for a stack smaller than 64kB.
@@ -112,15 +112,15 @@ Entry:
 @
 
 @
-@ Enter the main function. 
+@ Enter the main function.
 @ The symbol _start is the entry point for the runtime support library
 @
 
 Enter_BootLoader:
          LDR   r10, = _start              @ Get the address of _start
-         MOV   lr,pc                     @ Dummy return 
-         BX    r10                       @ Branch to main 
-         SUB   pc, pc, #0x08             @ looping   
+         MOV   lr,pc                     @ Dummy return
+         BX    r10                       @ Branch to main
+         SUB   pc, pc, #0x08             @ looping
 
 @
 @ Set the Stack space here
@@ -147,7 +147,7 @@ __HeapBase:
     .size  __HeapBase, . - __HeapBase
 __HeapLimit:
     .size  __HeapLimit, . - __HeapLimit
-    
+
 @
 @ Set the Interrupt vector table here
 @
@@ -175,7 +175,7 @@ __isr_vector:
 
     /* External interrupts */
         .long  Default_Handler
-    
+
         .size  __isr_vector, . - __isr_vector
 
 /*    Macro to define default handlers. Default handler
@@ -189,7 +189,7 @@ __isr_vector:
         B    .
         .size  \handler_name, . - \handler_name
         .endm
-    
+
         def_default_handler  NMI_Handler
         def_default_handler  HardFault_Handler
         def_default_handler  SVC_Handler
@@ -199,9 +199,9 @@ __isr_vector:
 
        .weak  DEF_IRQHandler
        .set  DEF_IRQHandler, Default_Handler
-   
+
 @
 @ End of the file
 @
        .end
-    
+

@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -57,13 +57,13 @@ void UARTInit(void)
 //******************************************************************************
 //    Main
 //******************************************************************************
-int main()
+int main(void)
 {
 
 	//sets pin mux for PRU cape
 	PRUCapePinmux();
 
-    //Sets and Enables clock, Zeros memory, resets PRU
+	//Sets and Enables clock, Zeros memory, resets PRU
 	PRUICSSInit();
 
 	UARTInit();
@@ -77,23 +77,22 @@ int main()
 void MainMenu(void)
 {
 	char choice[1];
-	char LED; 
+	char LED;
 	char UART;
 	char Audio;
 	char Switch;
 	char TempSensor;
 
-	char* test="blank";
+	char* test = "blank";
 	unsigned int validChoice = 0;
 
 	ConsoleUtilsPrintf("\n\n\n\n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 	ConsoleUtilsPrintf("*                        PRU Cape Demo                       *\n");
 	ConsoleUtilsPrintf("**************************************************************\n");
-	ConsoleUtilsPrintf("                                                              \n");
+	ConsoleUtilsPrintf("                                                            \n");
 
-	while(!validChoice)
-	{
+	while (!validChoice) {
 		ConsoleUtilsPrintf("\n\nWhat test would you like to run?\n\n");
 		ConsoleUtilsPrintf("1. LEDs\n");
 		ConsoleUtilsPrintf("2. Switches\n");
@@ -103,8 +102,7 @@ void MainMenu(void)
 		ConsoleUtilsPrintf("6. All\n");
 		ConsoleUtilsGets(choice, 3);
 
-		switch(choice[0])
-		{
+		switch (choice[0]) {
 		case '1':
 			test = "LEDs";
 			ConsoleUtilsPrintf("\nYou chose %s\n", test);
@@ -134,7 +132,7 @@ void MainMenu(void)
 		case '6':
 			test = "All";
 			ConsoleUtilsPrintf("\nYou chose %s\n", test);
-			ConsoleUtilsPrintf("\nRunning all tests, loading... \n");
+			ConsoleUtilsPrintf("\nRunning all tests, loading...\n");
 
 			LED = LEDTest();
 			PRUICSSReset();
@@ -152,30 +150,30 @@ void MainMenu(void)
 			PRUICSSReset();
 
 			ConsoleUtilsPrintf("\n\n\n**************************************************************\n");
-			ConsoleUtilsPrintf("\n                     	 TEST RESULTS                             \n");
+			ConsoleUtilsPrintf("\n			 TEST RESULTS                           \n");
 			ConsoleUtilsPrintf("\n**************************************************************\n");
 
-			if((LED =='y') || (LED =='Y'))
+			if ((LED == 'y') || (LED == 'Y'))
 				ConsoleUtilsPrintf("\nLED Pass");
 			else
 				ConsoleUtilsPrintf("\nLED Fail");
 
-			if((Switch =='y') || (Switch =='Y'))
+			if ((Switch == 'y') || (Switch == 'Y'))
 				ConsoleUtilsPrintf("\nSwitch Pass");
 			else
 				ConsoleUtilsPrintf("\nSwitch Fail");
 
-			if((Audio =='y') || (Audio =='Y'))
+			if ((Audio == 'y') || (Audio == 'Y'))
 				ConsoleUtilsPrintf("\nAUDIO Pass");
 			else
 				ConsoleUtilsPrintf("\nAUDIO Fail");
 
-			if((UART =='y') || (UART =='Y'))
+			if ((UART == 'y') || (UART == 'Y'))
 				ConsoleUtilsPrintf("\nUART Pass");
 			else
 				ConsoleUtilsPrintf("\nUART Fail");
 
-			if((TempSensor =='y') || (TempSensor =='Y'))
+			if ((TempSensor == 'y') || (TempSensor == 'Y'))
 				ConsoleUtilsPrintf("\nTemp Sensor Pass");
 			else
 				ConsoleUtilsPrintf("\nTemp Sensor Fail");
@@ -202,7 +200,7 @@ int LEDTest(void)
 	char answer[1];
 
 	ConsoleUtilsPrintf("\n**************************************************************\n");
-	ConsoleUtilsPrintf("\n                     	 LED TEST                            \n");
+	ConsoleUtilsPrintf("\n			 LED TEST                          \n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 
 	ConsoleUtilsPrintf("\nLoading PRU0 Instructions and Data...\n");
@@ -237,7 +235,7 @@ int SwitchTest(void)
 	char answer[1];
 
 	ConsoleUtilsPrintf("\n**************************************************************\n");
-	ConsoleUtilsPrintf("\n                     	 SWITCH TEST                            \n");
+	ConsoleUtilsPrintf("\n			 SWITCH TEST                          \n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 
 	ConsoleUtilsPrintf("\nLoading PRU Instructions and Data.\n");
@@ -266,7 +264,7 @@ int HDQTest(void)
 	char answer[1];
 
 	ConsoleUtilsPrintf("\n**************************************************************\n");
-	ConsoleUtilsPrintf("\n                     	 TEMP SENSOR TEST                            \n");
+	ConsoleUtilsPrintf("\n			 TEMP SENSOR TEST                          \n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 
 	ConsoleUtilsPrintf("\nLoading PRU Instructions and Data.\n");
@@ -280,7 +278,7 @@ int HDQTest(void)
 	PRUEnable(PRU_ICSS1, PRU1);
 	PRUEnable(PRU_ICSS1, PRU0);
 
-	ConsoleUtilsPrintf("\nDoes the red and blue LEDs light up during heating and \n cooling the temperature sensor? y/n\n");
+	ConsoleUtilsPrintf("\nDoes the red and blue LEDs light up during heating and\n cooling the temperature sensor? y/n\n");
 
 	ConsoleUtilsGets(answer, 3);
 
@@ -300,7 +298,7 @@ int AudioTest(void)
 	char answer[1];
 
 	ConsoleUtilsPrintf("\n**************************************************************\n");
-	ConsoleUtilsPrintf("\n                     	 AUDIO TEST                            \n");
+	ConsoleUtilsPrintf("\n			 AUDIO TEST                          \n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 
 	ConsoleUtilsPrintf("\nLoading PRU Instructions and Data.\n");
@@ -333,7 +331,7 @@ int UARTTest(void)
 	char answer[1];
 
 	ConsoleUtilsPrintf("\n**************************************************************\n");
-	ConsoleUtilsPrintf("\n                     	 UART TEST                            \n");
+	ConsoleUtilsPrintf("\n			 UART TEST                          \n");
 	ConsoleUtilsPrintf("\n**************************************************************\n");
 
 	ConsoleUtilsPrintf("\nLoading PRU Instructions and Data.\n");
@@ -359,23 +357,23 @@ void PRUCapePinmux(void)
 {
 
 	//******************************************************************************
-	//						    	LEDS	- PRU0
+	//							LEDS	- PRU0
 	//******************************************************************************
 
 	//*********************************************
- 	// Blue LED  = PR1_PRU0_GPO0
+	// Blue LED  = PR1_PRU0_GPO0
 	//*********************************************
- 	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_ACLKX ) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
+	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_ACLKX) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
 
 	//*********************************************
 	// Green LED  = PR1_PRU0_GPO1
 	//*********************************************
-	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_FSX ) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
+	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_FSX) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
 
 	//*********************************************
 	// Orange LED = PR1_PRU0_GPO2
 	//*********************************************
- 	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_AXR0 ) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
+	HWREG(SOC_CONTROL_REGS + CONTROL_CONF_MCASP0_AXR0) = AM335X_PIN_OUTPUT | CONTROL_CONF_MUXMODE(5);
 
 	//*********************************************
 	// Red LED    = PR1_PRU0_GPO3
@@ -385,7 +383,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						    	LEDS	- PRU1
+	//							LEDS	- PRU1
 	//******************************************************************************
 
 	//*********************************************
@@ -406,7 +404,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						    	Switches
+	//							Switches
 	//******************************************************************************
 
 	//*********************************************
@@ -421,7 +419,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						      	    Audio
+	//							    Audio
 	//******************************************************************************
 
 	//*********************************************
@@ -442,7 +440,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						    	PRU HW UART
+	//							PRU HW UART
 	//******************************************************************************
 
 	//*********************************************
@@ -468,7 +466,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						    	     LCD
+	//							     LCD
 	//******************************************************************************
 
 	//*********************************************
@@ -504,7 +502,7 @@ void PRUCapePinmux(void)
 
 
 	//******************************************************************************
-	//						    	TEMP SENSOR
+	//							TEMP SENSOR
 	//******************************************************************************
 
 	//*********************************************

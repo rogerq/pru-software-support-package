@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -57,28 +57,26 @@ uint8_t lpbkFlag;
 //******************************************************************************
 void PrintMessageOut(volatile char* Message)
 {
-	uint8_t cnt,index = 0;
+	uint8_t cnt, index = 0;
 
-	while(1)
-	{
+	while (1) {
 		cnt = 0;
 
 		/* Wait until the TX FIFO and the TX SR are completely empty */
-		while(!CT_UART.LSR_bit.TEMT);
+		while (!CT_UART.LSR_bit.TEMT);
 
-		while(Message[index] != NULL && cnt < MAX_CHARS)
-		{
-			CT_UART.THR= Message[index];
+		while (Message[index] != NULL && cnt < MAX_CHARS) {
+			CT_UART.THR = Message[index];
 			index++;
 			cnt++;
 		}
-		if(Message[index] == NULL)
+		if (Message[index] == NULL)
 			break;
 
 	}
 
 	/* Wait until the TX FIFO and the TX SR are completely empty */
-	while(!CT_UART.LSR_bit.TEMT);
+	while (!CT_UART.LSR_bit.TEMT);
 
 }
 
@@ -88,14 +86,15 @@ void PrintMessageOut(volatile char* Message)
 //      This function waits until there is info in the RX FIFO and then returns
 //      the first character entered.
 //******************************************************************************
-char ReadMessageIn()
+char ReadMessageIn(void)
 {
-	while(!CT_UART.LSR_bit.DR);
+	while (!CT_UART.LSR_bit.DR);
 
 	return CT_UART.RBR_bit.DATA;
 }
 
-void main(){
+void main(void)
+{
 	uint32_t i;
 	volatile uint32_t not_done = 1;
 
@@ -137,7 +136,7 @@ void main(){
 	/* Allow UART to run free, enable UART TX/RX */
 	CT_UART.PWREMU_MGMT_bit.FREE = 0x1;
 	CT_UART.PWREMU_MGMT_bit.URRST = 0x1;
-	CT_UART.PWREMU_MGMT_bit.UTRST =0x1;
+	CT_UART.PWREMU_MGMT_bit.UTRST = 0x1;
 
 	/* Turn off RTS and CTS functionality */
 	CT_UART.MCR_bit.AFE = 0x0;
@@ -149,8 +148,7 @@ void main(){
 	PrintMessageOut("Hello you are in the PRU UART demo test please enter 5 characters\r\n");
 
 	/* Read in 5 characters from user, then echo them back out */
-	for(i = 0; i < 5 ; i++)
-	{
+	for (i = 0; i < 5 ; i++) {
 		rxBuffer[i] = ReadMessageIn();
 	}
 

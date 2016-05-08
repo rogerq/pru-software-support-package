@@ -135,7 +135,7 @@ firmwares:
 	@echo 'Finished building firmwares'
 	@echo '************************************************************'
 	@echo ''
-	
+
 
 .PHONY: all clean
 

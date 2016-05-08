@@ -25,7 +25,7 @@ WHAT's INCLUDED?
 
 	DIRECTORY	CONTENTS
 	---------	--------
-	examples 	Basic PRU examples	
+	examples 	Basic PRU examples
 	include 	PRU firmware header files
 	labs 		Source code for step-by-step labs
 	lib 		PRU library files and library source files
@@ -35,10 +35,10 @@ WHAT's INCLUDED?
 
 ADDITIONAL RESOURCES
 
-   For more information about the PRU, visit: 
+   For more information about the PRU, visit:
 
 	PRU-ICSS Wiki		– http://processors.wiki.ti.com/index.php/PRU-ICSS
 	PRU Training Slides	– http://www.ti.com/sitarabootcamp
 	PRU Evaluation Hardware	– http://www.ti.com/tool/PRUCAPE
 	Support			– http://e2e.ti.com
-   
+

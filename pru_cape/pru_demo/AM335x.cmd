@@ -37,11 +37,11 @@ SECTIONS
     .args          >  L3OCMC0
     .ppinfo        >  L3OCMC0
     .ppdata        >  L3OCMC0
-  
+
     /* TI-ABI or COFF sections */
     .pinit         >  L3OCMC0
     .cinit         >  L3OCMC0
-  
+
     /* EABI sections */
     .binit         >  L3OCMC0
     .init_array    >  L3OCMC0
@@ -74,11 +74,11 @@ SECTIONS
     .args          >  M3DMEM
     .ppinfo        >  M3DMEM
     .ppdata        >  M3DMEM
-  
+
     /* TI-ABI or COFF sections */
     .pinit         >  M3UMEM
     .cinit         >  M3UMEM
-  
+
     /* EABI sections */
     .binit         >  M3UMEM
     .init_array    >  M3UMEM

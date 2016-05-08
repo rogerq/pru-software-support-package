@@ -1,33 +1,33 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/ 
- *  
- *  
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
+ * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
  * are met:
- * 
- * 	* Redistributions of source code must retain the above copyright 
- * 	  notice, this list of conditions and the following disclaimer.
- * 
- * 	* Redistributions in binary form must reproduce the above copyright
- * 	  notice, this list of conditions and the following disclaimer in the 
- * 	  documentation and/or other materials provided with the   
- * 	  distribution.
- * 
- * 	* Neither the name of Texas Instruments Incorporated nor the names of
- * 	  its contributors may be used to endorse or promote products derived
- * 	  from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ *
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *
+ *	* Redistributions in binary form must reproduce the above copyright
+ *	  notice, this list of conditions and the following disclaimer in the
+ *	  documentation and/or other materials provided with the
+ *	  distribution.
+ *
+ *	* Neither the name of Texas Instruments Incorporated nor the names of
+ *	  its contributors may be used to endorse or promote products derived
+ *	  from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -35,7 +35,7 @@
 #define _SYS_PWMSS_H_
 
 /* SYS_PWMSS register set */
-typedef struct{
+typedef struct {
 
 	/***************************/
 	/* PWM Subsystem Registers */
@@ -47,7 +47,7 @@ typedef struct{
 		volatile struct {
 			unsigned REVISION		: 32;		//31:0
 		} IDVER_bit;
-	} ;	// 0x0
+	};	// 0x0
 
 	/* SYS_PWMSS_SYSCONFIG register bit field */
 	union {
@@ -59,7 +59,7 @@ typedef struct{
 			unsigned IDLEMODE		: 2;		//3:2
 			unsigned rsvd4			: 28;		//31:4
 		} SYSCONFIG_bit;
-	} ;	// 0x4
+	};	// 0x4
 
 	/* SYS_PWMSS_CLKCONFIG register bit field */
 	union {
@@ -76,7 +76,7 @@ typedef struct{
 			unsigned EPWMCLKSTOP_REQ	: 1;		//9
 			unsigned rsvd10				: 22;		//31:10
 		} CLKCONFIG_bit;
-	} ;	// 0x8
+	};	// 0x8
 
 	/* SYS_PWMSS_CLKSTATUS register bit field */
 	union {
@@ -93,7 +93,7 @@ typedef struct{
 			unsigned EPWMCLKSTOP_ACK	: 1;		//9
 			unsigned rsvd10				: 22;		//31:10
 		} CLKSTATUS_bit;
-	} ;	// 0xC
+	};	// 0xC
 
 	uint32_t rsvd10[60];		// 0x10 - 0xFC
 
@@ -107,7 +107,7 @@ typedef struct{
 		volatile struct {
 			unsigned TSCNT	: 32;		//31:0
 		} ECAP_TSCNT_bit;
-	} ;	// 0x100
+	};	// 0x100
 
 	/* SYS_PWMSS_ECAP_CNTPHS register bit field */
 	union {
@@ -116,7 +116,7 @@ typedef struct{
 		volatile struct {
 			unsigned CNTPHS	: 32;		//31:0
 		} ECAP_CNTPHS_bit;
-	} ;	// 0x104
+	};	// 0x104
 
 	/* SYS_PWMSS_ECAP_CAP1 register bit field */
 	union {
@@ -125,7 +125,7 @@ typedef struct{
 		volatile struct {
 			unsigned CAP1	: 32;		//31:0
 		} ECAP_CAP1_bit;
-	} ;	// 0x108
+	};	// 0x108
 
 	/* SYS_PWMSS_ECAP_CAP2 register bit field */
 	union {
@@ -134,7 +134,7 @@ typedef struct{
 		volatile struct {
 			unsigned CAP2	: 32;		//31:0
 		} ECAP_CAP2_bit;
-	} ;	// 0x10C
+	};	// 0x10C
 
 	/* SYS_PWMSS_ECAP_CAP3 register bit field */
 	union {
@@ -143,7 +143,7 @@ typedef struct{
 		volatile struct {
 			unsigned CAP3	: 32;		//31:0
 		} ECAP_CAP3_bit;
-	} ;	// 0x110
+	};	// 0x110
 
 	/* SYS_PWMSS_ECAP_CAP4 register bit field */
 	union {
@@ -152,7 +152,7 @@ typedef struct{
 		volatile struct {
 			unsigned CAP4	: 32;		//31:0
 		} ECAP_CAP4_bit;
-	} ;	// 0x114
+	};	// 0x114
 
 	uint32_t rsvd118[4];		// 0x118 - 0x124
 
@@ -183,7 +183,7 @@ typedef struct{
 		volatile struct {
 			unsigned REVISION		: 32;		//31:0
 		} ECAP_PID_bit;
-	} ;	// 0x15C
+	};	// 0x15C
 
 	uint32_t rsvd160[8];		// 0x160 - 0x17C
 
@@ -197,7 +197,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSCNT	: 32;		//31:0
 		} EQEP_QPOSCNT_bit;
-	} ;	// 0x180
+	};	// 0x180
 
 	/* SYS_PWMSS_EQEP_QPOSINIT register bit field */
 	union {
@@ -206,7 +206,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSINIT	: 32;		//31:0
 		} EQEP_QPOSINIT_bit;
-	} ;	// 0x184
+	};	// 0x184
 
 	/* SYS_PWMSS_EQEP_QPOSMAX register bit field */
 	union {
@@ -215,7 +215,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSMAX	: 32;		//31:0
 		} EQEP_QPOSMAX_bit;
-	} ;	// 0x188
+	};	// 0x188
 
 	/* SYS_PWMSS_EQEP_QPOSCMP register bit field */
 	union {
@@ -224,7 +224,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSCMP	: 32;		//31:0
 		} EQEP_QPOSCMP_bit;
-	} ;	// 0x18C
+	};	// 0x18C
 
 	/* SYS_PWMSS_EQEP_QPOSILAT register bit field */
 	union {
@@ -233,7 +233,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSILAT	: 32;		//31:0
 		} EQEP_QPOSILAT_bit;
-	} ;	// 0x190
+	};	// 0x190
 
 	/* SYS_PWMSS_EQEP_QPOSSLAT register bit field */
 	union {
@@ -242,7 +242,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSSLAT	: 32;		//31:0
 		} EQEP_QPOSSLAT_bit;
-	} ;	// 0x194
+	};	// 0x194
 
 	/* SYS_PWMSS_EQEP_QPOSLAT register bit field */
 	union {
@@ -251,7 +251,7 @@ typedef struct{
 		volatile struct {
 			unsigned QPOSLAT	: 32;		//31:0
 		} EQEP_QPOSLAT_bit;
-	} ;	// 0x198
+	};	// 0x198
 
 	/* SYS_PWMSS_EQEP_QUTMR register bit field */
 	union {
@@ -260,7 +260,7 @@ typedef struct{
 		volatile struct {
 			unsigned QUTMR	: 32;		//31:0
 		} EQEP_QUTMR_bit;
-	} ;	// 0x19C
+	};	// 0x19C
 
 	/* SYS_PWMSS_EQEP_QUPRD register bit field */
 	union {
@@ -269,7 +269,7 @@ typedef struct{
 		volatile struct {
 			unsigned QUPRD	: 32;		//31:0
 		} EQEP_QUPRD_bit;
-	} ;	// 0x1A0
+	};	// 0x1A0
 
 	/* SYS_PWMSS_EQEP_QWDTMR register bit field */
 	volatile uint16_t EQEP_QWDTMR;	// 0x1A4
@@ -326,7 +326,7 @@ typedef struct{
 		volatile struct {
 			unsigned REVISION	: 32;		//31:0
 		} EQEP_REVID_bit;
-	} ;	// 0x1DC
+	};	// 0x1DC
 
 	uint32_t rsvd1E0[8];		// 0x1E0 - 0x1FC
 

@@ -42,7 +42,7 @@ printEnd:
 	@echo ''
 
 # Invokes the archiver to make the .lib file
-$(TARGET): $(OBJECTS) 
+$(TARGET): $(OBJECTS)
 	@echo ''
 	@echo 'Building target: $@'
 	@echo 'Invoking: PRU Archiver'
