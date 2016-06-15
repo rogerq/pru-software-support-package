@@ -1,4 +1,4 @@
-Programmable Real-time Unit (PRU) Software Support Package release 4.0
+Programmable Real-time Unit (PRU) Software Support Package release 5.0
 
 
 DESCRIPTION
