@@ -59,6 +59,26 @@ struct pru_rpmsg_ns_msg {
 	uint32_t	flags;
 };
 
+int16_t pru_rpmsg_init(
+	struct pru_rpmsg_transport	*transport,
+	struct fw_rsc_vdev_vring 	*vring0,
+	struct fw_rsc_vdev_vring 	*vring1,
+	uint32_t 			to_arm_event,
+	uint32_t 			from_arm_event
+)
+{
+	if (to_arm_event > MAX_VALID_EVENT || to_arm_event < MIN_VALID_EVENT)
+		return PRU_RPMSG_INVALID_EVENT;
+
+	if (from_arm_event > MAX_VALID_EVENT || from_arm_event < MIN_VALID_EVENT)
+		return PRU_RPMSG_INVALID_EVENT;
+
+	pru_virtqueue_init(&transport->virtqueue0, vring0, to_arm_event, from_arm_event);
+	pru_virtqueue_init(&transport->virtqueue1, vring1, to_arm_event, from_arm_event);
+
+	return PRU_RPMSG_SUCCESS;
+}
+
 int16_t pru_rpmsg_send(
     struct pru_rpmsg_transport	*transport,
     uint32_t					src,

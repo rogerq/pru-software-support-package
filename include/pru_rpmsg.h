@@ -60,6 +60,7 @@
 #define _PRU_RPMSG_H_
 
 #include <pru_virtqueue.h>
+#include <pru_virtio_ring.h>
 
 /* Return value indicating no kick was sent */
 #define PRU_RPMSG_NO_KICK				1
@@ -71,6 +72,13 @@
 #define PRU_RPMSG_BUF_TOO_SMALL			-2
 /* Return value indicating that an invalid head index was given */
 #define PRU_RPMSG_INVALID_HEAD			-3
+/* Return value indication that an invalid event number was given */
+#define PRU_RPMSG_INVALID_EVENT			-4
+
+/* Max PRU-ICSS system event number for pru_mst_intr */
+#define MAX_VALID_EVENT				31
+/* Min PRU-ICSS system event number for pru_mst_intr */
+#define MIN_VALID_EVENT				16
 
 /* The maximum size of the channel name and description */
 #define RPMSG_NAME_SIZE 32
@@ -101,8 +109,45 @@ struct pru_rpmsg_transport {
 };
 
 /**
-* Summary		:	pru_rpmsg_receive receives a message, if available, from
-*					the ARM host.
+ * Summary	:	pru_rpmsg_init initializes the underlying transport layer
+ *			data structures.
+ *
+ * Parameters	:	transport: a pointer to the transport data structure that
+ *				   contains the underlying data structures to be
+ *				   initialized
+ *			vring0: a pointer to vring0 which is provided by the ARM
+ *				core through the resource table
+ *			vring1: a pointer to vring1 which is provided by the ARM
+ *				core through the resource table
+ *			to_arm_event: the number of the PRU-ICSS system event
+ *				      that is specified in the device tree that
+ *				      is used to 'kick' the ARM core
+ *			from_arm_event: the number of the PRU-ICSS system event
+ *					that is specified in the device tree
+ *					that is used to receive 'kicks' from the
+ *					ARM core
+ *
+ * Description	:	pru_rpmsg_init takes the vrings and the events provided
+ *			through the resource table and initializes the transport
+ *			layer. Once this function call is successful RPMsg
+ *			channels can be created and used.
+ *
+ * Return Value :	Returns PRU_RPMSG_INVALID_EVENT if the values provided
+ *			in to_arm_event or from_arm_event are outside of the
+ *			allowable range of events. Returns PRU_RPMSG_SUCCESS
+ *			if the initialization is successful.
+ */
+int16_t pru_rpmsg_init(
+	struct pru_rpmsg_transport	*transport,
+	struct fw_rsc_vdev_vring 	*vring0,
+	struct fw_rsc_vdev_vring 	*vring1,
+	uint32_t 			to_arm_event,
+	uint32_t 			from_arm_event
+);
+
+/**
+* Summary	:	pru_rpmsg_receive receives a message, if available, from
+*			the ARM host.
 *
 * Parameters	:	transport: a pointer to the transport layer from which the
 *							   message should be received

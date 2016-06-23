@@ -36,7 +36,6 @@
 #include <pru_cfg.h>
 #include <pru_intc.h>
 #include <rsc_types.h>
-#include <pru_virtqueue.h>
 #include <pru_rpmsg.h>
 #include "resource_table_1.h"
 
@@ -87,12 +86,9 @@ void main(void)
 	status = &resourceTable.rpmsg_vdev.status;
 	while (!(*status & VIRTIO_CONFIG_S_DRIVER_OK));
 
-	/* Initialize pru_virtqueue corresponding to vring0 (PRU to ARM Host direction) */
-	pru_virtqueue_init(&transport.virtqueue0, &resourceTable.rpmsg_vring0, TO_ARM_HOST, FROM_ARM_HOST);
+	/* Initialize the RPMsg transport structure */
+	pru_rpmsg_init(&transport, &resourceTable.rpmsg_vring0, &resourceTable.rpmsg_vring1, TO_ARM_HOST, FROM_ARM_HOST);
 
-	/* Initialize pru_virtqueue corresponding to vring1 (ARM Host to PRU direction) */
-	pru_virtqueue_init(&transport.virtqueue1, &resourceTable.rpmsg_vring1, TO_ARM_HOST, FROM_ARM_HOST);
-	
 	/* Create the RPMsg channel between the PRU and ARM user space using the transport structure. */
 	while (pru_rpmsg_channel(RPMSG_NS_CREATE, &transport, CHAN_NAME, CHAN_DESC, CHAN_PORT) != PRU_RPMSG_SUCCESS);
 	while (1) {
