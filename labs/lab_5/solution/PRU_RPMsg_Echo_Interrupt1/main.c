@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ * Copyright (C) 2016 Texas Instruments Incorporated - http://www.ti.com/
  *
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,13 +42,13 @@
 volatile register uint32_t __R31;
 
 /* Host-1 Interrupt sets bit 31 in register R31 */
-#define HOST_INT				((uint32_t) 1 << 31)	
+#define HOST_INT			((uint32_t) 1 << 31)	
 
 /* The PRU-ICSS system events used for RPMsg are defined in the Linux device tree
  * PRU0 uses system event 16 (To ARM) and 17 (From ARM)
  * PRU1 uses system event 18 (To ARM) and 19 (From ARM)
  */
-#define TO_ARM_HOST				18	
+#define TO_ARM_HOST			18	
 #define FROM_ARM_HOST			19
 
 /*
@@ -58,11 +58,11 @@ volatile register uint32_t __R31;
  * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
  * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
  */
-#define CHAN_NAME					"rpmsg-client-sample"
-//#define CHAN_NAME					"rpmsg-pru"
+#define CHAN_NAME			"rpmsg-client-sample"
+//#define CHAN_NAME			"rpmsg-pru"
 
-#define CHAN_DESC					"Channel 31"
-#define CHAN_PORT					31
+#define CHAN_DESC			"Channel 31"
+#define CHAN_PORT			31
 
 /*
  * Used to make sure the Linux drivers are ready for RPMsg communication

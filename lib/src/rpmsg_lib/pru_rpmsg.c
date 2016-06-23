@@ -49,7 +49,7 @@ struct pru_rpmsg_hdr {
 	uint32_t	reserved;
 	uint16_t	len;
 	uint16_t	flags;
-	uint8_t	data[0];
+	uint8_t		data[0];
 };
 
 struct pru_rpmsg_ns_msg {
@@ -81,15 +81,15 @@ int16_t pru_rpmsg_init(
 
 int16_t pru_rpmsg_send(
     struct pru_rpmsg_transport	*transport,
-    uint32_t					src,
-    uint32_t					dst,
-    void						*data,
-    uint16_t					len
+    uint32_t			src,
+    uint32_t			dst,
+    void			*data,
+    uint16_t			len
 )
 {
 	struct pru_rpmsg_hdr	*msg;
-	uint32_t				msg_len;
-	int16_t				head;
+	uint32_t		msg_len;
+	int16_t			head;
 	struct pru_virtqueue	*virtqueue;
 
 	/*
@@ -127,15 +127,15 @@ int16_t pru_rpmsg_send(
 
 int16_t pru_rpmsg_receive(
     struct pru_rpmsg_transport	*transport,
-    uint16_t					*src,
-    uint16_t					*dst,
-    void						*data,
-    uint16_t					*len
+    uint16_t			*src,
+    uint16_t			*dst,
+    void			*data,
+    uint16_t			*len
 )
 {
-	int16_t				head;
+	int16_t			head;
 	struct pru_rpmsg_hdr	*msg;
-	uint32_t				msg_len;
+	uint32_t		msg_len;
 	struct pru_virtqueue	*virtqueue;
 
 	virtqueue = &transport->virtqueue1;
@@ -166,13 +166,13 @@ int16_t pru_rpmsg_receive(
 int16_t pru_rpmsg_channel(
     enum pru_rpmsg_ns_flags	flags,
     struct pru_rpmsg_transport	*transport,
-    char						*name,
-    char						*desc,
-    int32_t					port
+    char			*name,
+    char			*desc,
+    int32_t			port
 )
 {
 	struct pru_rpmsg_ns_msg	ns_msg;
-	uint8_t					i;
+	uint8_t			i;
 
 	for (i = 0; i < RPMSG_NAME_SIZE; i++) {
 		ns_msg.name[i] = name[i];

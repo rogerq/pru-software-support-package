@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ * Copyright (C) 2016 Texas Instruments Incorporated - http://www.ti.com/
  *
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,21 +49,21 @@ volatile register uint32_t __R31;
  * PRU0 uses system event 16 (To ARM) and 17 (From ARM)
  * PRU1 uses system event 18 (To ARM) and 19 (From ARM)
  */
-#define TO_ARM_HOST					16	
-#define FROM_ARM_HOST				17
+#define TO_ARM_HOST			16	
+#define FROM_ARM_HOST			17
 
-#define BLUE						0x1
-#define GREEN						0x2
-#define ORANGE						0x4
-#define RED							0x8
+#define BLUE				0x1
+#define GREEN				0x2
+#define ORANGE				0x4
+#define RED				0x8
 
 /*
 * Using the name 'rpmsg-pru' will probe the rpmsg_pru driver found
 * at linux-x.y.z/drivers/rpmsg/rpmsg_pru.c
 */
-#define CHAN_NAME					"rpmsg-pru"
-#define CHAN_DESC					"Channel 30"
-#define CHAN_PORT					30
+#define CHAN_NAME			"rpmsg-pru"
+#define CHAN_DESC			"Channel 30"
+#define CHAN_PORT			30
 
 /*
  * Used to make sure the Linux drivers are ready for RPMsg communication
