@@ -33,8 +33,6 @@ WHAT EXAMPLES ARE INCLUDED?
 	PRU_PRUtoARM_Interrupt
 	PRU_RPMsg_Echo_Interrupt0
 	PRU_RPMsg_Echo_Interrupt1
-	PRU_RPMsg_Echo_Polling0
-	PRU_RPMsg_Echo_Polling1
 
 
 

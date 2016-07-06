@@ -35,10 +35,6 @@ WHAT EXAMPLES ARE INCLUDED?
 	PRU_RPMsg_Echo_Interrupt0_1
 	PRU_RPMsg_Echo_Interrupt1_0
 	PRU_RPMsg_Echo_Interrupt1_1
-	PRU_RPMsg_Echo_Polling0_0
-	PRU_RPMsg_Echo_Polling0_1
-	PRU_RPMsg_Echo_Polling1_0
-	PRU_RPMsg_Echo_Polling1_1
 
 PATCHES
 
