@@ -65,6 +65,12 @@ volatile register uint32_t __R31;
  */
 #define VIRTIO_CONFIG_S_DRIVER_OK	4
 
+/*
+ * The SYSCFG register is reserved for PRUSS0. PRUSS0 must use the
+ * OCP master port of PRUSS1 in order to read or write external
+ * memories. The following definitions allow PRUSS0 to write to
+ * PRUSS1's SYSCFG register.
+ */
 #define PRUSS1_CFG_SYSCFG		*(volatile unsigned int *) 0x66004
 #define STANDY_INIT_BIT			(1 << 4)
 
@@ -79,8 +85,7 @@ void main(void)
 	uint16_t src, dst, len;
 	volatile uint8_t *status;
 
-	/* allow OCP master port access by the PRU so the PRU can read external memories */
-	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
+	/* Enable the OCP master port of PRUSS1 to read external memories */
 	PRUSS1_CFG_SYSCFG &= ~(STANDY_INIT_BIT);
 
 	/* clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
