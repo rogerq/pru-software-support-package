@@ -75,7 +75,7 @@ void main(void)
 	uint16_t src, dst, len;
 	volatile uint8_t *status;
 
-	/* clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
+	/* Clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
 	CT_INTC.SICR_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
 
 	/* Make sure the Linux drivers are ready for RPMsg communication */

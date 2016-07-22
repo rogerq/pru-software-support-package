@@ -88,7 +88,7 @@ void main(void)
 	/* Enable the OCP master port of PRUSS1 to read external memories */
 	PRUSS1_CFG_SYSCFG &= ~(STANDY_INIT_BIT);
 
-	/* clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
+	/* Clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
 	CT_INTC.SICR_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
 
 	/* Make sure the Linux drivers are ready for RPMsg communication */

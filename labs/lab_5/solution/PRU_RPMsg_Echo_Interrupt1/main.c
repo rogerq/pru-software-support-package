@@ -81,10 +81,10 @@ void main(void)
 	uint16_t src, dst, len;
 	volatile uint8_t *status;
 
-	/* allow OCP master port access by the PRU so the PRU can read external memories */
+	/* Allow OCP master port access by the PRU so the PRU can read external memories */
 	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
 
-	/* clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
+	/* Clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
 	CT_INTC.SICR_bit.STS_CLR_IDX = FROM_ARM_HOST;
 
 	/* Make sure the Linux drivers are ready for RPMsg communication */
