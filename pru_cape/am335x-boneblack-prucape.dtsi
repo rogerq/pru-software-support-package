@@ -38,8 +38,18 @@
 	};
 };
 
+&pruss {
+        pinctrl-names = "default";
+	pinctrl-0 = <&pru_cape_bone_pins>;
+};
+
+/* Disable all HDMI related nodes due to pin mux conflicts with PRU Cape */
+&tda19988 {
+	status = "disabled";
+};
+
 &lcdc {
-	status = "disabled";  		/* Disable HDMI due to pin mux conflicts with PRU Cape */
+	status = "disabled";
 };
 
 /{
@@ -56,9 +66,4 @@
 	sound {
 		status = "disabled";
 	};
-};
-
-&pruss {
-        pinctrl-names = "default";
-	pinctrl-0 = <&pru_cape_bone_pins>;
 };
