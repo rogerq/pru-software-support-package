@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2011 Texas Instruments, Inc.
+ * Copyright(c) 2011-2018 Texas Instruments, Inc.
  * Copyright(c) 2011 Google, Inc.
  * All rights reserved.
  *
@@ -45,7 +45,9 @@
 #define TYPE_DEVMEM		1
 #define TYPE_TRACE		2
 #define TYPE_VDEV		3
-#define TYPE_INTMEM		4
+#define TYPE_PRELOAD_VENDOR	4
+#define TYPE_POSTLOAD_VENDOR	5
+/* deprecated, define only for backward compatibility */
 #define TYPE_CUSTOM		5
 
 union fw_custom {
@@ -323,23 +325,30 @@ struct fw_rsc_intmem {
 
 /**
  * struct fw_rsc_custom - used for custom resource types
- * @type: type of resource
- * @sub_type: type of custom resource
+ * @type: type of resource, value should be one of vendor resource types
+ * @u: union identifying the type of vendor/custom resource
  * @rsc_size: size of @rsc (in bytes)
  * @rsc: the custom resource
  *
  * This resource allows for custom resources specific to an architecture or
  * device.
  *
- * @type is the generic CUSTOM type, @sub_type is the specific custom resource,
- * @rsc_size is the length of @rsc (in bytes), and @rsc is the actual
- * parameters. These will be interpreted by the host-side device-specific
+ * @type is one of the generic VENDOR types, the @u is an union of the
+ * overall @sub_type field which is made up of the custom resource version
+ * number in the upper 16-bits and the custom resource type itself in the
+ * lower 16-bits. @rsc_size is the length of @rsc (in bytes), and @rsc is the
+ * actual parameters. These will be interpreted by the host-side device-specific
  * driver.
  */
-
 struct fw_rsc_custom {
 	uint32_t type;
-	uint32_t sub_type;
+	union {
+		uint32_t sub_type;
+		struct {
+			uint16_t type;
+			uint16_t ver;
+		} st;
+	} u;
 	uint32_t rsc_size;
 	union fw_custom rsc;
 };
