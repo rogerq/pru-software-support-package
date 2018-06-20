@@ -59,7 +59,7 @@ struct ch_map {
 
 /**
  * struct fw_rsc_custom_ints - custom resource to define PRU interrupts
- * @version: revision number of the custom ints type
+ * @reserved: reserved field, value should be 0 for backward compatibility
  * @channel_host: assignment of PRU channels to hosts
  * @num_evts: device address of INTC
  * @event_channel: mapping of sysevts to channels
@@ -74,7 +74,7 @@ struct ch_map {
  * specifies to which host, if any, a channel is mapped.
  */
 struct fw_rsc_custom_ints {
-	uint16_t version;
+	uint16_t reserved;
 	uint8_t channel_host[10];
 	uint32_t num_evts;
 	struct ch_map *event_channel;
