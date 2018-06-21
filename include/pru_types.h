@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
- *
+ * Copyright (C) 2015-2018 Texas Instruments Incorporated - http://www.ti.com/
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -36,6 +35,9 @@
 
 /* Custom Resource info: Must match drivers/remoteproc/pru_rproc.h */
 #define TYPE_PRU_INTS		1
+
+#define PRU_INTS_VER0		(0 << 16)
+#define PRU_INTS_VER1		(1 << 16)
 
 /**
  * struct ch_map - sysevts-to-channel mapping
@@ -76,6 +78,32 @@ struct ch_map {
 struct fw_rsc_custom_ints {
 	uint16_t reserved;
 	uint8_t channel_host[10];
+	uint32_t num_evts;
+	struct ch_map *event_channel;
+};
+
+/**
+ * struct fw_rsc_custom_ints_k3 - custom resource to define PRU/RTU interrupts
+ * @channel_host: assignment of PRU interrupt channels to host interrupts
+ * @num_evts: number of mappings defined in the @event_channel map
+ * @event_channel: PRU device address of pointer to array of events to channel
+ *                 mappings
+ *
+ * PRU system events are mapped to channels, and these channels are mapped
+ * to host interrupts. Events can be mapped to channels in a one-to-one or
+ * many-to-one ratio (multiple events per channel), and channels can be
+ * mapped to host interrupts in a one-to-one or many-to-one ratio (multiple
+ * channels per interrupt).
+ *
+ * This structure needs to be used using custom interrupt resource version
+ * number 1. This structure is to be used with firmwares dealing with the
+ * additional host interrupts on ICSSG IP instances. The firmwares for PRU
+ * cores on ICSSG can get away with the standard version (if not dealing with
+ * Task Manager), but the firmwares for RTU cores would definitely need this
+ * for mapping to the corresponding higher host interrupts.
+ */
+struct fw_rsc_custom_ints_k3 {
+	uint8_t channel_host[20];
 	uint32_t num_evts;
 	struct ch_map *event_channel;
 };

@@ -324,6 +324,33 @@ struct fw_rsc_intmem {
 };
 
 /**
+ * struct fw_rsc_custom_hdr - header to be used with custom resource types
+ * @type: type of custom resource, value should be one of vendor resource types
+ * @u: union identifying the vendor/custom resource sub-type
+ * @sub_type: type to identify the custom resource
+ * @rsc_size: size of the specific custom resource structure (in bytes)
+ *
+ * This is a header structure to be used before any specific custom resource
+ * type. @type is one of the generic VENDOR types, the @u is an union of the
+ * overall @sub_type field which is made up of the custom resource version
+ * number in the upper 16-bits and the custom resource sub-type itself in the
+ * lower 16-bits. @rsc_size is the length of the actual custom resource sub-type
+ * (in bytes). These will be interpreted by the host-side device-specific
+ * driver.
+ */
+struct fw_rsc_custom_hdr {
+	uint32_t type;
+	union {
+		uint32_t sub_type;
+		struct {
+			uint16_t type;
+			uint16_t ver;
+		} st;
+	} u;
+	uint32_t rsc_size;
+};
+
+/**
  * struct fw_rsc_custom - used for custom resource types
  * @type: type of resource, value should be one of vendor resource types
  * @u: union identifying the type of vendor/custom resource
