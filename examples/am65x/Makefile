@@ -1,4 +1,5 @@
-SUBDIRS=am335x am437x am572x k2g am65x
+SUBDIRS=PRU_RPMsg_Echo_Interrupt0 PRU_RPMsg_Echo_Interrupt1 \
+	RTU_RPMsg_Echo_Interrupt0 RTU_RPMsg_Echo_Interrupt1
 
 all: $(SUBDIRS)
 
@@ -9,6 +10,3 @@ clean:
 	@for d in $(SUBDIRS); do (cd $$d; $(MAKE) clean ); done
 
 .PHONY: all clean $(SUBDIRS)
-
-
-
