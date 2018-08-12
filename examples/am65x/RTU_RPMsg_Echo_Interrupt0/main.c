@@ -80,7 +80,7 @@ void main(void)
 	volatile uint8_t *status;
 
 	/* Clear the status of the PRU-ICSS system event that the ARM will use to 'kick' us */
-	CT_INTC.SICR_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
+	CT_INTC.STATUS_CLR_INDEX_REG_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
 
 	/* Make sure the Linux drivers are ready for RPMsg communication */
 	status = &resourceTable.rpmsg_vdev.status;
@@ -95,7 +95,7 @@ void main(void)
 		/* Check bit 30 of register R31 to see if the ARM has kicked us */
 		if (__R31 & HOST_INT) {
 			/* Clear the event status */
-			CT_INTC.SICR_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
+			CT_INTC.STATUS_CLR_INDEX_REG_bit.STATUS_CLR_INDEX = FROM_ARM_HOST;
 			/* Receive all available messages, multiple messages can be sent per kick */
 			while (pru_rpmsg_receive(&transport, &src, &dst, payload, &len) == PRU_RPMSG_SUCCESS) {
 				/* Echo the message back to the same address from which we just received */
