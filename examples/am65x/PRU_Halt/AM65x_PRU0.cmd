@@ -53,7 +53,7 @@ MEMORY
 	 * the second page for RTU1 */
 	PRU_DMEM_1_0	: org = 0x00002000 len = 0x00001000	CREGISTER=25
 	/* NOTE: Customized to reserve the second 4K of ICSS Data RAMs 0 and 1 so
-	   as not to conflict with corresponding PRU core usage */
+	   as not to conflict with corresponding RTU core usage */
 	RTU_DMEM_0_1	: org = 0x00001000 len = 0x00001000
 	RTU_DMEM_1_0	: org = 0x00003000 len = 0x00001000
 
@@ -92,18 +92,20 @@ MEMORY
 	MII_RT_CFG	: org = 0x00032000 len = 0x0000024C	CREGISTER=27
 
 	/* External Regions */
-	/* Random length of 0x1000 assigned to all of the below regions */
-	RSVD15		: org = 0x60000000 len = 0x00001000	CREGISTER=15
-	RSVD16		: org = 0x70000000 len = 0x00001000	CREGISTER=16
-	RSVD17		: org = 0x80000000 len = 0x00001000	CREGISTER=17
-	RSVD18		: org = 0x90000000 len = 0x00001000	CREGISTER=18
-	RSVD19		: org = 0xA0000000 len = 0x00001000	CREGISTER=19
-	RSVD20		: org = 0xB0000000 len = 0x00001000	CREGISTER=20
-	RSVD23		: org = 0xC0000000 len = 0x00001000	CREGISTER=23
-	/* Random lengths assigned for the programmable C29, C30 & C31 */
-	RSVD29		: org = 0xD0000000 len = 0x00010000	CREGISTER=29
-	RSVD30		: org = 0xE0000000 len = 0x00010000	CREGISTER=30
-	RSVD31		: org = 0xF0000000 len = 0x00010000	CREGISTER=31
+	/* FIXME: Random length of 0x1000 assigned to the below regions */
+	TIMER_MANAGER	: org = 0x60000000 len = 0x00001000	CREGISTER=15
+	RING_ACCELERATOR: org = 0x70000000 len = 0x00001000	CREGISTER=16
+	INTERRUPT_AGGREGATOR: org = 0x80000000 len = 0x00001000	CREGISTER=17
+	GPMC		: org = 0x90000000 len = 0x00001000	CREGISTER=18
+	PCIE		: org = 0xA0000000 len = 0x00001000	CREGISTER=19
+	UDMA_P		: org = 0xB0000000 len = 0x00001000	CREGISTER=20
+	ADC		: org = 0xC0000000 len = 0x00001000	CREGISTER=23
+
+	/* External Memory */
+	/* Random length of 0x10000 (max len value) assigned to all regions */
+	DDR		: org = 0xD0000000 len = 0x00010000	CREGISTER=29
+	MSMC		: org = 0xE0000000 len = 0x00010000	CREGISTER=30
+	R5_RAM		: org = 0xF0000000 len = 0x00010000	CREGISTER=31
 }
 
 /* Specify the sections allocation into memory */
