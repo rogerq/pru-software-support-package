@@ -46,9 +46,8 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define MAX_BUFFER_SIZE			512
-#define RPMSG_BUF_HEADER_SIZE           16
-char payload[RPMSG_BUF_SIZE - RPMSG_BUF_HEADER_SIZE];
+#define RPMSG_MESSAGE_SIZE           496
+char payload[RPMSG_MESSAGE_SIZE];
 
 /* shared_struct is used to pass data between ARM and PRU */
 typedef struct shared_struct{

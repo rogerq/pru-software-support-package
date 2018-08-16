@@ -75,8 +75,7 @@ volatile register uint32_t __R31;
 #define STANDY_INIT_BIT			(1 << 4)
 
 
-#define RPMSG_BUF_HEADER_SIZE           16
-uint8_t payload[RPMSG_BUF_SIZE - RPMSG_BUF_HEADER_SIZE];
+uint8_t payload[RPMSG_MESSAGE_SIZE];
 
 /*
  * main.c

@@ -72,8 +72,7 @@ volatile register uint32_t __R31;
 #define CM_WKUP_ADC_TSC_CLKCTRL  (*((volatile unsigned int *)0x44E004BC))
 
 /* payload receives RPMsg message */
-#define RPMSG_BUF_HEADER_SIZE           16
-char payload[RPMSG_BUF_SIZE - RPMSG_BUF_HEADER_SIZE];
+char payload[RPMSG_MESSAGE_SIZE];
 
 /* shared_struct is used to pass data between ARM and PRU */
 typedef struct shared_struct{

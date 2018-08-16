@@ -68,7 +68,7 @@ volatile register uint32_t __R31;
  */
 #define VIRTIO_CONFIG_S_DRIVER_OK	4
 
-uint8_t payload[RPMSG_BUF_SIZE];
+uint8_t payload[RPMSG_MESSAGE_SIZE];
 
 /*
  * main.c
