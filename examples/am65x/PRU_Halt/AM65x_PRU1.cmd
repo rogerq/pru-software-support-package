@@ -68,17 +68,17 @@ MEMORY
 	 * Register #6 that starts at 0x200 offset within INTC */
 	PRU_INTC	: org = 0x00020000 len = 0x00001504	CREGISTER=0
 	PRU_IEP1	: org = 0x0002F000 len = 0x00000100	CREGISTER=1
-	PRU_IEP1_EXT	: org = 0x0002F100 len = 0x0000021C	CREGISTER=2
+	PRU_IEP1_0x100	: org = 0x0002F100 len = 0x0000021C	CREGISTER=2
 	PRU_ECAP	: org = 0x00030000 len = 0x00000060	CREGISTER=3
 	PRU_CFG		: org = 0x00026000 len = 0x00000100	CREGISTER=4
-	PRU_CFG_EXT	: org = 0x00026100 len = 0x00000098	CREGISTER=5
+	PRU_CFG_0x100	: org = 0x00026100 len = 0x00000098	CREGISTER=5
 	/* XXX: This value is part of INTC space, and is therefore commented
 	 * out as it conflicts with PRU_INTC size above. Using this requires
 	 * splitting up the pruIntc structure and CT_INTC variable from
 	 * pru_intc.h */
-	/*PRU_INTC_EXT	: org = 0x00040200 len = 0x00001304	CREGISTER=6*/
+	/*PRU_INTC_0x200: org = 0x00040200 len = 0x00001304	CREGISTER=6*/
 	PRU_UART	: org = 0x00028000 len = 0x00000038	CREGISTER=7
-	PRU_IEP0_EXT	: org = 0x0002E100 len = 0x0000021C	CREGISTER=8
+	PRU_IEP0_0x100	: org = 0x0002E100 len = 0x0000021C	CREGISTER=8
 	MII_G_RT	: org = 0x00033000 len = 0x00000C18	CREGISTER=9
 	TM_CFG_PRU1	: org = 0x0002A200 len = 0x0000004C	CREGISTER=10
 	PRU1_CTRL	: org = 0x00024000 len = 0x00000088	CREGISTER=11
@@ -89,23 +89,21 @@ MEMORY
 	MII_MDIO	: org = 0x00032400 len = 0x00000090	CREGISTER=21
 	PRU_RTU_RAT1	: org = 0x00009000 len = 0x00000854	CREGISTER=22
 	PRU_IEP0	: org = 0x0002E000 len = 0x00000100	CREGISTER=26
-	MII_RT_CFG	: org = 0x00032000 len = 0x0000024C	CREGISTER=27
+	MII_R		: org = 0x00032000 len = 0x0000024C	CREGISTER=27
 
 	/* External Regions */
-	/* FIXME: Random length of 0x1000 assigned to the below regions */
-	TIMER_MANAGER	: org = 0x60000000 len = 0x00001000	CREGISTER=15
-	RING_ACCELERATOR: org = 0x70000000 len = 0x00001000	CREGISTER=16
-	INTERRUPT_AGGREGATOR: org = 0x80000000 len = 0x00001000	CREGISTER=17
-	GPMC		: org = 0x90000000 len = 0x00001000	CREGISTER=18
-	PCIE		: org = 0xA0000000 len = 0x00001000	CREGISTER=19
-	UDMA_P		: org = 0xB0000000 len = 0x00001000	CREGISTER=20
-	ADC		: org = 0xC0000000 len = 0x00001000	CREGISTER=23
-
-	/* External Memory */
-	/* Random length of 0x10000 (max len value) assigned to all regions */
-	DDR		: org = 0xD0000000 len = 0x00010000	CREGISTER=29
-	MSMC		: org = 0xE0000000 len = 0x00010000	CREGISTER=30
-	R5_RAM		: org = 0xF0000000 len = 0x00010000	CREGISTER=31
+	/* Random length 0x1000 assigned to the below regions */
+	RSVD15		: org = 0x60000000 len = 0x00001000	CREGISTER=15
+	RSVD16		: org = 0x70000000 len = 0x00001000	CREGISTER=16
+	RSVD17		: org = 0x80000000 len = 0x00001000	CREGISTER=17
+	RSVD18		: org = 0x90000000 len = 0x00001000	CREGISTER=18
+	RSVD19		: org = 0xA0000000 len = 0x00001000	CREGISTER=19
+	RSVD20		: org = 0xB0000000 len = 0x00001000	CREGISTER=20
+	RSVD23		: org = 0xC0000000 len = 0x00001000	CREGISTER=23
+	/* Random length 0x10000 (max len value) assigned to programmable C29-31*/
+	RSVD29		: org = 0xD0000000 len = 0x00010000	CREGISTER=29
+	RSVD30		: org = 0xE0000000 len = 0x00010000	CREGISTER=30
+	RSVD31		: org = 0xF0000000 len = 0x00010000	CREGISTER=31
 }
 
 /* Specify the sections allocation into memory */
