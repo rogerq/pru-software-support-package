@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com/
+ * Copyright (C) 2015-2018 Texas Instruments Incorporated - http://www.ti.com/
  *
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,9 +85,9 @@ struct my_resource_table am335x_pru_remoteproc_ResourceTable = {
 	},
 
 	{
-		TYPE_CUSTOM, TYPE_PRU_INTS,
+		TYPE_POSTLOAD_VENDOR, PRU_INTS_VER0 | TYPE_PRU_INTS,
 		sizeof(struct fw_rsc_custom_ints),
-		{ /* PRU_INTS version */
+		{
 			0x0000,
 			/* Channel-to-host mapping, 255 for unused */
 			HOST_UNUSED, 1, HOST_UNUSED, HOST_UNUSED, HOST_UNUSED,

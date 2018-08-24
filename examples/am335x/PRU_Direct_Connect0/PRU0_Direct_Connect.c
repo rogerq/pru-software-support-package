@@ -33,7 +33,7 @@
 
 #include <stdint.h>
 #include <pru_intc.h>
-#include "rsc_table_pru0.h"
+#include "resource_table_0.h"
 
 #define PRU0
 

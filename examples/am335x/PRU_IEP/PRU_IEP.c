@@ -35,7 +35,7 @@
 #include <pru_cfg.h>
 #include <pru_intc.h>
 #include <pru_iep.h>
-#include "rsc_table_pru.h"
+#include "resource_table.h"
 
 volatile register uint32_t __R30;
 volatile register uint32_t __R31;
