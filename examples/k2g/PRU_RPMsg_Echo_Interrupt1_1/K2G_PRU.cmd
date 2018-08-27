@@ -1,10 +1,10 @@
 /****************************************************************************/
-/*  K2G_PRU.cmd																*/
-/*  Copyright (c) 2016  Texas Instruments Incorporated                      */
+/*  K2G_PRU.cmd								    */
+/*  Copyright (c) 2016-2018  Texas Instruments Incorporated                 */
 /*                                                                          */
 /*    Description: This file is a linker command file that can be used for  */
 /*                 linking PRU programs built with the C compiler and       */
-/*                 the resulting .out file on a k2g device.					*/
+/*                 the resulting .out file on a k2g device.		    */
 /****************************************************************************/
 
 -cr								/* Link using C conventions */

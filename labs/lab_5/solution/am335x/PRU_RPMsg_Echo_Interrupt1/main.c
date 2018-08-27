@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD:labs/lab_5/solution/PRU_RPMsg_Echo_Interrupt1/main.c
  * Copyright (C) 2016-2018 Texas Instruments Incorporated - http://www.ti.com/
-=======
- * Copyright (C) 2018 Texas Instruments Incorporated - http://www.ti.com/
->>>>>>> 4ca241e8b31d... labs: expand lab_5 to am437x, am57x, am65x, k2g:labs/lab_5/solution/am335x/PRU_RPMsg_Echo_Interrupt1/main.c
  *
  *
  * Redistribution and use in source and binary forms, with or without
