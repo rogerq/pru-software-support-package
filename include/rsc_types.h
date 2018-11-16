@@ -45,10 +45,8 @@
 #define TYPE_DEVMEM		1
 #define TYPE_TRACE		2
 #define TYPE_VDEV		3
-#define TYPE_PRELOAD_VENDOR	4
-#define TYPE_POSTLOAD_VENDOR	5
-/* deprecated, define only for backward compatibility */
-#define TYPE_CUSTOM		5
+#define TYPE_VENDOR		4
+#define TYPE_CUSTOM		4	/* deprecated */
 
 union fw_custom {
 	/* add custom resources here */
@@ -323,6 +321,55 @@ struct fw_rsc_intmem {
 	char name[32];
 };
 
+/**
+ * struct fw_rsc_vendor - header to be used with vendor resource types
+ * @type: type of resource. should be TYPE_VENDOR.
+ *
+ * This is a header structure to be used before any vendor specific resource
+ * type.
+ */
+struct fw_rsc_vendor {
+	uint32_t type;
+};
+
+/**
+ * struct fw_rsc_pruss_intrmap_hdr - vendor resource to define PRU interrupts
+ * @type: should be PRUSS_RSC_INTRS
+ * @version: should be 1 or greater. (0 was for prototyping and is not supported)
+ * @num_maps: number of interrupt mappings that follow
+ *
+ * PRU system events are mapped to channels, and these channels are mapped
+ * to host interrupts. Events can be mapped to channels in a one-to-one or
+ * many-to-one ratio (multiple events per channel), and channels can be
+ * mapped to host interrupts in a one-to-one or many-to-one ratio (multiple
+ * channels per interrupt).
+ *
+ * This resource is variable length due to the nature of INTC map.
+ * The below data structure is scalable so it can support sufficiently
+ * large number of sysevents and hosts.
+ */
+struct fw_rsc_pruss_intrmap_hdr {
+        uint16_t type;
+        uint16_t version;
+        uint8_t num_maps;
+};
+
+/**
+ * struct fw_rsc_pruss_intrmap_data - interrupt mapping data
+ * @sysev - system event id
+ * @ch - channel id
+ * @host - host interrupt id
+ *
+ * An array of this structure should immediately follow the
+ * struct fw_rsc_prussmap_intrmap_hdr
+ */
+struct fw_rsc_pruss_intrmap_data {
+	uint8_t sysev;
+	uint8_t ch;
+	uint8_t host;
+};
+
+/* FIXME: get rid of below 2 types and fix examples */
 /**
  * struct fw_rsc_custom_hdr - header to be used with custom resource types
  * @type: type of custom resource, value should be one of vendor resource types
