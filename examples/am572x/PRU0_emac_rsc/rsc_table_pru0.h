@@ -62,6 +62,9 @@
 /* Definition for unused interrupts */
 #define HOST_UNUSED		255
 
+/* number of interrupt mappings */
+#define NUM_INTR_MAPS		4
+
 /* Mapping sysevts to a channel. Each pair contains a sysevt, channel */
 
 struct my_resource_table {
@@ -69,12 +72,11 @@ struct my_resource_table {
 
 	uint32_t offset[1]; /* Should match 'num' in actual definition */
 
-	/* custom resource header */
-	struct fw_rsc_custom hdr;
-	/* custom resource data */
-	struct fw_rsc_custom_ints pru_ints;
-
-	struct ch_map pru_intc_map[4];
+	/* vendor resource header */
+	struct fw_rsc_vendor hdr;
+	/* intrmap resource data */
+	struct fw_rsc_pruss_intrmap_hdr intr_hdr;
+	struct fw_rsc_pruss_intrmap_data intr_data[NUM_INTR_MAPS];
 };
 
 /* Firmware sysevents */
@@ -98,26 +100,19 @@ struct my_resource_table am335x_pru_remoteproc_ResourceTable = {
 	{
 		offsetof(struct my_resource_table, hdr),
 	},
-	{
-		TYPE_CUSTOM, TYPE_PRU_INTS,
-		sizeof(struct fw_rsc_custom_ints),
+	{	/* Vendor specific resource */
+		TYPE_VENDOR,
 	},
-	{
-		/* PRU_INTS version */
-		0,
-		/* Channel-to-host mapping */
-		0, HOST_UNUSED, 2, HOST_UNUSED, 4,
-		HOST_UNUSED, HOST_UNUSED, 8, HOST_UNUSED, HOST_UNUSED,
-		/* Number of evts being mapped to channels */
-		4,
-		/* Pointer to the structure containing mapped events */
-		(struct ch_map *)((char *)am335x_pru_remoteproc_ResourceTable.pru_intc_map - 0x100),
+	{	/* INTR map Header */
+		TYPE_PRU_INTS,	/* INTRMAP type */
+		1,		/* version */
+		NUM_INTR_MAPS,	/* num_maps */
 	},
-	{
-		{ PORT1_RX_EOF_EVENT, 0 },
-		{ PRU_ARM_EVENT0, 2 },
-		{ PRU_ARM_EVENT2, 4 },
-		{ MII_LINK0_EVENT, 7 },
+	{	/* INTR map data */
+		{ PORT1_RX_EOF_EVENT, 0, 0 },
+		{ PRU_ARM_EVENT0, 2, 2 },
+		{ PRU_ARM_EVENT2, 4, 4 },
+		{ MII_LINK0_EVENT, 7, 8 },
 	},
 };
 
