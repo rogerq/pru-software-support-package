@@ -56,10 +56,7 @@
 /* Definition for unused interrupts */
 #define HOST_UNUSED		255
 
-/* Mapping sysevts to a channel. Each pair contains a sysevt, channel. */
-struct ch_map pru_intc_map[] = { {18, 3},
-				 {19, 1},
-};
+#define NUM_INTR_MAPS		2
 
 struct my_resource_table {
 	struct resource_table base;
@@ -71,8 +68,11 @@ struct my_resource_table {
 	struct fw_rsc_vdev_vring rpmsg_vring0;
 	struct fw_rsc_vdev_vring rpmsg_vring1;
 
-	/* intc definition */
-	struct fw_rsc_custom pru_ints;
+        /* vendor resource header */
+        struct fw_rsc_vendor ven_hdr;
+        /* intrmap resource data */
+        struct fw_rsc_pruss_intrmap_hdr intr_hdr;
+        struct fw_rsc_pruss_intrmap_data intr_data[NUM_INTR_MAPS];
 };
 
 #pragma DATA_SECTION(resourceTable, ".resource_table")
@@ -84,7 +84,7 @@ struct my_resource_table resourceTable = {
 	/* offsets to entries */
 	{
 		offsetof(struct my_resource_table, rpmsg_vdev),
-		offsetof(struct my_resource_table, pru_ints),
+		offsetof(struct my_resource_table, ven_hdr),
 	},
 
 	/* rpmsg vdev entry */
@@ -102,34 +102,32 @@ struct my_resource_table resourceTable = {
 	},
 	/* the two vrings */
 	{
-		0,                      //da, will be populated by host, can't pass it in
+		-1,                      //da, will be populated by host, can't pass it in
 		16,                     //align (bytes),
 		PRU_RPMSG_VQ0_SIZE,     //num of descriptors
 		0,                      //notifyid, will be populated, can't pass right now
 		0                       //reserved
 	},
 	{
-		0,                      //da, will be populated by host, can't pass it in
+		-1,                      //da, will be populated by host, can't pass it in
 		16,                     //align (bytes),
 		PRU_RPMSG_VQ1_SIZE,     //num of descriptors
 		0,                      //notifyid, will be populated, can't pass right now
 		0                       //reserved
 	},
 
-	{
-		TYPE_POSTLOAD_VENDOR, PRU_INTS_VER0 | TYPE_PRU_INTS,
-		sizeof(struct fw_rsc_custom_ints),
-		{
-			0x0000,
-			/* Channel-to-host mapping, 255 for unused */
-			HOST_UNUSED, 1, HOST_UNUSED, 3, HOST_UNUSED,
-			HOST_UNUSED, HOST_UNUSED, HOST_UNUSED, HOST_UNUSED, HOST_UNUSED,
-			/* Number of evts being mapped to channels */
-			(sizeof(pru_intc_map) / sizeof(struct ch_map)),
-			/* Pointer to the structure containing mapped events */
-			pru_intc_map,
-		},
-	},
+        {       /* Vendor specific resource */
+                TYPE_VENDOR,
+        },
+        {       /* INTR map Header */
+                TYPE_PRU_INTS,  /* INTRMAP type */
+                1,              /* version */
+                NUM_INTR_MAPS,  /* num_maps */
+        },
+        {       /* INTR map data */
+                { 19, 1, 1 },
+                { 18, 3, 3 },
+        },
 };
 
 #endif /* _RSC_TABLE_PRU_H_ */
